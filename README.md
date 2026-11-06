@@ -7,9 +7,13 @@ Es handelt sich um **gebaute Dateien** (fertiges HTML, minifiziertes Preact-Bund
 `src/public/c/`), **nicht** um den Quellcode (TSX, Build-Konfiguration). Der Quellcode liegt im Manus-Projekt der Website.
 
 Jede Datei ist byteidentisch mit der Vercel-Deployment: Die SHA-1-Summe jeder Datei entspricht der Datei-ID, die Vercel
-im Dateibaum der Deployment führt (`src/build.js`, `src/public/**`, `vercel.json`).
+im Dateibaum der Deployment führt (`public/**`, `vercel.json`; `src/build.js` entfernt, es tat nichts).
 
-Dateien: `vercel.json` (Rewrites/Headers), `src/build.js`, `src/public/*.html`, `src/public/checkout.js`,
-`src/public/anfrage.js`, `src/public/consent*.js`, `src/public/c/00–04.txt`, `src/public/j/00–03.txt`.
+Dateien: `vercel.json` (Rewrites/Headers), `public/*.html`, `public/checkout.js`, `public/anfrage.js`, `public/consent*.js`,
+`public/c/00–04.txt`, `public/j/00–03.txt`.
+
+**Layout für Git-Deployments:** Vercel (Framework „Other“, kein Build) liefert den Ordner `public/` als Website-Wurzel aus und wendet
+`vercel.json` an. Der ursprüngliche CLI-Upload hatte die Dateien unter `src/public/`; ein Git-Deployment dieser Struktur lieferte nur 404
+(06.11.2026, zurückgerollt). Deshalb liegen die Dateien hier direkt unter `public/`.
 
 Zweck: versionierte Basis für Vergleiche und für den Wagyu-Checkout v2 (siehe Entwurfsdokumentation 07).
