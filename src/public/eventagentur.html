@@ -1,0 +1,378 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="Eventagentur im Großraum Stuttgart: Ihr nennt das Budget, wir planen und realisieren euer komplettes Event – Location, Catering, Getränke, Programm und Technik aus einer Hand. Feine Jungs × People Places Studio." />
+<meta name="theme-color" content="#606b55" />
+<title>Eventagentur Stuttgart – Komplette Events nach Budget | feine jungs</title>
+<link rel="canonical" href="https://feinejungs.de/eventagentur" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Instrument+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet" />
+<style>
+
+:root{--green:#606b55;--forest:#32483a;--dark:#4a5344;--orange:#f45d00;--leaf:#becbb8;--muted:#e0e8dc;--rule:#ffffff47;--ease:cubic-bezier(.23,1,.32,1)}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--green);color:#fff;font-family:"DM Sans",Arial,sans-serif;font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+.wrap{width:min(1120px,calc(100% - 40px));margin:0 auto}
+header{border-bottom:1px solid var(--rule)}
+.row{display:flex;align-items:center;justify-content:space-between;gap:20px;min-height:84px}
+.logo img{display:block;width:176px;height:38px;object-fit:contain}
+.nav{display:flex;gap:26px;align-items:center}
+.nav a{font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;font-family:"IBM Plex Mono",monospace}
+.nav a.cta{color:var(--orange)}
+.label{display:inline-flex;align-items:center;gap:14px;font-family:"IBM Plex Mono",monospace;font-size:11px;font-weight:600;letter-spacing:.11em;text-transform:uppercase;color:var(--muted)}
+.label::before{content:"";width:34px;height:1px;background:var(--orange)}
+h1,h2,h3{font-family:"Instrument Sans",Arial,sans-serif;font-weight:500;letter-spacing:-.03em;line-height:1.02;margin:0}
+h1{font-size:clamp(44px,7vw,84px);margin-top:26px}
+h1 span,h2 span,.op{color:var(--orange)}
+h1 .op,h2 .op,h3 .op{color:var(--orange)!important;display:inline-block;letter-spacing:0;margin-left:.07em}
+h2{font-size:clamp(30px,4vw,46px);margin-top:22px}
+h3{font-size:22px;letter-spacing:-.01em}
+.lead{max-width:640px;font-size:18px;color:var(--muted);margin:22px 0 0}
+section{padding:64px 0;border-bottom:1px solid var(--rule)}
+section:last-of-type{border-bottom:0}
+.intro{padding:72px 0 64px}
+.facts{display:flex;flex-wrap:wrap;gap:12px 36px;margin-top:34px;font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.facts strong{color:#fff;font-weight:600}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin-top:34px}
+.tile{background:#ffffff14;border:1px solid #ffffff30;padding:26px 24px;display:flex;flex-direction:column;gap:12px;min-height:200px}
+.tile span{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.tile p{margin:0;color:var(--muted);font-size:15px}
+.tile.dark{background:var(--dark);border-color:var(--dark)}
+.tile.white{background:#fff;color:var(--forest);border-color:#fff}
+.tile.white span,.tile.white p{color:#526453}
+.price{margin-top:34px;border-top:1px solid var(--rule)}
+.price div{display:flex;justify-content:space-between;gap:20px;padding:16px 0;border-bottom:1px solid var(--rule);font-size:15px}
+.price div strong{white-space:nowrap;font-weight:600}
+.price div em{font-style:normal;color:var(--muted)}
+.note{color:var(--muted);font-size:13px;margin-top:16px;max-width:640px}
+.two{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:start}
+.steps{counter-reset:s;display:grid;gap:0;margin-top:34px;border-top:1px solid var(--rule)}
+.steps>div{counter-increment:s;display:grid;grid-template-columns:56px 1fr;gap:14px;padding:22px 0;border-bottom:1px solid var(--rule)}
+.steps>div::before{content:"0" counter(s);font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.14em;color:var(--orange);padding-top:6px}
+.steps p{margin:6px 0 0;color:var(--muted);font-size:15px}
+.btn{display:inline-flex;align-items:center;justify-content:space-between;gap:34px;min-height:57px;padding:0 21px;background:#fff;color:var(--forest);text-decoration:none;font-family:"IBM Plex Mono",monospace;font-size:11px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;transition:background .2s var(--ease),color .2s var(--ease)}
+.btn:hover{background:var(--orange);color:#fff}
+.btn.ghost{background:transparent;color:#fff;border:1px solid #ffffff80}
+.btn.ghost:hover{background:#fff;color:var(--forest)}
+.btn svg{width:17px;height:17px;flex:none}
+footer{padding:36px 0 48px;color:var(--muted);font-size:12px}
+footer .row{min-height:0;flex-wrap:wrap;gap:12px}
+footer a{text-decoration:none}
+footer .links{display:flex;gap:22px;font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase}
+.cfg{display:grid;grid-template-columns:1.15fr .85fr;gap:40px;align-items:start;margin-top:34px}
+.cfg fieldset{border:0;margin:0 0 28px;padding:0;min-width:0}
+.cfg legend{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:12px;padding:0}
+.opts{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:8px}
+.opts button{appearance:none;border:1px solid #ffffff80;background:transparent;color:#fff;min-height:46px;padding:9px 8px;font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;transition:background .2s var(--ease),color .2s var(--ease)}
+.opts button:hover{border-color:#fff}
+.opts button.selected{background:#fff;color:var(--forest);border-color:#fff}
+.fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.fields label{display:flex;flex-direction:column;gap:8px;font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--muted)}
+.fields label.full{grid-column:1/-1}
+.fields input,.fields select,.fields textarea{width:100%;min-height:46px;padding:10px 12px;border:1px solid #ffffff80;background:#fff;color:var(--forest);font-family:"DM Sans",Arial,sans-serif;font-size:15px;letter-spacing:0;border-radius:0}
+.fields textarea{min-height:96px;resize:vertical}
+.fields input:focus,.fields select:focus,.fields textarea:focus{outline:2px solid var(--orange);outline-offset:0}
+.check{display:flex;gap:12px;align-items:flex-start;margin-top:14px;cursor:pointer;font-size:15px}
+.check input{width:20px;height:20px;margin:2px 0 0;accent-color:var(--orange);flex:none}
+.check small{display:block;color:var(--muted);font-size:13px}
+.hp{position:absolute;left:-9999px;opacity:0;height:0;overflow:hidden}
+.card{background:#ffffff14;border:1px solid #ffffff30;padding:28px 26px;position:sticky;top:20px}
+.card>span{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.card h3{margin-top:8px;font-size:30px}
+.card .price{margin-top:18px}
+.card .price div{padding:12px 0}
+.total{margin-top:22px;padding-top:22px;border-top:1px solid var(--rule)}
+.total span{display:block;font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.total strong{display:block;font-family:"Instrument Sans",Arial,sans-serif;font-weight:500;font-size:clamp(44px,4.5vw,60px);letter-spacing:-.06em;line-height:1.05;color:var(--orange);margin-top:6px}
+.card p{color:var(--muted);font-size:13px;margin:14px 0 0}
+.submit{width:100%;justify-content:space-between;margin-top:6px;cursor:pointer;border:0;font:inherit;font-family:"IBM Plex Mono",monospace;font-size:11px;font-weight:600;letter-spacing:.07em;text-transform:uppercase}
+.submit:disabled{opacity:.6;cursor:default}
+.msg{margin-top:16px;padding:16px 18px;font-size:15px;display:none}
+.msg.ok{display:block;background:#fff;color:var(--forest)}
+.msg.err{display:block;background:#b63525;color:#fff}
+.msg a{color:inherit}
+.actions{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-top:34px}
+.actions .btn{width:100%}
+.promo{max-width:640px;margin:18px 0 0;padding:14px 16px;border-left:3px solid var(--orange);background:#ffffff14;font-size:15px;color:#fff}
+.promo strong{color:var(--orange)}
+.promo-val{color:var(--orange)}
+@media (max-width:760px){.cal-pair{grid-template-columns:1fr}.cal-pair .cal-month:nth-child(2){display:none}.cal-month{padding:10px}}
+@media (max-width:900px){.cfg{grid-template-columns:1fr}.card{position:static}}
+@media (max-width:560px){.fields{grid-template-columns:1fr}}
+@media (max-width:760px){.nav a:not(.cta){display:none}.two{grid-template-columns:1fr;gap:26px}section{padding:52px 0}.intro{padding:56px 0 52px}.price div{flex-direction:column;gap:4px}}
+
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+.tags span{border:1px solid #ffffff60;padding:7px 12px;font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.chips button{appearance:none;border:1px solid #ffffff60;background:transparent;color:#fff;padding:8px 12px;font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.06em;cursor:pointer}
+.chips button:hover{border-color:#fff}.chips button.selected{background:var(--orange);border-color:var(--orange)}
+.opts.multi button.selected{background:#fff;color:var(--forest)}
+.steps h3{font-size:20px}
+.btn.submit:hover{background:#d95300!important}
+.lbl{display:flex;flex-direction:column;gap:8px;font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);min-width:0}
+.lbl.full{grid-column:1/-1}
+.fj-dd{position:relative;min-width:0}
+.fj-dd-btn{box-sizing:border-box;width:100%;height:48px;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:0 14px;background:#fff;color:var(--forest);border:1px solid #fff;border-radius:0;font-family:"DM Sans",Arial,sans-serif;font-size:16px;letter-spacing:0;text-transform:none;cursor:pointer;text-align:left}
+.fj-dd-btn.placeholder{color:#66736a}
+.fj-dd-btn::after{content:"";flex:none;width:7px;height:7px;border-right:2px solid var(--forest);border-bottom:2px solid var(--forest);transform:translateY(-2px) rotate(45deg);transition:transform .2s var(--ease)}
+.fj-dd-btn.open::after{transform:translateY(2px) rotate(-135deg)}
+.fj-dd-btn:focus-visible{outline:2px solid var(--orange);outline-offset:0}
+.fj-dd-btn.invalid{outline:2px solid var(--orange);outline-offset:0}
+.fj-dd-panel{margin-top:8px;text-transform:none;letter-spacing:0}
+.fj-dd-panel[hidden]{display:none}
+.cal-toolbar{display:flex;justify-content:space-between;align-items:center;gap:15px;margin-bottom:12px}
+.cal-toolbar div{display:flex;gap:7px}
+.cal-toolbar button{width:38px;height:38px;display:grid;place-items:center;color:#fff;border:1px solid var(--rule);background:transparent;cursor:pointer}
+.cal-toolbar button:disabled{color:#92a394;cursor:not-allowed}
+.cal-toolbar svg{width:18px;height:18px}
+.cal-month{border:1px solid var(--rule);min-width:0;padding:clamp(11px,1.5vw,18px);background:var(--green)}
+.cal-title{font-family:"Instrument Sans",Arial,sans-serif;font-size:19px;font-weight:500;letter-spacing:-.03em;text-transform:capitalize;color:#fff}
+.cal-grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:2px}
+.cal-grid>span,.cal-grid>button{display:grid;place-items:center;min-width:0;min-height:38px}
+.cal-grid .wd{color:#d7e0d7;font-size:10px;letter-spacing:.07em;font-family:"DM Sans",Arial,sans-serif}
+.cal-grid button{appearance:none;border:0;color:#fff;background:transparent;font-family:"DM Sans",Arial,sans-serif;font-size:13px;cursor:pointer;transition:background .16s var(--ease),color .16s var(--ease)}
+.cal-grid button:hover:not(:disabled){color:var(--forest);background:#fff}
+.cal-grid button:disabled{color:#9eafa1;cursor:not-allowed}
+.cal-grid button.sel{color:var(--forest);background:#fff;outline:2px solid var(--orange);outline-offset:-2px}
+.cal-grid.times{grid-template-columns:repeat(4,minmax(0,1fr))}
+.cal-grid.opts2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.cal-grid.opts2 button{justify-content:start;padding:0 12px;min-height:44px;font-size:14px;text-align:left}
+.cal-foot{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:12px}
+.cal-foot p{margin:0;color:#e1e8e0;font-size:11px;font-family:"DM Sans",Arial,sans-serif;letter-spacing:0}
+.cal-foot button{appearance:none;background:none;border:0;color:#fff;font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;text-decoration:underline;cursor:pointer;padding:4px 0}
+@media (min-width:761px){.cal-grid.times{grid-template-columns:repeat(6,minmax(0,1fr))}}
+@media (max-width:560px){.cal-grid.opts2{grid-template-columns:1fr}}
+footer .links{flex-wrap:wrap;row-gap:10px}
+footer .links a{white-space:nowrap}
+footer .tel{white-space:nowrap}
+@media (max-width:560px){h1{font-size:44px}}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap row">
+    <a class="logo" href="/" aria-label="feine jungs – Startseite"><img src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663617657681/csFvtthkGIvZbBJQ.svg" alt="feine jungs" /></a>
+    <nav class="nav" aria-label="Navigation">
+      <a href="/">Startseite</a>
+      <a href="#leistungen">Leistungen</a>
+      <a href="#ablauf">Ablauf</a>
+      <a class="cta" href="#anfrage">Budget nennen →</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="intro">
+    <div class="wrap">
+      <span class="label">Eventagentur · Feine Jungs × People Places Studio</span>
+      <h1>Ihr nennt<br />das Budget<span>.</span><br />Wir machen<br />den Rest<span>.</span></h1>
+      <p class="lead">Nicht nur Getränke: Wir planen und realisieren euer komplettes Event – Location, Catering, Programm, Technik und Service. Mit unserem Netzwerk aus Gastronomen, Caterern und Eventprofis, einem festen Ansprechpartner und einem Kostenrahmen, der hält.</p>
+      <div class="facts">
+        <span><strong>1</strong> Ansprechpartner</span>
+        <span><strong>1</strong> Rechnung</span>
+        <span><strong>Fester</strong> Budgetrahmen</span>
+        <span><strong>Großraum</strong> Stuttgart</span>
+      </div>
+      <div class="actions">
+        <a class="btn" href="#anfrage">Budget nennen <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></a>
+        <a class="btn ghost" href="tel:+491777753688">0177 775 36 88</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="leistungen">
+    <div class="wrap">
+      <span class="label">Aus einer Hand</span>
+      <h2>Was wir übernehmen<span>.</span></h2>
+      <div class="grid">
+        <div class="tile white"><span>01 · Location</span><h3>Der passende Ort.</h3><p>Hof, Halle, Weingut, Rooftop oder euer eigenes Gelände – wir finden, was zu Anlass, Gästezahl und Budget passt.</p></div>
+        <div class="tile dark"><span>02 · Catering</span><h3>Gutes Essen.</h3><p>Vom Flying Buffet über Streetfood bis zum gesetzten Menü – mit Küchen und Caterern, mit denen wir regelmäßig arbeiten.</p></div>
+        <div class="tile"><span>03 · Getränke &amp; Bar</span><h3>Unser Heimspiel.</h3><p>Mobile Bar, Schaumwein, Cocktails, Glühwein und Service vom eigenen Team – auf Wunsch mit unseren Apes.</p></div>
+        <div class="tile"><span>04 · Programm &amp; Musik</span><h3>Stimmung.</h3><p>DJ, Live-Act, Moderation, Tasting oder Teamprogramm – abgestimmt auf eure Leute.</p></div>
+        <div class="tile"><span>05 · Technik &amp; Ausstattung</span><h3>Alles steht.</h3><p>Licht, Ton, Strom, Zelte, Mobiliar und Deko – geplant, geliefert, auf- und abgebaut.</p></div>
+        <div class="tile"><span>06 · Ablauf &amp; Personal</span><h3>Ihr feiert.</h3><p>Zeitplan, Dienstleister-Steuerung und eine Ansprechperson vor Ort, die den Tag im Griff hat.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="ablauf">
+    <div class="wrap two">
+      <div>
+        <span class="label">So läuft's</span>
+        <h2>In vier Schritten<br />zum Event<span>.</span></h2>
+        <p class="lead">Ihr gebt den Rahmen vor, wir kümmern uns um den Rest. Kein Zusammensuchen von zehn Angeboten, keine Abstimmung mit jedem Dienstleister einzeln.</p>
+      </div>
+      <div class="steps">
+        <div><div><h3>Budget &amp; Rahmen nennen</h3><p>Anlass, Gästezahl, Zeitraum und Budget – mehr brauchen wir für den Start nicht.</p></div></div>
+        <div><div><h3>Kurzes Gespräch</h3><p>Wir melden uns innerhalb von 24 Stunden und klären, was euch wichtig ist.</p></div></div>
+        <div><div><h3>Konzept mit Kostenplan</h3><p>Ihr bekommt ein Konzept mit transparenter Aufstellung aller Posten – im Rahmen eures Budgets.</p></div></div>
+        <div><div><h3>Umsetzung</h3><p>Wir buchen, koordinieren und sind am Tag selbst vor Ort. Ihr feiert.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap two">
+      <div>
+        <span class="label">Partnerstudio</span>
+        <h2>Gemeinsam mit<br />People Places Studio<span>.</span></h2>
+      </div>
+      <div>
+        <p class="lead" style="margin-top:0">Für Konzept, Gestaltung und größere Formate holen wir People Places Studio dazu – unser Partnerstudio für Eventkonzepte und besondere Orte. Feine Jungs bringt Bar, Service und das Netzwerk aus Gastronomie und Catering mit.</p>
+        <p class="note">Euer Vertragspartner bleibt die Feine Jungs GmbH: ein Ansprechpartner, ein Vertrag, eine Rechnung.</p>
+        <div class="tags"><span>Weihnachtsfeier</span><span>Sommerfest</span><span>Firmenjubiläum</span><span>Kundenevent</span><span>Produktlaunch</span><span>Hochzeit</span><span>Runder Geburtstag</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="anfrage">
+    <div class="wrap">
+      <span class="label">Unverbindlich &amp; kostenlos</span>
+      <h2>Budget nennen<span>.</span></h2>
+      <p class="lead">Ein paar Eckdaten genügen. Wir melden uns innerhalb von 24 Stunden.</p>
+      <form id="af" class="cfg" novalidate>
+        <div>
+          <fieldset>
+            <legend>Anfrage als</legend>
+            <div class="opts" data-group="type"><button type="button" class="selected" data-value="firma">Firma</button><button type="button" data-value="privat">Privat</button></div>
+          </fieldset>
+          <fieldset>
+            <legend>Euer Event</legend>
+            <div class="fields">
+              <div class="lbl full"><span id="occLbl">Anlass *</span><div class="fj-dd" data-dd="occ"><button type="button" class="fj-dd-btn placeholder" id="occBtn" aria-haspopup="listbox" aria-expanded="false" aria-labelledby="occLbl occBtn">Bitte wählen</button><div class="fj-dd-panel" hidden><div class="cal-month"><div class="cal-grid opts2" id="occGrid" role="listbox" aria-label="Anlass"></div></div></div></div><input type="hidden" id="occasion" /></div>
+              <label>Gäste (ca.) *<input id="people" type="number" min="10" max="5000" step="1" inputmode="numeric" placeholder="z. B. 120" required /></label>
+              <label>Region / Ort<input id="place" type="text" placeholder="z. B. Stuttgart, Böblingen" /></label>
+              <div class="lbl"><span id="dateLbl">Wunschtermin</span><div class="fj-dd" data-dd="date"><button type="button" class="fj-dd-btn placeholder" id="dateBtn" aria-haspopup="dialog" aria-expanded="false" aria-labelledby="dateLbl dateBtn">Noch offen</button><div class="fj-dd-panel" hidden><div class="cal-month"><div class="cal-toolbar"><div class="cal-title" id="calTitle"></div><div><button type="button" id="calPrev" aria-label="Vorheriger Monat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg></button><button type="button" id="calNext" aria-label="Nächster Monat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg></button></div></div><div class="cal-grid" id="calGrid"></div><div class="cal-foot"><p>Mindestens 14 Tage Vorlauf.</p><button type="button" id="dateClear">Termin noch offen</button></div></div></div></div><input type="hidden" id="date" /></div>
+              <div class="lbl"><span id="timeLbl">Uhrzeit (optional)</span><div class="fj-dd" data-dd="time"><button type="button" class="fj-dd-btn placeholder" id="timeBtn" aria-haspopup="listbox" aria-expanded="false" aria-labelledby="timeLbl timeBtn">Noch offen</button><div class="fj-dd-panel" hidden><div class="cal-month"><div class="cal-grid times" id="timeGrid" role="listbox" aria-label="Uhrzeit"></div></div></div></div><input type="hidden" id="time" /></div>
+              <label class="full">Budget gesamt inkl. MwSt. (ca.) *<input id="budget" type="text" inputmode="numeric" placeholder="z. B. 15.000 €" required /></label>
+            </div>
+            <div class="chips" id="budgetChips" aria-label="Budget-Vorschläge"><button type="button" data-v="5000">5.000 €</button><button type="button" data-v="10000">10.000 €</button><button type="button" data-v="15000">15.000 €</button><button type="button" data-v="25000">25.000 €</button><button type="button" data-v="50000">50.000 €+</button></div>
+          </fieldset>
+          <fieldset>
+            <legend>Was sollen wir übernehmen?</legend>
+            <div class="opts multi" data-group="parts"><button type="button" class="selected" data-value="Location">Location</button><button type="button" class="selected" data-value="Catering">Catering</button><button type="button" class="selected" data-value="Getränke & Bar">Getränke &amp; Bar</button><button type="button" data-value="Programm & Musik">Programm &amp; Musik</button><button type="button" data-value="Technik">Technik</button><button type="button" data-value="Deko">Deko</button></div>
+          </fieldset>
+          <fieldset>
+            <legend>Kontakt</legend>
+            <div class="fields">
+              <label class="full" id="companyWrap">Firma *<input id="company" type="text" autocomplete="organization" /></label>
+              <label>Vorname *<input id="firstName" type="text" autocomplete="given-name" required /></label>
+              <label>Nachname *<input id="lastName" type="text" autocomplete="family-name" required /></label>
+              <label>E-Mail *<input id="email" type="email" autocomplete="email" required /></label>
+              <label>Telefon *<input id="phone" type="tel" autocomplete="tel" required /></label>
+              <label class="full">Was ist euch wichtig?<textarea id="message" placeholder="Stil, Ablauf, Ideen, No-Gos – alles, was hilft …"></textarea></label>
+            </div>
+            <label class="check"><input type="checkbox" id="privacy" required /><span>Ich habe die <a href="/datenschutz" target="_blank" rel="noopener">Datenschutzhinweise</a> gelesen und bin einverstanden, dass ihr mich zu meiner Anfrage kontaktiert.</span></label>
+            <label class="hp" aria-hidden="true">Bitte leer lassen<input id="hp" type="text" tabindex="-1" autocomplete="off" /></label>
+          </fieldset>
+        </div>
+        <aside class="card">
+          <span>Eure Anfrage</span>
+          <h3 id="sumTitle">Euer Event<span class="op">.</span></h3>
+          <div class="price">
+            <div><em>Gäste</em><strong id="sPeople">–</strong></div>
+            <div><em>Termin</em><strong id="sDate">offen</strong></div>
+            <div><em>Leistungen</em><strong id="sParts">–</strong></div>
+          </div>
+          <div class="total"><span>Budget gesamt</span><strong id="sBudget">–</strong></div>
+          <button class="btn submit" id="send" type="submit" style="background:#f45d00;color:#fff;margin-top:18px">Anfrage senden <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></button>
+          <div class="msg" id="msg" role="status"></div>
+          <p>Unverbindlich und kostenlos. Ihr bekommt ein Konzept mit Kostenplan, bevor irgendetwas gebucht wird.</p>
+        </aside>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap row">
+    <span>FEINE JUNGS GMBH · RENNINGEN · <a class="tel" href="tel:+491777753688">0177 775 36 88</a></span>
+    <div class="links">
+      <a href="/">Startseite</a>
+      <a href="/weihnachtsfeier">Weihnachtsfeier</a>
+      <a href="/impressum">Impressum</a>
+      <a href="/agb">AGB</a>
+      <a href="/datenschutz">Datenschutz</a>
+    </div>
+  </div>
+</footer>
+<script>
+(function(){
+var API="https://yarzxemodteevfodhstl.supabase.co/functions/v1";
+var $=function(id){return document.getElementById(id)};
+var st={type:"firma"};
+var OCC={firma:["Weihnachtsfeier","Sommerfest","Firmenjubiläum","Kundenevent","Produktlaunch","Team- & Mitarbeiterevent","Messe & Hausmesse","Anderer Anlass"],privat:["Hochzeit","Geburtstag","Jubiläum","Familienfest","Gartenparty","Private Weihnachtsfeier","Anderer Anlass"]};
+var eur=function(n){return new Intl.NumberFormat("de-DE",{style:"currency",currency:"EUR",maximumFractionDigits:0}).format(n)};
+var num=function(s){var n=Number(String(s).replace(/[^\d]/g,""));return Number.isFinite(n)&&n>0?n:0};
+var iso=function(d){return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0")};
+var de=function(v){return v.split("-").reverse().join(".")};
+var parts=function(){return Array.prototype.map.call(document.querySelectorAll('[data-group="parts"] .selected'),function(b){return b.dataset.value})};
+/* Dropdowns im Stil des Kalkulators */
+function ddOpen(dd,o){var btn=dd.querySelector(".fj-dd-btn"),p=dd.querySelector(".fj-dd-panel");p.hidden=!o;btn.classList.toggle("open",o);btn.setAttribute("aria-expanded",String(o))}
+document.querySelectorAll(".fj-dd").forEach(function(dd){dd.querySelector(".fj-dd-btn").addEventListener("click",function(){var o=dd.querySelector(".fj-dd-panel").hidden;document.querySelectorAll(".fj-dd").forEach(function(x){ddOpen(x,false)});ddOpen(dd,o);if(o&&dd.dataset.dd==="date")renderCal()})});
+document.addEventListener("click",function(e){if(!e.target.closest(".fj-dd"))document.querySelectorAll(".fj-dd").forEach(function(x){ddOpen(x,false)})});
+document.addEventListener("keydown",function(e){if(e.key==="Escape")document.querySelectorAll(".fj-dd").forEach(function(x){ddOpen(x,false)})});
+function setBtn(id,v,ph){var b=$(id);b.textContent=v||ph;b.classList.toggle("placeholder",!v);b.classList.remove("invalid")}
+/* Anlass */
+function renderOcc(){var g=$("occGrid"),cur=$("occasion").value;g.innerHTML="";if(OCC[st.type].indexOf(cur)<0){$("occasion").value="";setBtn("occBtn","","Bitte wählen")}
+ OCC[st.type].forEach(function(o){var b=document.createElement("button");b.type="button";b.textContent=o;b.setAttribute("role","option");var on=$("occasion").value===o;b.className=on?"sel":"";b.setAttribute("aria-selected",on);b.addEventListener("click",function(){var dd=b.closest(".fj-dd");$("occasion").value=o;setBtn("occBtn",o,"Bitte wählen");ddOpen(dd,false);renderOcc();upd()});g.appendChild(b)})}
+/* Datum */
+var minD=new Date(Date.now()+14*864e5);minD.setHours(0,0,0,0);var view=new Date(minD.getFullYear(),minD.getMonth(),1);
+var MON=new Intl.DateTimeFormat("de-DE",{month:"long",year:"numeric"});
+function renderCal(){var g=$("calGrid"),y=view.getFullYear(),m=view.getMonth();$("calTitle").textContent=MON.format(view);g.innerHTML="";
+ ["Mo","Di","Mi","Do","Fr","Sa","So"].forEach(function(w){var s=document.createElement("span");s.className="wd";s.textContent=w;g.appendChild(s)});
+ for(var i=0;i<(new Date(y,m,1).getDay()+6)%7;i++)g.appendChild(document.createElement("span"));
+ var n=new Date(y,m+1,0).getDate();for(var d=1;d<=n;d++){(function(d){var dt=new Date(y,m,d),v=iso(dt),b=document.createElement("button");b.type="button";b.textContent=d;b.disabled=dt<minD;if($("date").value===v)b.className="sel";b.addEventListener("click",function(){$("date").value=v;setBtn("dateBtn",de(v),"Noch offen");ddOpen(b.closest(".fj-dd"),false);upd()});g.appendChild(b)})(d)}
+ $("calPrev").disabled=view<=new Date(minD.getFullYear(),minD.getMonth(),1);$("calNext").disabled=view>=new Date(minD.getFullYear()+1,minD.getMonth(),1)}
+$("calPrev").addEventListener("click",function(){view=new Date(view.getFullYear(),view.getMonth()-1,1);renderCal()});
+$("calNext").addEventListener("click",function(){view=new Date(view.getFullYear(),view.getMonth()+1,1);renderCal()});
+$("dateClear").addEventListener("click",function(){$("date").value="";setBtn("dateBtn","","Noch offen");ddOpen(this.closest(".fj-dd"),false);upd()});
+/* Uhrzeit */
+(function(){var g=$("timeGrid");for(var t=600;t<=1380;t+=30){(function(t){var v=String(Math.floor(t/60)).padStart(2,"0")+":"+String(t%60).padStart(2,"0"),b=document.createElement("button");b.type="button";b.textContent=v;b.setAttribute("role","option");b.addEventListener("click",function(){$("time").value=v;setBtn("timeBtn",v+" Uhr","Noch offen");g.querySelectorAll("button").forEach(function(x){x.classList.toggle("sel",x===b)});ddOpen(b.closest(".fj-dd"),false)});g.appendChild(b)})(t)}})();
+/* Auswahl-Buttons */
+document.querySelectorAll(".opts").forEach(function(g){g.addEventListener("click",function(e){var b=e.target.closest("button");if(!b)return;
+ if(g.classList.contains("multi")){b.classList.toggle("selected");b.setAttribute("aria-pressed",b.classList.contains("selected"))}
+ else{st[g.dataset.group]=b.dataset.value;g.querySelectorAll("button").forEach(function(x){x.classList.toggle("selected",x===b)});if(g.dataset.group==="type")renderOcc()}
+ upd()})});
+$("budgetChips").addEventListener("click",function(e){var b=e.target.closest("button");if(!b)return;$("budget").value=new Intl.NumberFormat("de-DE").format(Number(b.dataset.v))+" €";upd()});
+$("budget").addEventListener("blur",function(){var n=num(this.value);if(n)this.value=new Intl.NumberFormat("de-DE").format(n)+" €"});
+function upd(){
+ var f=st.type==="firma";$("companyWrap").style.display=f?"":"none";$("company").required=f;
+ var p=num($("people").value),b=num($("budget").value),dt=$("date").value,o=$("occasion").value,ps=parts();
+ $("sumTitle").innerHTML=(o||"Euer Event")+'<span class="op">.</span>';
+ $("sPeople").textContent=p?p+" Pers.":"–";
+ $("sDate").textContent=dt?de(dt):"offen";
+ $("sParts").textContent=ps.length?ps.length+" von 6":"–";
+ $("sBudget").textContent=b?eur(b):"–";
+ document.querySelectorAll("#budgetChips button").forEach(function(x){x.classList.toggle("selected",Number(x.dataset.v)===b)});
+}
+$("af").addEventListener("input",upd);renderOcc();upd();
+function msg(t,ok){var m=$("msg");m.className="msg "+(ok?"ok":"err");m.innerHTML=t}
+$("af").addEventListener("submit",function(e){
+ e.preventDefault();$("msg").className="msg";
+ if($("hp").value)return;
+ if(!$("occasion").value){$("occBtn").classList.add("invalid");$("occBtn").scrollIntoView({block:"center",behavior:"smooth"});msg("Bitte einen Anlass wählen.");return}
+ var f=$("af");if(!f.checkValidity()){f.reportValidity();return}
+ var b=num($("budget").value),p=num($("people").value);
+ if(!b){msg("Bitte ein ungefähres Budget angeben – eine grobe Zahl reicht.");$("budget").focus();return}
+ var ps=parts(),v=function(id){return $(id).value.trim()};
+ var text=["Leistungen gewünscht: "+(ps.length?ps.join(", "):"noch offen"),v("place")?"Region / Ort: "+v("place"):"",v("message")?"\n"+v("message"):""].filter(Boolean).join("\n");
+ var body={contact:{name:v("firstName")+" "+v("lastName"),email:v("email"),phone:v("phone"),company:st.type==="firma"?v("company"):"",message:text},
+  config:{package:st.type==="firma"?"corporate":"private",duration:"6-8",people:p,preferred_date:v("date")||undefined,preferred_time:v("time")||undefined,occasion:v("occasion"),full_service:true,budget:b},honeypot:""};
+ var s=$("send");s.disabled=true;s.firstChild.textContent="Wird gesendet … ";
+ fetch(API+"/public-inquiry",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(body)}).then(function(r){return r.json().then(function(j){return{ok:r.ok,j:j}})}).then(function(x){
+  if(!x.ok||!x.j.ok)throw new Error(x.j.error||"fail");
+  s.style.display="none";msg("<strong>Danke! Eure Anfrage "+(x.j.event_number||"")+" ist da.</strong><br>Wir melden uns innerhalb von 24 Stunden für ein kurzes Gespräch. Eine Bestätigung liegt in eurem Postfach.",true);
+ }).catch(function(err){s.disabled=false;s.firstChild.textContent="Anfrage senden ";var m=String(err&&err.message||"");
+  msg(m==="too_many_requests"?"Zu viele Anfragen – bitte später nochmal oder ruft uns an: <a href=\"tel:+491777753688\">0177 775 36 88</a>.":m==="invalid_email"?"Bitte die E-Mail-Adresse prüfen.":"Das hat noch nicht geklappt. Bitte nochmal versuchen oder ruft uns an: <a href=\"tel:+491777753688\">0177 775 36 88</a>.")});
+});
+})();
+</script>
+<script src="/consent.js" defer></script>
+</body>
+</html>

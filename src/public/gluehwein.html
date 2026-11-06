@@ -1,0 +1,358 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="Glühwein After Work mit feine jungs: Wir kommen mit der Bar-Ape zu euch – Glühwein rot, Glüh-Aperol und auf Anfrage Kinderpunsch. Grundpreis inkl. Anfahrt plus Preis pro Person, Anfrage in zwei Minuten." />
+<meta name="theme-color" content="#606b55" />
+<title>Glühwein After Work mit feine jungs</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Instrument+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet" />
+<style>
+:root{--green:#606b55;--forest:#32483a;--dark:#4a5344;--orange:#f45d00;--leaf:#becbb8;--muted:#e0e8dc;--rule:#ffffff47;--ease:cubic-bezier(.23,1,.32,1)}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--green);color:#fff;font-family:"DM Sans",Arial,sans-serif;font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+.wrap{width:min(1120px,calc(100% - 40px));margin:0 auto}
+header{border-bottom:1px solid var(--rule)}
+.row{display:flex;align-items:center;justify-content:space-between;gap:20px;min-height:84px}
+.logo img{display:block;width:176px;height:38px;object-fit:contain}
+.nav{display:flex;gap:26px;align-items:center}
+.nav a{font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;font-family:"IBM Plex Mono",monospace}
+.nav a.cta{color:var(--orange)}
+.label{display:inline-flex;align-items:center;gap:14px;font-family:"IBM Plex Mono",monospace;font-size:11px;font-weight:600;letter-spacing:.11em;text-transform:uppercase;color:var(--muted)}
+.label::before{content:"";width:34px;height:1px;background:var(--orange)}
+h1,h2,h3{font-family:"Instrument Sans",Arial,sans-serif;font-weight:500;letter-spacing:-.03em;line-height:1.02;margin:0}
+h1{font-size:clamp(44px,7vw,84px);margin-top:26px}
+h1 span,h2 span,.op{color:var(--orange)}
+h1 .op,h2 .op,h3 .op{color:var(--orange)!important;display:inline-block;letter-spacing:0;margin-left:.07em}
+h2{font-size:clamp(30px,4vw,46px);margin-top:22px}
+h3{font-size:22px;letter-spacing:-.01em}
+.lead{max-width:640px;font-size:18px;color:var(--muted);margin:22px 0 0}
+section{padding:64px 0;border-bottom:1px solid var(--rule)}
+section:last-of-type{border-bottom:0}
+.intro{padding:72px 0 64px}
+.facts{display:flex;flex-wrap:wrap;gap:12px 36px;margin-top:34px;font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.facts strong{color:#fff;font-weight:600}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin-top:34px}
+.tile{background:#ffffff14;border:1px solid #ffffff30;padding:26px 24px;display:flex;flex-direction:column;gap:12px;min-height:200px}
+.tile span{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.tile p{margin:0;color:var(--muted);font-size:15px}
+.tile.dark{background:var(--dark);border-color:var(--dark)}
+.tile.white{background:#fff;color:var(--forest);border-color:#fff}
+.tile.white span,.tile.white p{color:#526453}
+.price{margin-top:34px;border-top:1px solid var(--rule)}
+.price div{display:flex;justify-content:space-between;gap:20px;padding:16px 0;border-bottom:1px solid var(--rule);font-size:15px}
+.price div strong{white-space:nowrap;font-weight:600}
+.price div em{font-style:normal;color:var(--muted)}
+.note{color:var(--muted);font-size:13px;margin-top:16px;max-width:640px}
+.two{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:start}
+.steps{counter-reset:s;display:grid;gap:0;margin-top:34px;border-top:1px solid var(--rule)}
+.steps>div{counter-increment:s;display:grid;grid-template-columns:56px 1fr;gap:14px;padding:22px 0;border-bottom:1px solid var(--rule)}
+.steps>div::before{content:"0" counter(s);font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.14em;color:var(--orange);padding-top:6px}
+.steps p{margin:6px 0 0;color:var(--muted);font-size:15px}
+.btn{display:inline-flex;align-items:center;justify-content:space-between;gap:34px;min-height:57px;padding:0 21px;background:#fff;color:var(--forest);text-decoration:none;font-family:"IBM Plex Mono",monospace;font-size:11px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;transition:background .2s var(--ease),color .2s var(--ease)}
+.btn:hover{background:var(--orange);color:#fff}
+.btn.ghost{background:transparent;color:#fff;border:1px solid #ffffff80}
+.btn.ghost:hover{background:#fff;color:var(--forest)}
+.btn svg{width:17px;height:17px;flex:none}
+footer{padding:36px 0 48px;color:var(--muted);font-size:12px}
+footer .row{min-height:0;flex-wrap:wrap;gap:12px}
+footer a{text-decoration:none}
+footer .links{display:flex;gap:22px;font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase}
+.cfg{display:grid;grid-template-columns:1.15fr .85fr;gap:40px;align-items:start;margin-top:34px}
+.cfg fieldset{border:0;margin:0 0 28px;padding:0;min-width:0}
+.cfg legend{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:12px;padding:0}
+.opts{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:8px}
+.opts button{appearance:none;border:1px solid #ffffff80;background:transparent;color:#fff;min-height:46px;padding:9px 8px;font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;transition:background .2s var(--ease),color .2s var(--ease)}
+.opts button:hover{border-color:#fff}
+.opts button.selected{background:#fff;color:var(--forest);border-color:#fff}
+.fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.fields label{display:flex;flex-direction:column;gap:8px;font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--muted)}
+.fields label.full{grid-column:1/-1}
+.fields input,.fields select,.fields textarea{width:100%;min-height:46px;padding:10px 12px;border:1px solid #ffffff80;background:#fff;color:var(--forest);font-family:"DM Sans",Arial,sans-serif;font-size:15px;letter-spacing:0;border-radius:0}
+.fields textarea{min-height:96px;resize:vertical}
+.fields input:focus,.fields select:focus,.fields textarea:focus{outline:2px solid var(--orange);outline-offset:0}
+.check{display:flex;gap:12px;align-items:flex-start;margin-top:14px;cursor:pointer;font-size:15px}
+.check input{width:20px;height:20px;margin:2px 0 0;accent-color:var(--orange);flex:none}
+.check small{display:block;color:var(--muted);font-size:13px}
+.hp{position:absolute;left:-9999px;opacity:0;height:0;overflow:hidden}
+.card{background:#ffffff14;border:1px solid #ffffff30;padding:28px 26px;position:sticky;top:20px}
+.card>span{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.card h3{margin-top:8px;font-size:30px}
+.card .price{margin-top:18px}
+.card .price div{padding:12px 0}
+.total{margin-top:22px;padding-top:22px;border-top:1px solid var(--rule)}
+.total span{display:block;font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.total strong{display:block;font-family:"Instrument Sans",Arial,sans-serif;font-weight:500;font-size:clamp(44px,4.5vw,60px);letter-spacing:-.06em;line-height:1.05;color:var(--orange);margin-top:6px}
+.card p{color:var(--muted);font-size:13px;margin:14px 0 0}
+.submit{width:100%;justify-content:space-between;margin-top:6px;cursor:pointer;border:0;font:inherit;font-family:"IBM Plex Mono",monospace;font-size:11px;font-weight:600;letter-spacing:.07em;text-transform:uppercase}
+.submit:disabled{opacity:.6;cursor:default}
+.msg{margin-top:16px;padding:16px 18px;font-size:15px;display:none}
+.msg.ok{display:block;background:#fff;color:var(--forest)}
+.msg.err{display:block;background:#b63525;color:#fff}
+.msg a{color:inherit}
+.actions{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-top:34px}
+.actions .btn{width:100%}
+.cal-toolbar{display:flex;justify-content:space-between;align-items:center;gap:15px;margin-bottom:12px}
+.cal-toolbar p{margin:0;font-size:12px;color:#fff}
+.cal-toolbar div{display:flex;gap:7px}
+.cal-toolbar button{width:38px;height:38px;display:grid;place-items:center;color:#fff;border:1px solid var(--rule);background:transparent;cursor:pointer}
+.cal-toolbar button:disabled{color:#92a394;cursor:not-allowed}
+.cal-toolbar svg{width:18px;height:18px}
+.cal-pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.cal-month{border:1px solid var(--rule);min-width:0;padding:clamp(11px,1.5vw,18px)}
+.cal-title{font-family:"Instrument Sans",Arial,sans-serif;font-size:19px;font-weight:500;letter-spacing:-.03em;text-transform:capitalize;margin-bottom:12px}
+.cal-grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:2px}
+.cal-grid>span,.cal-grid>button{display:grid;place-items:center;min-width:0;min-height:38px}
+.cal-grid .wd{color:#d7e0d7;font-size:10px;letter-spacing:.07em}
+.cal-grid button{appearance:none;border:0;color:#fff;background:transparent;font:inherit;font-size:12px;cursor:pointer;transition:background .16s var(--ease),color .16s var(--ease)}
+.cal-grid button:hover:not(:disabled){color:var(--forest);background:#fff}
+.cal-grid button:disabled{color:#9eafa1;cursor:not-allowed}
+.cal-grid button.blocked{color:#b2c1b3;background:#ffffff0f;text-decoration:line-through}
+.cal-grid button.sel{color:var(--forest);background:#fff;outline:2px solid var(--orange);outline-offset:-2px}
+.cal-bottom{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;margin-top:12px}
+.cal-bottom p,.cal-hint{margin:0;color:#e1e8e0;font-size:11px;line-height:1.6}
+.cal-bottom p{display:flex;align-items:center;gap:8px}
+.lg-open,.lg-blocked{width:8px;height:8px;background:#fff;display:inline-block}
+.lg-blocked{background:var(--orange);margin-left:9px}
+.cal-grid button.aw{position:relative}.cal-grid button.aw::after{content:"";position:absolute;top:5px;right:5px;width:5px;height:5px;border-radius:50%;background:var(--orange)}
+.lg-aw{width:6px;height:6px;border-radius:50%;background:var(--orange);display:inline-block;margin-left:9px}
+.time-select{display:flex;flex-direction:column;gap:8px;margin-top:18px;font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--muted)}
+.time-select select{width:100%;min-height:46px;padding:10px 12px;border:1px solid #ffffff80;background:#fff;color:var(--forest);font-family:"DM Sans",Arial,sans-serif;font-size:15px;letter-spacing:0;border-radius:0;text-transform:none}
+.time-select select:focus{outline:2px solid var(--orange);outline-offset:0}
+.fj-dd-btn{box-sizing:border-box;width:100%;height:48px;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:0 14px;background:#fff;color:var(--forest);border:1px solid #fff;border-radius:0;font-family:"DM Sans",Arial,sans-serif;font-size:16px;letter-spacing:0;text-transform:none;cursor:pointer}
+.fj-dd-btn.placeholder{color:#66736a}
+.fj-dd-btn::after{content:"";flex:none;width:7px;height:7px;border-right:2px solid var(--forest);border-bottom:2px solid var(--forest);transform:translateY(-2px) rotate(45deg);transition:transform .2s var(--ease)}
+.fj-dd-btn.open::after{transform:translateY(2px) rotate(-135deg)}
+.fj-dd-btn:focus-visible{outline:2px solid var(--orange);outline-offset:0}
+.fj-dd-panel{margin-top:8px}
+.fj-dd-panel[hidden]{display:none}
+.fj-dd-panel .cal-grid{grid-template-columns:repeat(4,minmax(0,1fr))}
+@media (min-width:761px){.fj-dd-panel .cal-grid{grid-template-columns:repeat(6,minmax(0,1fr))}}
+.fj-dd-panel .cal-grid button{min-height:38px;letter-spacing:.02em;font-family:"DM Sans",Arial,sans-serif;font-size:13px}
+.cal-hint{margin-top:9px}
+.promo{max-width:640px;margin:18px 0 0;padding:14px 16px;border-left:3px solid var(--orange);background:#ffffff14;font-size:15px;color:#fff}
+.promo strong{color:var(--orange)}
+.promo-val{color:var(--orange)}
+@media (max-width:760px){.cal-pair{grid-template-columns:1fr}.cal-pair .cal-month:nth-child(2){display:none}.cal-month{padding:10px}}
+@media (max-width:900px){.cfg{grid-template-columns:1fr}.card{position:static}}
+@media (max-width:560px){.fields{grid-template-columns:1fr}}
+@media (max-width:760px){.nav a:not(.cta){display:none}.two{grid-template-columns:1fr;gap:26px}section{padding:52px 0}.intro{padding:56px 0 52px}.price div{flex-direction:column;gap:4px}}
+</style>
+<script src="/consent.js" defer></script>
+</head>
+<body>
+<header>
+  <div class="wrap row">
+    <a class="logo" href="/" aria-label="feine jungs – Startseite"><img src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663617657681/csFvtthkGIvZbBJQ.svg" alt="feine jungs" /></a>
+    <nav class="nav" aria-label="Navigation">
+      <a href="/">Startseite</a>
+      <a href="/weihnachtsfeier">Weihnachtsfeier</a>
+      <a href="#angebot">Angebot</a>
+      <a class="cta" href="#anfrage">Anfrage starten →</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="intro">
+    <div class="wrap">
+      <span class="label">After Work · November &amp; Dezember</span>
+      <h1>Feierabend<br />mit Glühwein<span>.</span></h1>
+      <p class="lead">Die Bar-Ape kommt nach Dienstschluss zu euch auf den Hof, vors Büro oder in die Halle. Bis zu drei Stunden heißer Glühwein und Glüh-Aperol – ihr kommt zusammen, wir schenken aus.</p>
+      <div class="facts">
+        <span><strong>290 €</strong> Grundpreis inkl. Anfahrt</span>
+        <span><strong>+ 12 € p. P.</strong> Getränke</span>
+        <span><strong>1–3 Stunden</strong> Ausschank</span>
+        <span><strong>Ab 20</strong> Gästen</span>
+        <span><strong>50 km</strong> Anfahrt inklusive</span>
+      </div>
+      <div class="actions">
+        <a class="btn" href="#anfrage">Jetzt konfigurieren <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></a>
+        <a class="btn ghost" href="tel:+491777753688">0177 775 36 88</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="angebot">
+    <div class="wrap">
+      <span class="label">Im Becher</span>
+      <h2>Was wir ausschenken<span>.</span></h2>
+      <div class="grid">
+        <div class="tile dark">
+          <span>Der Klassiker</span>
+          <h3>Glühwein rot.</h3>
+          <p>Heiß, würzig, aus unseren eigenen Kochern. Genau das Richtige, wenn es draußen dunkel wird.</p>
+        </div>
+        <div class="tile white">
+          <span>Der Frische</span>
+          <h3>Glüh-Aperol.</h3>
+          <p>Die warme Variante des Sommer-Klassikers – fruchtig, orange und ein guter Gesprächsstarter.</p>
+        </div>
+        <div class="tile">
+          <span>Auf Anfrage</span>
+          <h3>Kinderpunsch.</h3>
+          <p>Alkoholfrei für Fahrer, Kolleginnen und Kollegen oder die Familie. Einfach bei der Anfrage mit angeben.</p>
+        </div>
+        <div class="tile">
+          <span>Inklusive</span>
+          <h3>Ape, Team, Becher.</h3>
+          <p>Aufbau, Ausschank und Abbau, Becher und Service. Ihr braucht nur einen Stellplatz von etwa 3 × 5 m und Strom.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="anfrage">
+    <div class="wrap">
+      <span class="label">Konfigurieren &amp; anfragen</span>
+      <h2>Euer Glühwein-Feierabend<span>.</span></h2>
+      <p class="lead">Datum, Uhrzeit und Gästezahl wählen – der Richtpreis erscheint sofort. Die Anfrage geht direkt an feine jungs, das Angebot kommt innerhalb von 24 Stunden.</p>
+      <form class="cfg" id="wf" novalidate>
+        <div>
+          <fieldset>
+            <legend>Anfrage als</legend>
+            <div class="opts" data-group="type">
+              <button type="button" data-value="firma" class="selected">Firma</button>
+              <button type="button" data-value="privat">Privat</button>
+            </div>
+          </fieldset>
+          <fieldset>
+            <legend>Die Gäste</legend>
+            <div class="fields">
+              <label>Anzahl Personen <input type="number" id="people" min="20" max="500" value="40" required /></label>
+            </div>
+            <label class="check"><input type="checkbox" id="punsch" /><span><strong>Kinderpunsch dazu?</strong><small>Alkoholfrei, auf Anfrage – wir nehmen ihn ins Angebot auf.</small></span></label>
+          </fieldset>
+          <fieldset>
+            <legend>Euer Wunschtermin</legend>
+            <div class="cal-toolbar">
+              <p id="calStatus">Verfügbarkeit wird geladen …</p>
+              <div>
+                <button type="button" id="calPrev" aria-label="Vorherige Monate" disabled><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg></button>
+                <button type="button" id="calNext" aria-label="Nächste Monate"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></button>
+              </div>
+            </div>
+            <div class="cal-pair" id="calPair"></div>
+            <div class="cal-bottom"><p><span class="lg-open"></span> Verfügbar <span class="lg-blocked"></span> Ausgebucht <span class="lg-aw"></span> Mo–Do: After-Work-Tage</p></div>
+            <input type="hidden" id="date" />
+            <div class="time-select"><span>Beginn</span><div class="fj-dd"><button type="button" class="fj-dd-btn placeholder" id="timeBtn" aria-haspopup="listbox" aria-expanded="false">Bitte auswählen</button><div class="cal-month fj-dd-panel" id="timePanel" hidden><div class="cal-grid" id="timeGrid" role="listbox" aria-label="Beginn"></div></div></div><input type="hidden" id="time" /></div>
+            <p class="cal-hint">Für Firmen montags bis freitags, privat an allen Tagen. Anfragen mit mindestens 3 Tagen Vorlauf. Ein Wunschtermin ist noch keine bestätigte Buchung. Längere Zeiten auf Anfrage.</p>
+          </fieldset>
+          <fieldset>
+            <legend>Eure Kontaktdaten</legend>
+            <div class="fields">
+              <label id="companyWrap">Firma * <input type="text" id="company" autocomplete="organization" /></label>
+              <label>Vorname * <input type="text" id="firstName" autocomplete="given-name" required /></label>
+              <label>Nachname * <input type="text" id="lastName" autocomplete="family-name" required /></label>
+              <label>E-Mail * <input type="email" id="email" autocomplete="email" required /></label>
+              <label>Telefon * <input type="tel" id="phone" autocomplete="tel" required /></label>
+              <label>Veranstaltungsort <input type="text" id="location" placeholder="Stadt oder Adresse" autocomplete="address-level2" /></label>
+              <label class="full">Was sollten wir wissen? <textarea id="message" rows="3" placeholder="Stellplatz, Strom, Anlass – alles, was hilft …"></textarea></label>
+            </div>
+            <label class="hp" aria-hidden="true">Bitte leer lassen <input type="text" id="hp" tabindex="-1" autocomplete="off" /></label>
+          </fieldset>
+          <button class="btn submit" type="submit" id="send">Unverbindlich anfragen <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></button>
+          <div class="msg" id="msg" role="status"></div>
+          <p class="note">Unverbindlich. Verfügbarkeit und Endpreis bestätigen wir persönlich.</p>
+        </div>
+        <aside class="card" aria-live="polite">
+          <span>Euer Plan</span>
+          <h3>Glühwein After Work</h3>
+          <div class="price">
+            <div><span>Personen</span><strong id="sPeople">40</strong></div>
+            <div><span>Grundpreis inkl. Anfahrt &amp; 1–3 Std.</span><strong>290 €</strong></div>
+            <div><span>Pro Person</span><strong>12 € p. P.</strong></div>
+            <div><span>Ausschank</span><strong id="sTime">1–3 Stunden</strong></div>
+            <div><span>Kinderpunsch</span><strong id="sPunsch">Nein</strong></div>
+            <div id="sDateRow" style="display:none"><span>Wunschtermin</span><strong id="sDate"></strong></div>
+          </div>
+          <div class="total"><span>Richtpreis inkl. MwSt.</span><strong id="sTotal">770 €</strong></div>
+          <p>Glühwein rot und Glüh-Aperol ohne Mengenbegrenzung, 1–3 Stunden Ausschank, Team, Becher, Auf- und Abbau. Anfahrt bis 50 km inklusive. Mindestens 20 Personen.</p>
+        </aside>
+      </form>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <span class="label">Lieber groß feiern?</span>
+      <h2>Die ganze Weihnachtsfeier<span>.</span></h2>
+      <p class="lead">Mehr Zeit, Schaumwein, Champagner und auf Wunsch die SchwApe mit Spätzle und Maultaschen – alles auf unserer Weihnachtsfeier-Seite.</p>
+      <div class="actions">
+        <a class="btn" href="/weihnachtsfeier">Zur Weihnachtsfeier <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></a>
+        <a class="btn ghost" href="mailto:hello@feinejungs.de">hello@feinejungs.de</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap row">
+    <span>FEINE JUNGS GMBH · RENNINGEN</span>
+    <div class="links">
+      <a href="/">Startseite</a>
+      <a href="/weihnachtsfeier">Weihnachtsfeier</a>
+      <a href="tel:+491777753688">0177 775 36 88</a>
+      <a href="/impressum">Impressum</a>
+      <a href="/datenschutz">Datenschutz</a>
+    </div>
+  </div>
+</footer>
+<script>
+(function(){
+const API="https://yarzxemodteevfodhstl.supabase.co/functions/v1",COMPANY="93ebe194-9232-46ae-abed-e49fa633e57e";
+const BASE=290,PP=12,MIN=20;
+const st={type:"firma"};
+const $=id=>document.getElementById(id);
+const eur=n=>new Intl.NumberFormat("de-DE",{style:"currency",currency:"EUR",maximumFractionDigits:0}).format(n);
+document.querySelectorAll(".opts").forEach(g=>g.addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;st[g.dataset.group]=b.dataset.value;g.querySelectorAll("button").forEach(x=>x.classList.toggle("selected",x===b));if(g.dataset.group==="type"){$("date").value="";renderCal()}update()}));
+const time=$("time"),tBtn=$("timeBtn"),tPanel=$("timePanel"),tGrid=$("timeGrid");
+function tOpen(o){tPanel.hidden=!o;tBtn.classList.toggle("open",o);tBtn.setAttribute("aria-expanded",String(o))}
+function setTime(v){time.value=v;tBtn.textContent=v?v+" Uhr":"Bitte auswählen";tBtn.classList.toggle("placeholder",!v);tGrid.querySelectorAll("button").forEach(b=>{b.classList.toggle("sel",b.dataset.v===v);b.setAttribute("aria-selected",b.dataset.v===v)});time.dispatchEvent(new Event("input"))}
+for(let m=900;m<=1200;m+=30){const v=String(Math.floor(m/60)%24).padStart(2,"0")+":"+String(m%60).padStart(2,"0");const b=document.createElement("button");b.type="button";b.dataset.v=v;b.textContent=v;b.setAttribute("role","option");b.addEventListener("click",()=>{setTime(v);tOpen(false)});tGrid.appendChild(b)}
+tBtn.addEventListener("click",()=>tOpen(tPanel.hidden));
+document.addEventListener("click",e=>{if(!tPanel.hidden&&!e.target.closest(".fj-dd"))tOpen(false)});
+["people","punsch","time"].forEach(id=>$(id).addEventListener("input",update));
+const iso=d=>d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");
+const blocked=new Set();let availStatus="loading",monthOff=0;const todayIso=iso(new Date(Date.now()+3*864e5));
+const MONTHS=new Intl.DateTimeFormat("de-DE",{month:"long",year:"numeric"});
+function renderCal(){const base=new Date();const pair=$("calPair");pair.innerHTML="";
+for(let k=0;k<2;k++){const m=new Date(base.getFullYear(),base.getMonth()+monthOff+k,1);const y=m.getFullYear(),mo=m.getMonth();const first=(new Date(y,mo,1).getDay()+6)%7,days=new Date(y,mo+1,0).getDate();
+const box=document.createElement("div");box.className="cal-month";box.innerHTML='<div class="cal-title">'+MONTHS.format(m)+'</div>';const g=document.createElement("div");g.className="cal-grid";g.setAttribute("role","grid");
+["Mo","Di","Mi","Do","Fr","Sa","So"].forEach(w=>{const sp=document.createElement("span");sp.className="wd";sp.textContent=w;g.appendChild(sp)});
+for(let i=0;i<first;i++)g.appendChild(document.createElement("span"));
+for(let d=1;d<=days;d++){const dt=iso(new Date(y,mo,d));const b=document.createElement("button");b.type="button";b.textContent=d;const isB=availStatus==="ready"&&blocked.has(dt);const wd=new Date(y,mo,d).getDay(),off=st.type==="firma"&&(wd===0||wd===6);b.disabled=dt<todayIso||isB||off;if(isB)b.classList.add("blocked");if(wd>=1&&wd<=4&&!isB&&dt>=todayIso)b.classList.add("aw");if($("date").value===dt)b.classList.add("sel");b.setAttribute("aria-pressed",$("date").value===dt);b.setAttribute("aria-label",d+". "+MONTHS.format(m)+(isB?" – ausgebucht":off?" – nur Mo–Fr":""));b.addEventListener("click",()=>{$("date").value=dt;renderCal();update()});g.appendChild(b)}
+box.appendChild(g);pair.appendChild(box)}
+$("calPrev").disabled=monthOff===0;$("calNext").disabled=monthOff>=10;
+$("calStatus").textContent=availStatus==="ready"?"Aktuelle Verfügbarkeit":availStatus==="loading"?"Verfügbarkeit wird geladen …":"Verfügbarkeit gerade nicht abrufbar. Wir prüfen euren Termin persönlich."}
+$("calPrev").addEventListener("click",()=>{monthOff=Math.max(0,monthOff-1);renderCal()});$("calNext").addEventListener("click",()=>{monthOff=Math.min(10,monthOff+1);renderCal()});
+renderCal();
+(()=>{const from=new Date(),to=new Date();to.setDate(to.getDate()+365);fetch(API+"/public-availability?company_id="+COMPANY+"&from="+iso(from)+"&to="+iso(to)).then(r=>{if(!r.ok)throw 0;return r.json()}).then(j=>{if(!Array.isArray(j.blocked))throw 0;j.blocked.forEach(x=>blocked.add(x.date));availStatus="ready";renderCal()}).catch(()=>{availStatus="error";renderCal()})})();
+function people(){return Math.min(500,Math.max(MIN,Number($("people").value)||MIN))}
+function endTime(t){if(!t)return"";const[h,m]=t.split(":").map(Number);const e=h*60+m+120;return String(Math.floor(e/60)%24).padStart(2,"0")+":"+String(e%60).padStart(2,"0")}
+function update(){$("companyWrap").style.display=st.type==="firma"?"":"none";$("company").required=st.type==="firma";
+$("sPeople").textContent=people();$("sPunsch").textContent=$("punsch").checked?"Ja, auf Anfrage":"Nein";const t=$("time").value;$("sTime").textContent=t?"ab "+t+" Uhr · 1–3 Std.":"1–3 Stunden";
+const d=$("date").value;$("sDateRow").style.display=d?"":"none";if(d)$("sDate").textContent=new Intl.DateTimeFormat("de-DE").format(new Date(d+"T12:00:00"));$("sTotal").textContent=eur(BASE+people()*PP)}
+$("people").addEventListener("blur",()=>{$("people").value=people();update()});
+update();
+document.querySelectorAll('main h1,main h2,main h3').forEach(h=>{if(h.closest('.card'))return;const w=document.createTreeWalker(h,NodeFilter.SHOW_TEXT),nodes=[];let n;while(n=w.nextNode()){if(n.nodeValue.includes('.')&&!n.parentElement.classList.contains('op'))nodes.push(n)}nodes.forEach(t=>{const parts=t.nodeValue.split('.'),f=document.createDocumentFragment();parts.forEach((x,i)=>{f.appendChild(document.createTextNode(x));if(i<parts.length-1){const sp=document.createElement('span');sp.className='op';sp.textContent='.';f.appendChild(sp)}});t.parentNode.replaceChild(f,t)})});
+$("wf").addEventListener("submit",async e=>{e.preventDefault();const f=$("wf"),msg=$("msg");msg.className="msg";if($("hp").value)return;
+if(!$("date").value){msg.className="msg err";msg.textContent="Bitte wählt einen Wunschtermin im Kalender.";$("calPair").scrollIntoView({behavior:"smooth",block:"center"});return}
+if(!f.checkValidity()){f.reportValidity();return}
+if(!$("time").value){msg.className="msg err";msg.textContent="Bitte wählt eine Uhrzeit.";tOpen(true);$("timeBtn").scrollIntoView({behavior:"smooth",block:"center"});return}
+if(availStatus==="ready"&&blocked.has($("date").value)){msg.className="msg err";msg.textContent="Dieser Tag ist leider schon ausgebucht – bitte einen anderen Termin wählen.";return}
+const btn=$("send");btn.disabled=true;btn.firstChild.textContent="Wird gesendet … ";
+const v=id=>$(id).value.trim();const total=BASE+people()*PP;
+const message=[v("message"),"Anlass: Glühwein After Work (Anfrage über feinejungs.de/gluehwein)","Beginn: "+v("time")+" Uhr (1–3 Std. Ausschank)","Getränke: Glühwein rot, Glüh-Aperol","Kinderpunsch: "+($("punsch").checked?"ja, gewünscht":"nein"),"Preis: Grundpreis "+BASE+" € (Anfahrt + 1–3 Std.) + "+PP+" € p. P. × "+people()+" = "+total+" €"].filter(Boolean).join("\n");
+const body={company_id:COMPANY,contact:{name:v("firstName")+" "+v("lastName"),first_name:v("firstName"),last_name:v("lastName"),salutation:null,email:v("email"),phone:v("phone")||null,message},config:{package:st.type==="firma"?"corporate":"private",duration:"1-3",people:people(),extra_hours:0,preferred_date:v("date"),estimated_price:total,customer_type:st.type,company_name:st.type==="firma"?v("company")||null:null,ust_id:null,event_location:v("location")||null,occasion:"Glühwein After Work"},honeypot:""};
+try{const r=await fetch(API+"/public-inquiry",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(body)});const j=await r.json().catch(()=>({}));if(!r.ok||!(j.ok||j.event_number))throw new Error(j.error||"fail");
+msg.className="msg ok";msg.innerHTML="<strong>Anfrage ist angekommen.</strong> Wir melden uns innerhalb von 24 Stunden."+(j.event_number?" Eure Nummer: "+j.event_number+".":"");f.querySelectorAll("input,select,textarea,button").forEach(x=>x.disabled=true)}
+catch(err){msg.className="msg err";msg.innerHTML="Das hat noch nicht geklappt. Bitte prüft die Felder oder schreibt direkt an <a href=\"mailto:hello@feinejungs.de\">hello@feinejungs.de</a>.";btn.disabled=false;btn.firstChild.textContent="Unverbindlich anfragen "}});
+})();
+</script>
+</body>
+</html>

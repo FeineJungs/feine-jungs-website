@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+<meta name="description" content="feine jungs — Mobiler Eventservice aus dem Großraum Stuttgart. Bier, Champagner, Austern, Spätzle und Maultaschen – Bar und Küche, die zu euch fahren. Für Firmenfeiern, Hochzeiten und gute Momente." />
+<meta name="theme-color" content="#ffffff" />
+<title>feine jungs — Die Bar, die zu euch fährt</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="preload" as="image" href="https://files.manuscdn.com/user_upload_by_module/session_file/310519663617657681/iIHGNmWLvpGKKFQg.webp" />
+<style>
+/* ===== Intro: Weiss -> Logo in Oliv -> Foto blendet auf -> schiebt sich weg ===== */
+#fj-intro{position:fixed;inset:0;z-index:999;overflow:hidden;background:#e6e8e3;transition:transform .95s cubic-bezier(.16,1,.3,1)}
+#fj-intro.out{transform:translateY(-101%)}
+#fj-intro.fade{transition:opacity .7s ease}#fj-intro.fade.out{transform:none;opacity:0}
+body.fj-intro-on{overflow:hidden}
+#fj-intro .bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 62%;transform:scale(1.06);transition:transform 6s cubic-bezier(.16,1,.3,1)}
+#fj-intro .veil{position:absolute;inset:0;background:#fff;transition:opacity 2.2s ease}
+#fj-intro .shade{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(255,255,255,.62) 0%,rgba(255,255,255,.18) 38%,rgba(255,255,255,0) 60%)}
+#fj-intro .logo{position:absolute;left:50%;top:22%;transform:translate(-50%,-50%) scale(.94);width:clamp(240px,46vw,620px);height:auto;display:block;opacity:0;filter:brightness(0) saturate(100%) invert(41%) sepia(7%) saturate(957%) hue-rotate(46deg) brightness(96%) contrast(94%);transition:opacity 1.4s ease,transform 1.8s cubic-bezier(.16,1,.3,1)}
+#fj-intro.s1 .logo{opacity:1;transform:translate(-50%,-50%) scale(1)}
+#fj-intro.s2 .veil{opacity:0}
+#fj-intro.s2 .bg{transform:scale(1)}
+@media (prefers-reduced-motion:reduce){#fj-intro *{transition:none!important}}
+</style>
+<style id="fj-light-theme">
+/* ===== Helles Farbschema: weisser Grund, Oliv + Orange als Akzent ===== */
+:root{--green:#606b55;--forest:#32483a;--ink:#20231f;--muted-text:#5f6259;--rule:#e3e5df;--background:#ffffff;--foreground:#20231f;--card:#fff;--card-foreground:#20231f;--popover:#fff;--popover-foreground:#20231f;--primary:#606b55;--primary-foreground:#fff;--secondary:#f3f4f1;--secondary-foreground:#20231f;--muted:#f3f4f1;--muted-foreground:#5f6259;--accent:#becbb8;--accent-foreground:#26382c;--border:#e3e5df;--input:#d6dad1}
+body,.fj-page{color:var(--ink);background:#fff}
+.fj-header{background:#fffffff5;color:var(--ink);border-bottom:1px solid var(--rule)}
+.fj-nav a,.header-action,.mobile-menu,.cart-button{color:var(--ink)}
+.fj-nav a:hover,.header-action:hover{color:var(--green);opacity:1}
+.header-action{border-color:var(--ink)}
+.hero-eyebrow,.hero h1,.hero h1>span{color:var(--ink)}
+.hero-intro-label{color:var(--green)}
+.hero-intro p{color:var(--muted-text)}
+.hero-primary-link,.inline-link,.hero-metrics strong{color:var(--ink)}
+.hero-metrics span{color:var(--muted-text)}
+.hero-photo{background:#e6e8e3}
+.concept-head h2 span,.section-top h2 span,.config-head h2 span{color:var(--green)}
+.concept-head p,.section-top p{color:var(--muted-text)}
+.editorial-label{color:var(--ink)}
+.offer-title-row>span{color:var(--green)}
+.offer-content button{color:var(--green);border-color:var(--green)}
+.offer-photo>span{color:#fff;background:var(--green)}
+.references span:first-child,.dates-list time{color:var(--ink)}
+.moments-grid figure{background:#e6e8e3}
+.film-section,.special-event-grid,.configurator{color:#fff}
+.configurator{--rule:#ffffff47}
+.special-event-head>span:last-child{color:var(--muted-text)}
+.fj-button{background:var(--green);color:#fff}
+.fj-button:hover{background:var(--orange);color:#fff}
+.configurator .fj-button,.special-event-grid .fj-button{background:#fff;color:var(--forest)}
+.configurator .fj-button:hover,.special-event-grid .fj-button:hover{background:var(--orange);color:#fff}
+.christmas-feature>button,.dates-special-row>button{background:var(--green);color:#fff}
+.christmas-feature>button:hover,.dates-special-row>button:hover{background:var(--orange);color:#fff}
+.special-dates button{color:var(--green);border-color:var(--green)}
+.special-dates button:hover,.special-dates button.selected{color:#fff;background:var(--green);border-color:var(--green)}
+.special-dates>small{color:var(--muted-text)}
+.gift-feature{background:#f3f4f1}
+.direct-contact>span,.direct-contact a{color:#fff}
+.fj-footer{color:#fff;background:var(--green)}
+/* ===== Ruhiger: Laufweite, Fotos in Farbe, klarer Haupt-Button ===== */
+.hero h1{letter-spacing:-.035em!important}
+.concept-head h2,.section-top h2,.film-text h2,.config-head h2,.special-event-copy h2,.christmas-feature h2,.footer-main p{letter-spacing:-.035em!important}
+.offer-title-row h3,.fleet-block h3,.price-card h3,.dates-list strong{letter-spacing:-.025em!important}
+.fj-page main img,.fj-page main video{filter:none!important}
+.hero-photo img{object-position:75% 55%}
+.hero-photo-caption{display:none}
+.hero-links .hero-primary-link{display:inline-flex;align-items:center;gap:14px;min-height:52px;padding:0 24px;background:var(--green);color:#fff!important;border:0;text-decoration:none}
+.hero-links .hero-primary-link:hover{background:var(--orange)}
+@media (max-width:820px){
+.header-row>.mobile-menu,.header-row>.cart-button{border:0!important}
+.hero-intro-label,.hero-links .inline-link:not(.hero-primary-link){display:none!important}
+.hero-intro p{font-size:16px!important;line-height:1.6!important;margin-bottom:22px!important}
+.hero-grid{gap:20px!important;padding-bottom:32px!important}
+.hero-photo{height:300px!important}
+.configurator{margin-top:56px}
+}
+</style>
+<script src="/consent.js" defer></script>
+<script>
+(async()=>{
+const get=(p,n)=>Promise.all(Array.from({length:n},(_,i)=>fetch(`/${p}/${String(i).padStart(2,'0')}.txt${p==='j'?'?v=preise-20261217-390-20261218-350':''}`).then(r=>{if(!r.ok)throw new Error(p+i);return r.arrayBuffer()})));
+const [cssBufs,jsBufs]=await Promise.all([get('c',5),get('j',4)]);
+const st=document.createElement('style');st.textContent=new TextDecoder().decode(await new Blob(cssBufs).arrayBuffer());
+const light=document.getElementById('fj-light-theme');
+document.head.insertBefore(st,light);document.head.appendChild(light);
+await import(URL.createObjectURL(new Blob(jsBufs,{type:'text/javascript'})));
+const paint=()=>{document.querySelectorAll('main h1,main h2,main h3').forEach(h=>{if(h.closest('.price-card,[role=dialog]'))return;const w=document.createTreeWalker(h,NodeFilter.SHOW_TEXT),nodes=[];let n;while(n=w.nextNode()){if(n.nodeValue.includes('.')&&!n.parentElement.classList.contains('op'))nodes.push(n)}nodes.forEach(t=>{const parts=t.nodeValue.split('.'),f=document.createDocumentFragment();parts.forEach((x,i)=>{f.appendChild(document.createTextNode(x));if(i<parts.length-1){const sp=document.createElement('span');sp.className='op';sp.textContent='.';f.appendChild(sp)}});t.parentNode.replaceChild(f,t)})})};
+paint();setTimeout(paint,1500);
+window.__fjReady&&window.__fjReady();
+})().catch(e=>{console.error('load failed',e);window.__fjReady&&window.__fjReady();document.body.insertAdjacentHTML('beforeend','<p style="font:16px sans-serif;padding:2rem">Seite konnte nicht geladen werden. Bitte neu laden.</p>')});
+</script>
+</head>
+<body>
+<div id="fj-intro" aria-hidden="true">
+<img class="bg" src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663617657681/iIHGNmWLvpGKKFQg.webp" alt="">
+<div class="shade"></div>
+<div class="veil"></div>
+<img class="logo" src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663617657681/csFvtthkGIvZbBJQ.svg" alt="">
+</div>
+<script>
+(function(){
+const intro=document.getElementById('fj-intro');if(!intro)return;
+const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
+document.body.classList.add('fj-intro-on');
+let seen=false;try{seen=sessionStorage.getItem('fj-intro')==='1';sessionStorage.setItem('fj-intro','1')}catch(e){}
+const k=seen?.45:1;
+const wait=ms=>new Promise(r=>setTimeout(r,reduced?Math.min(ms,800):ms*k));
+const bg=intro.querySelector('.bg');
+const photo=new Promise(r=>{if(bg.complete)r();else{bg.onload=r;bg.onerror=r}setTimeout(r,6000)});
+const ready=new Promise(r=>{window.__fjReady=r;setTimeout(r,12000)});
+let done=false;
+const end=()=>{if(done)return;done=true;if(reduced)intro.classList.add('fade');intro.classList.add('out');document.body.classList.remove('fj-intro-on');setTimeout(()=>intro.remove(),1050)};
+setTimeout(end,15000);
+(async()=>{
+await wait(500);intro.classList.add('s1');
+await Promise.all([wait(1500),photo]);intro.classList.add('s2');
+await Promise.all([wait(2400),ready]);end();
+})();
+})();
+</script>
+<div id="root"><div style="max-width:860px;margin:0 auto;padding:40px 20px;font-family:Arial,sans-serif;color:#20231f;background:#fff;line-height:1.6">
+<h1>feine jungs – Die Bar, die zu euch fährt.</h1>
+<p>Mobiler Eventservice der FEINE JUNGS GmbH für den Großraum Stuttgart: Bar- und Getränkeservice mit unseren Piaggio-Apes, Personal, Ausschank, Auf- und Abbau. Für Firmenfeiern, Weihnachtsfeiern, Hochzeiten, Geburtstage und Junggesellenabschiede von 8 bis 500 Gästen. Anfahrt bis 50 km inklusive.</p>
+<h2>Angebote und Preise (inkl. MwSt.)</h2>
+<ul>
+<li><strong>Firmenevent</strong> – Bar-Ape mit Team, Getränke-Ausschank und Service: ab 490 €</li>
+<li><strong>Privates Fest</strong> – Geburtstag, Hochzeit, Gartenparty: ab 390 €</li>
+<li><strong>Tasting</strong> – sechs Schaumweine, zwei Stunden: 55 € pro Person, als Champagner-Tasting 120 € pro Person</li>
+<li><strong>JGA</strong> – eine Stunde Schaumwein-Ausschank, Fr–So: 190 € + 15 € pro Person</li>
+<li><strong>Saturdays</strong> – Champagner und Austern am Samstag: 490 € Grundpauschale + 55 € pro Person</li>
+<li><strong>Wagyu × Champagner Tasting</strong> – InfoTurm Stuttgart, online buchbar: Do 17.12.2026 mit Champagner 390 € pro Person, Fr 18.12.2026 mit Champagner &amp; Schaumwein 350 € pro Person</li>
+<li><strong>Gutscheine</strong> – Wertgutscheine ab 25 €, drei Jahre gültig (online kaufbar)</li>
+<li><strong><a href="/weihnachtsfeier" style="color:#606b55">Weihnachtsfeier</a></strong> und <strong><a href="/gluehwein" style="color:#606b55">Glühwein After Work</a></strong> (290 € Grundpreis + 12 € pro Person)</li>
+</ul>
+<p>Eventservice buchen: Paket konfigurieren, Richtpreis sehen, unverbindlich anfragen – das Angebot kommt innerhalb von 24 Stunden. Tickets und Gutscheine werden direkt im Warenkorb gekauft und sicher per Karte, Klarna oder Überweisung über Mollie bezahlt.</p>
+<h2>Kontakt</h2>
+<p>FEINE JUNGS GmbH · Weil der Städter Straße 12 · 71272 Renningen<br>Geschäftsführer: Ralph Walz · Amtsgericht Stuttgart HRB 802843 · USt-IdNr. DE460079942<br>Telefon <a href="tel:+491777753688" style="color:#606b55">+49 177 7753688</a> · <a href="mailto:hello@feinejungs.de" style="color:#606b55">hello@feinejungs.de</a></p>
+<p><a href="/impressum" style="color:#606b55">Impressum</a> · <a href="/agb" style="color:#606b55">AGB &amp; Widerrufsbelehrung</a> · <a href="/datenschutz" style="color:#606b55">Datenschutz</a></p>
+</div></div>
+</body>
+</html>

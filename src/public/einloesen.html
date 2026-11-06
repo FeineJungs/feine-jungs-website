@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Gutschein einlösen · feine jungs</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Instrument+Sans:wght@500&display=swap" rel="stylesheet">
+<style>
+:root{--orange:#f45d00;--forest:#1e3b2a;--olive:#606b55;--ink:#1e2a21;--muted:#647069;--rule:#d9dfda;--ok:#15803d;--err:#8a2716}
+*{box-sizing:border-box}
+body{margin:0;background:var(--olive);color:var(--ink);font:15px/1.5 "DM Sans",Arial,sans-serif;min-height:100vh}
+.wrap{max-width:520px;margin:0 auto;padding:28px 16px 48px}
+.top{display:flex;justify-content:space-between;align-items:center;color:#fff;font-size:11px;letter-spacing:.18em;font-weight:500;margin-bottom:18px}
+.top button{background:none;border:0;color:#fff;font:inherit;letter-spacing:inherit;text-decoration:underline;cursor:pointer;padding:0}
+.card{background:#fff;padding:26px 22px;border-top:4px solid var(--orange);margin-bottom:16px}
+h1{font:500 30px/1.1 "Instrument Sans",Arial,sans-serif;margin:0 0 6px}
+h1 i{font-style:normal;color:var(--orange)}
+.sub{color:var(--muted);margin:0 0 20px;font-size:14px}
+label{display:block;font-size:10px;letter-spacing:.15em;font-weight:500;margin:14px 0 6px;color:var(--muted)}
+input{width:100%;height:52px;padding:0 14px;font:400 18px "DM Sans",Arial,sans-serif;color:var(--ink);border:1px solid #a9b5a6;background:#fff;border-radius:0}
+input:focus{outline:none;border-color:var(--forest)}
+input.code{text-transform:uppercase;letter-spacing:.08em;font-weight:500}
+.row{display:flex;gap:8px}
+.row input{flex:1;min-width:0}
+button.p{height:52px;padding:0 20px;border:0;background:var(--orange);color:#fff;font:600 12px "DM Sans",Arial,sans-serif;letter-spacing:.12em;cursor:pointer;white-space:nowrap}
+button.s{background:var(--forest)}
+button:disabled{opacity:.5;cursor:default}
+.full{width:100%;margin-top:18px}
+.msg{margin:14px 0 0;padding:12px 14px;font-size:14px}
+.msg.err{color:var(--err);border:1px solid #e8b6aa}
+.msg.ok{color:var(--ok);border:1px solid #b7dfc3}
+.bal{display:flex;justify-content:space-between;align-items:baseline;padding:14px 0;border-bottom:1px solid var(--rule)}
+.bal strong{font:500 34px "Instrument Sans",Arial,sans-serif;color:var(--orange)}
+.kv{display:grid;grid-template-columns:auto 1fr;gap:4px 14px;font-size:14px;margin:12px 0 0}
+.kv span{color:var(--muted)}
+.badge{display:inline-block;font-size:10px;letter-spacing:.14em;font-weight:600;padding:4px 8px;color:#fff;background:var(--ok)}
+.badge.no{background:var(--err)}
+.quick{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.quick button{border:1px solid var(--rule);background:#fff;padding:8px 12px;font:500 13px "DM Sans",Arial,sans-serif;cursor:pointer;color:var(--ink)}
+.hist{list-style:none;padding:0;margin:8px 0 0;font-size:13px}
+.hist li{display:flex;justify-content:space-between;gap:10px;padding:8px 0;border-bottom:1px solid var(--rule)}
+.hist li.rev{color:var(--muted);text-decoration:line-through}
+.hide{display:none}
+small{display:block;color:var(--muted);font-size:12px;margin-top:6px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top"><span>FEINE JUNGS · KASSE</span><button id="logout" class="hide" type="button">ABMELDEN</button></div>
+
+  <div class="card" id="pinCard">
+    <h1>Gutschein einlösen<i>.</i></h1>
+    <p class="sub">Nur fürs Team. Bitte PIN eingeben.</p>
+    <form id="pinForm">
+      <label for="pin">PIN</label>
+      <div class="row"><input id="pin" type="password" inputmode="numeric" autocomplete="off" pattern="[0-9]*" maxlength="8" required><button class="p" type="submit">WEITER</button></div>
+    </form>
+    <div id="pinMsg"></div>
+  </div>
+
+  <div id="app" class="hide">
+    <div class="card">
+      <h1>Gutschein prüfen<i>.</i></h1>
+      <p class="sub">Code vom Gutschein (PDF oder Ausdruck) eingeben.</p>
+      <form id="checkForm">
+        <label for="code">GUTSCHEIN-CODE</label>
+        <div class="row"><input id="code" class="code" type="text" autocomplete="off" placeholder="FJ-XXXX-XXXX" maxlength="14" required><button class="p s" type="submit" id="checkBtn">PRÜFEN</button></div>
+      </form>
+      <div id="checkMsg"></div>
+    </div>
+
+    <div class="card hide" id="result">
+      <div style="display:flex;justify-content:space-between;align-items:center"><strong id="rCode" style="font-size:18px;letter-spacing:.06em"></strong><span id="rBadge" class="badge"></span></div>
+      <div class="bal"><span>Restguthaben</span><strong id="rBal"></strong></div>
+      <div class="kv" id="rKv"></div>
+
+      <form id="redeemForm">
+        <label for="amount">BETRAG ABZIEHEN (€)</label>
+        <input id="amount" type="text" inputmode="decimal" placeholder="z. B. 49,50" required>
+        <div class="quick" id="quick"></div>
+        <label for="note">WOFÜR (OPTIONAL)</label>
+        <input id="note" type="text" maxlength="200" placeholder="z. B. Saturday 14.11., 2 Personen">
+        <label for="by">EINGELÖST VON</label>
+        <input id="by" type="text" maxlength="60" placeholder="Dein Name">
+        <button class="p full" type="submit" id="redeemBtn">EINLÖSEN</button>
+      </form>
+      <div id="redeemMsg"></div>
+
+      <label style="margin-top:22px">VERLAUF</label>
+      <ul class="hist" id="hist"></ul>
+    </div>
+  </div>
+</div>
+<script>
+(function(){
+var API='https://yarzxemodteevfodhstl.supabase.co/functions/v1/voucher-redeem';
+var $=function(id){return document.getElementById(id)};
+var eur=function(n){return new Intl.NumberFormat('de-DE',{style:'currency',currency:'EUR'}).format(n)};
+var esc=function(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})};
+var date=function(s){return s?new Date(s).toLocaleDateString('de-DE',{day:'2-digit',month:'2-digit',year:'numeric'}):''};
+var dt=function(s){return new Date(s).toLocaleString('de-DE',{day:'2-digit',month:'2-digit',year:'2-digit',hour:'2-digit',minute:'2-digit'})};
+var ERR={pin_falsch:'PIN falsch.',nicht_gefunden:'Diesen Code gibt es nicht.',code_format:'Format: FJ-XXXX-XXXX',too_many_requests:'Zu viele Versuche – bitte in einer Stunde nochmal.',betrag_ungueltig:'Betrag ungültig.',betrag_zu_hoch:'Betrag ist höher als das Restguthaben.',guthaben_zu_gering:'Restguthaben reicht nicht.',nicht_bezahlt:'Gutschein ist noch nicht bezahlt.',abgelaufen:'Gutschein ist abgelaufen.',server_error:'Technischer Fehler – bitte nochmal versuchen.'};
+var pin='',cur=null;
+var ss={get:function(k){try{return sessionStorage.getItem(k)}catch(e){return null}},set:function(k,v){try{sessionStorage.setItem(k,v)}catch(e){}},del:function(k){try{sessionStorage.removeItem(k)}catch(e){}}};
+var ls={get:function(k){try{return localStorage.getItem(k)}catch(e){return null}},set:function(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
+function msg(el,text,ok){$(el).innerHTML=text?'<p class="msg '+(ok?'ok':'err')+'">'+text+'</p>':''}
+function call(body){body.pin=pin;return fetch(API,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)}).then(function(r){return r.json()}).catch(function(){return{ok:false,error:'server_error'}})}
+function showApp(){$('pinCard').classList.add('hide');$('app').classList.remove('hide');$('logout').classList.remove('hide');$('by').value=ls.get('fj_by')||'';$('code').focus()}
+function logout(){pin='';ss.del('fj_pin');location.reload()}
+$('logout').onclick=logout;
+
+$('pinForm').onsubmit=function(e){e.preventDefault();
+  pin=$('pin').value.trim();
+  // PIN mit Probe-Code prüfen: falsche PIN → pin_falsch, richtige → nicht_gefunden
+  call({action:'staff_check',code:'FJ-0000-0000'}).then(function(r){
+    if(r.error==='pin_falsch'||r.error==='too_many_requests'){msg('pinMsg',ERR[r.error]);pin='';return}
+    ss.set('fj_pin',pin);showApp();
+  });
+};
+var saved=ss.get('fj_pin');if(saved){pin=saved;showApp()}
+
+function render(v){
+  cur=v;$('result').classList.remove('hide');
+  $('rCode').textContent=v.code;
+  var usable=v.usable;
+  $('rBadge').textContent=usable?'GÜLTIG':v.expired?'ABGELAUFEN':v.balance<=0?'AUFGEBRAUCHT':'NICHT AKTIV';
+  $('rBadge').className='badge'+(usable?'':' no');
+  $('rBal').textContent=eur(v.balance);
+  $('rKv').innerHTML='<span>Wert</span><b>'+eur(v.amount)+'</b>'
+    +(v.recipient_name?'<span>Für</span><b>'+esc(v.recipient_name)+'</b>':'')
+    +(v.buyer_name?'<span>Gekauft von</span><b>'+esc(v.buyer_name)+'</b>':'')
+    +'<span>Gültig bis</span><b>'+date(v.valid_until)+'</b>';
+  $('redeemForm').classList.toggle('hide',!usable);
+  $('quick').innerHTML=usable?'<button type="button" data-a="'+v.balance+'">Alles ('+eur(v.balance)+')</button>':'';
+  var h=v.history||[];
+  $('hist').innerHTML=h.length?h.map(function(x){return '<li class="'+(x.reversed_at?'rev':'')+'"><span>'+dt(x.created_at)+' · '+({vor_ort:'vor Ort',online:'online',rechnung:'Rechnung'}[x.context]||esc(x.context))+(x.note?' · '+esc(x.note):'')+(x.reference?' · '+esc(x.reference):'')+(x.redeemed_by?' · '+esc(x.redeemed_by):'')+'</span><b>−'+eur(Number(x.amount))+'</b></li>'}).join(''):'<li><span>Noch nicht eingelöst.</span></li>';
+}
+$('quick').onclick=function(e){var b=e.target.closest('[data-a]');if(b)$('amount').value=String(b.getAttribute('data-a')).replace('.',',')};
+
+function check(code){
+  msg('checkMsg','');msg('redeemMsg','');
+  $('checkBtn').disabled=true;
+  return call({action:'staff_check',code:code}).then(function(r){
+    $('checkBtn').disabled=false;
+    if(r.error==='pin_falsch'){logout();return}
+    if(!r.ok){$('result').classList.add('hide');msg('checkMsg',ERR[r.error]||'Fehler: '+esc(r.error));return}
+    render(r);
+  });
+}
+$('checkForm').onsubmit=function(e){e.preventDefault();var c=$('code').value.toUpperCase().replace(/[^A-Z0-9]/g,'');if(c.length===8)c='FJ'+c;if(c.length===10)c=c.slice(0,2)+'-'+c.slice(2,6)+'-'+c.slice(6);$('code').value=c;if(!/^FJ-[A-Z0-9]{4}-[A-Z0-9]{4}$/.test(c)){msg('checkMsg',ERR.code_format);return}check(c)};
+$('code').addEventListener('input',function(){this.value=this.value.toUpperCase()});
+
+$('redeemForm').onsubmit=function(e){e.preventDefault();if(!cur)return;
+  var a=Math.round(Number($('amount').value.trim().replace(/\s|€/g,'').replace(',','.'))*100)/100;
+  if(!(a>0)){msg('redeemMsg',ERR.betrag_ungueltig);return}
+  if(a>cur.balance){msg('redeemMsg',ERR.betrag_zu_hoch);return}
+  var by=$('by').value.trim();if(!by){msg('redeemMsg','Bitte deinen Namen eintragen.');$('by').focus();return}
+  if(!confirm(eur(a)+' von '+cur.code+' abziehen?'))return;
+  ls.set('fj_by',by);
+  $('redeemBtn').disabled=true;
+  call({action:'redeem',code:cur.code,amount:a,note:$('note').value,by:by}).then(function(r){
+    $('redeemBtn').disabled=false;
+    if(r.error==='pin_falsch'){logout();return}
+    if(!r.ok){msg('redeemMsg',ERR[r.error]||'Fehler: '+esc(r.error));return}
+    var code=cur.code;$('amount').value='';$('note').value='';
+    check(code).then(function(){msg('redeemMsg','✓ '+eur(Number(r.redeemed))+' eingelöst · Restguthaben '+eur(Number(r.balance)),true)});
+  });
+};
+})();
+</script>
+</body>
+</html>
