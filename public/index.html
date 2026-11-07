@@ -6,10 +6,8 @@
 <meta name="description" content="feine jungs — Mobiler Eventservice aus dem Großraum Stuttgart. Bier, Champagner, Austern, Spätzle und Maultaschen – Bar und Küche, die zu euch fahren. Für Firmenfeiern, Hochzeiten und gute Momente." />
 <meta name="theme-color" content="#ffffff" />
 <title>feine jungs — Die Bar, die zu euch fährt</title>
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
-<link rel="preload" as="image" href="https://files.manuscdn.com/user_upload_by_module/session_file/310519663617657681/iIHGNmWLvpGKKFQg.webp" />
+<link href="/fonts/fonts.css" rel="stylesheet" />
+<link rel="preload" as="image" href="/media/iIHGNmWLvpGKKFQg.webp" />
 <style>
 /* ===== Intro: Weiss -> Logo in Oliv -> Foto blendet auf -> schiebt sich weg ===== */
 #fj-intro{position:fixed;inset:0;z-index:999;overflow:hidden;background:#e6e8e3;transition:transform .95s cubic-bezier(.16,1,.3,1)}
@@ -86,7 +84,7 @@ body,.fj-page{color:var(--ink);background:#fff}
 <script src="/consent.js" defer></script><script src="/wagyu-checkout.js?v=wagyu-v3-4" defer></script>
 <script>
 (async()=>{
-const get=(p,n)=>Promise.all(Array.from({length:n},(_,i)=>fetch(`/${p}/${String(i).padStart(2,'0')}.txt${p==='j'?'?v=wx-design-1':''}`).then(r=>{if(!r.ok)throw new Error(p+i);return r.arrayBuffer()})));
+const get=(p,n)=>Promise.all(Array.from({length:n},(_,i)=>fetch(`/${p}/${String(i).padStart(2,'0')}.txt${p==='j'?'?v=local-1':''}`).then(r=>{if(!r.ok)throw new Error(p+i);return r.arrayBuffer()})));
 const [cssBufs,jsBufs]=await Promise.all([get('c',5),get('j',4)]);
 const st=document.createElement('style');st.textContent=new TextDecoder().decode(await new Blob(cssBufs).arrayBuffer());
 const light=document.getElementById('fj-light-theme');
@@ -100,10 +98,10 @@ window.__fjReady&&window.__fjReady();
 </head>
 <body>
 <div id="fj-intro" aria-hidden="true">
-<img class="bg" src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663617657681/iIHGNmWLvpGKKFQg.webp" alt="">
+<img class="bg" src="/media/iIHGNmWLvpGKKFQg.webp" alt="">
 <div class="shade"></div>
 <div class="veil"></div>
-<img class="logo" src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663617657681/csFvtthkGIvZbBJQ.svg" alt="">
+<img class="logo" src="/media/csFvtthkGIvZbBJQ.svg" alt="">
 </div>
 <script>
 (function(){
