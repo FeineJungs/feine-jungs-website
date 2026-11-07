@@ -12,12 +12,14 @@
   if (window.fjWagyu) return;
 
   var LIVE_ENABLED = false;                                   // ← Umstieg: auf true setzen (mit Freigabe)
-  var LIVE_HOSTS = ['feinejungs.de', 'www.feinejungs.de'];
   var LIVE = { api: 'https://yarzxemodteevfodhstl.supabase.co/functions/v1', key: '' };
   var TEST = { api: 'https://qnngxcpwkkevmxxkxqkt.supabase.co/functions/v1', key: 'sb_publishable_dPgtNtIBGx5LEXUGy68hzg_3POvnCu-' };
 
-  var isLive = LIVE_HOSTS.indexOf(location.hostname) >= 0;
-  var cfg = isLive ? LIVE : (window.FJ_WAGYU_TEST_CONFIG || TEST);  // Testhaken nur außerhalb von feinejungs.de
+  // Testprojekt NUR auf Vorschau-Adressen von Zweigen (…-git-…) und in lokalen Tests. Alle anderen Adressen
+  // (feinejungs.de, www, feinejungs-website.vercel.app, Produktions-Deployment-URLs) verhalten sich wie die Live-Seite.
+  var TEST_HOSTS = /^(feinejungs-website-git-[a-z0-9-]+-feinejungs-projects\.vercel\.app|vorschau\.feinejungs\.invalid|localhost|127\.0\.0\.1)$/;
+  var isLive = !TEST_HOSTS.test(location.hostname);
+  var cfg = isLive ? LIVE : (window.FJ_WAGYU_TEST_CONFIG || TEST);  // Testhaken nur auf Test-Adressen
   var enabled = isLive ? LIVE_ENABLED : true;
 
   var STORE = 'fj_wagyu_checkout';
