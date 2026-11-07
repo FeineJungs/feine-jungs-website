@@ -17,3 +17,11 @@ Dateien: `vercel.json` (Rewrites/Headers), `public/*.html`, `public/checkout.js`
 (06.11.2026, zurückgerollt). Deshalb liegen die Dateien hier direkt unter `public/`.
 
 Zweck: versionierte Basis für Vergleiche und für den Wagyu-Checkout v2 (siehe Entwurfsdokumentation 07).
+
+## Zweig `wagyu-v3-vorschau` (nur Vorschau, nicht für `main` ohne Freigabe)
+
+Wagyu-Kasse v3 nach Vertrag „Website v3“: neue Datei `public/wagyu-checkout.js`, kleine Weiche im Bundle (`public/j/*`, nur
+Warenkörbe mit Wagyu-Plätzen), Skript-Einbindung in `public/index.html`. Reine Gutscheinkäufe, Eventservice und alte
+Rückkehrlinks bleiben unverändert. Auf feinejungs.de bleibt der alte Weg aktiv, solange in `wagyu-checkout.js`
+`LIVE_ENABLED = false` steht (Umschalten erst beim genehmigten Umstieg). Auf der Vorschau spricht die Kasse nur mit dem
+Supabase-**Testprojekt** (kein echtes Geld, keine echten Mails).
