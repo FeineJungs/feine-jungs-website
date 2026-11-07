@@ -11,7 +11,7 @@
   'use strict';
   if (window.fjWagyu) return;
 
-  var LIVE_ENABLED = false;                                   // ← Umstieg: auf true setzen (mit Freigabe)
+  var LIVE_ENABLED = true;                                    // Umstieg 07.11.2026 (Freigabe Ralph); zurück auf false = alter Weg
   var LIVE = { api: 'https://yarzxemodteevfodhstl.supabase.co/functions/v1', key: '' };
   var TEST = { api: 'https://qnngxcpwkkevmxxkxqkt.supabase.co/functions/v1', key: 'sb_publishable_dPgtNtIBGx5LEXUGy68hzg_3POvnCu-' };
 
