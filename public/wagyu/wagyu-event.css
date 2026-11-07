@@ -1,0 +1,82 @@
+/* Wagyu-Abschnitt (#erlebnisse) im Stil von wagyuxchampagne.com – nur Klassen .wx-*, sonst nichts auf der Seite betroffen. */
+@font-face{font-family:"Wagyu";src:url("/wagyu/fonts/Wagyu-Fuenf-Klar-Medium.ttf") format("truetype");font-weight:500;font-style:normal;font-display:swap}
+@font-face{font-family:"Manrope";src:url("/wagyu/fonts/Manrope-Regular.ttf") format("truetype");font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:"Manrope";src:url("/wagyu/fonts/Manrope-Semibold.ttf") format("truetype");font-weight:600;font-style:normal;font-display:swap}
+@font-face{font-family:"Manrope";src:url("/wagyu/fonts/Manrope-Bold.ttf") format("truetype");font-weight:700;font-style:normal;font-display:swap}
+
+.wx-event{--wx-aubergine:#46162c;--wx-cream:#fef5e3;--wx-coral:#f04142;--wx-ink:#290b18;--wx-line:rgba(254,245,227,.43);
+  --wx-serif:"Wagyu",Georgia,serif;--wx-sans:"Manrope",Arial,sans-serif;
+  background:var(--wx-aubergine);color:var(--wx-cream);font-family:var(--wx-sans);-webkit-font-smoothing:antialiased;
+  padding:0 clamp(20px,4.2vw,56px);overflow:hidden}
+.wx-event *{box-sizing:border-box}
+.wx-top,.wx-bottom{display:flex;align-items:center;justify-content:space-between;gap:20px}
+.wx-top{min-height:86px;border-bottom:1px solid var(--wx-line)}
+.wx-wordmark{font-family:var(--wx-serif);font-weight:500;font-size:clamp(20px,1.9vw,27px);line-height:1;letter-spacing:-.04em;white-space:nowrap}
+.wx-cross{color:var(--wx-coral);display:inline-block;font-size:1.25em;line-height:.8;margin:0 .12em}
+.wx-label,.wx-bottom,.wx-eyebrow,.wx-facts span,.wx-prices span,.wx-caption{font-size:10px;font-weight:700;letter-spacing:.12em;line-height:1.45}
+.wx-grid{display:grid;grid-template-columns:1fr 1fr;min-height:640px}
+.wx-copy{display:flex;flex-direction:column;justify-content:center;align-items:flex-start;padding:64px 28px 60px 0;position:relative;z-index:1}
+.wx-eyebrow{display:flex;align-items:center;gap:10px;margin-bottom:clamp(32px,4vw,56px)}
+.wx-diamond{width:7px;height:7px;flex:0 0 7px;background:var(--wx-coral);transform:rotate(45deg)}
+.wx-event h2{margin:0;font-family:var(--wx-serif)!important;font-weight:500;font-size:clamp(60px,7vw,108px);line-height:.95;letter-spacing:-.055em!important;color:var(--wx-cream)}
+.wx-event h2 em{font-style:normal;color:var(--wx-coral)}
+/* Die Seite färbt Punkte in Überschriften orange (Regel in einer CSS-Ebene mit !important) – hier per Textfüllfarbe überschrieben. */
+.wx-event h2{-webkit-text-fill-color:var(--wx-cream)}
+.wx-event h2 em{-webkit-text-fill-color:var(--wx-coral)}
+.wx-desc{max-width:430px;margin:28px 0 30px;font-size:clamp(15px,1.15vw,17px);line-height:1.75}
+.wx-prices{display:grid;grid-template-columns:1fr 1fr;width:100%;max-width:460px;border-top:1px solid var(--wx-line);margin-bottom:28px}
+.wx-prices>div{display:flex;flex-direction:column;gap:6px;padding:16px 16px 16px 0;border-bottom:1px solid var(--wx-line)}
+.wx-prices>div+div{padding-left:18px;border-left:1px solid var(--wx-line)}
+.wx-prices span{opacity:.74}
+.wx-prices strong{font-family:var(--wx-serif);font-weight:500;font-size:34px;line-height:1;letter-spacing:-.03em}
+.wx-prices small{font-size:12px;font-weight:600}
+.wx-actions{display:flex;flex-wrap:wrap;gap:12px}
+.wx-btn{display:inline-flex;align-items:center;justify-content:space-between;gap:40px;min-height:62px;padding:0 22px;border:1px solid var(--wx-coral);
+  background:var(--wx-coral);color:var(--wx-ink);font-family:var(--wx-sans);font-size:15px;font-weight:700;letter-spacing:0;cursor:pointer;
+  transition:background .2s ease,color .2s ease,border-color .2s ease,transform .2s ease}
+.wx-btn:hover{background:var(--wx-cream);border-color:var(--wx-cream);color:var(--wx-aubergine);transform:translateY(-3px)}
+.wx-btn-ghost{background:transparent;border-color:var(--wx-line);color:var(--wx-cream)}
+.wx-btn-ghost:hover{background:var(--wx-cream);border-color:var(--wx-cream);color:var(--wx-aubergine)}
+.wx-btn:focus-visible,.wx-bottom a:focus-visible{outline:3px solid var(--wx-cream);outline-offset:4px}
+.wx-note{display:block;max-width:440px;margin-top:16px;font-size:12px;line-height:1.6;opacity:.8}
+.wx-facts{display:flex;gap:clamp(28px,4vw,62px);margin-top:44px}
+.wx-facts div{display:flex;flex-direction:column;gap:8px}
+.wx-facts span{font-size:9px;letter-spacing:.14em;opacity:.74}
+.wx-facts strong{font-size:12px;font-weight:600}
+.wx-art{position:relative;align-self:stretch;min-height:640px;isolation:isolate}
+.wx-shapes{position:absolute;inset:0;width:100%;height:100%;display:block}
+.wx-field{position:absolute;left:50%;top:36%;width:72%;max-width:500px;aspect-ratio:1;transform:translate(-50%,-50%);border-radius:46% 54% 51% 49%/46% 45% 55% 54%;background:var(--wx-aubergine)}
+.wx-mark{position:absolute;left:50%;top:36%;width:58%;max-width:400px;height:auto;transform:translate(-50%,-50%);display:block}
+.wx-caption{position:absolute;top:69%;left:50%;width:max-content;transform:translateX(-50%);letter-spacing:.18em}
+.wx-bottom{min-height:62px;border-top:1px solid var(--wx-line)}
+.wx-bottom a{display:inline-flex;align-items:center;gap:8px;padding:16px 0;color:inherit;text-decoration:none}
+.wx-bottom a:hover{opacity:.7}
+
+@media (max-width:900px){
+  .wx-grid{min-height:560px}
+  .wx-art{min-height:560px}
+  .wx-copy{padding:52px 16px 48px 0}
+  .wx-event h2{font-size:clamp(50px,8vw,72px)}
+  .wx-facts{flex-direction:column;gap:16px;margin-top:36px}
+  .wx-label,.wx-bottom,.wx-eyebrow,.wx-caption{font-size:11px}
+}
+@media (max-width:640px){
+  .wx-event{padding:0 20px}
+  .wx-top{min-height:66px}
+  .wx-label{display:none}
+  .wx-grid{display:flex;flex-direction:column-reverse;min-height:0}
+  .wx-art{min-height:0;height:clamp(235px,76vw,340px);margin:0 -20px}
+  .wx-mark{width:48%;max-width:260px}
+  .wx-caption{top:75%;letter-spacing:.12em}
+  .wx-copy{padding:26px 0 44px}
+  .wx-eyebrow{margin-bottom:18px}
+  .wx-event h2{font-size:clamp(54px,14vw,80px)}
+  .wx-desc{font-size:15px;margin:22px 0 24px}
+  .wx-prices strong{font-size:30px}
+  .wx-actions{flex-direction:column;align-items:stretch;width:100%}
+  .wx-btn{min-height:58px}
+  .wx-facts{flex-direction:row;gap:24px;margin-top:30px}
+  .wx-bottom{flex-wrap:wrap;gap:0 16px;padding:6px 0}
+  .wx-bottom>span:first-child{display:none}
+}
+@media (prefers-reduced-motion:reduce){.wx-btn{transition:none}.wx-btn:hover{transform:none}}
