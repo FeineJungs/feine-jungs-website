@@ -67,7 +67,7 @@
     location.href=/Impressum/i.test(title)?'/impressum':'/datenschutz';
   };
   /* 4) Tanz am Berg: Referenz auf /eventagentur, Foto auf /gluehwein, Nennung auf der Startseite */
-  var IMG='https://yarzxemodteevfodhstl.supabase.co/storage/v1/object/public/site-assets/web/tanz-am-berg/';
+  var IMG='/media/tanz-am-berg/';   // eigene Fotos, lokal ausgeliefert (vorher fehlende Dateien im Speicher)
   var tab=function(){
     var p=location.pathname;
     if(/^\/eventagentur/.test(p)&&!document.getElementById('referenz')){
@@ -76,14 +76,14 @@
       s.innerHTML='<div class="wrap"><span class="label">Referenz · Oktober 2026</span><h2>Tanz am Berg<span class="op">.</span></h2>'
       +'<div class="two"><div><p class="lead">Ein Abend elektronische Musik am Bergwald Renningen – Konzept, Planung und Durchführung von feine jungs, in Kooperation mit der Stadt Renningen. DJs, Licht, zwei Bars und die Glühwein-Ape: alles aus einer Hand, bei freiem Eintritt.</p>'
       +'<div class="facts"><span><strong>6</strong> DJs</span><span><strong>3</strong> Ausschankstationen</span><span><strong>11–22 Uhr</strong> mit Kinderprogramm</span><span><strong>2027</strong> geht es weiter</span></div></div>'
-      +'<div class="ref-grid"><img src="'+IMG+'dj.jpg" alt="DJ-Set in der blau beleuchteten Bergwaldhalle" loading="lazy"><img src="'+IMG+'wald.jpg" alt="Grün angestrahlte Bäume über den Gästen" loading="lazy"><img class="wide" src="'+IMG+'gluehwein.jpg" alt="Glühwein-Station an der Ape mit Lichterketten" loading="lazy"></div></div></div>';
+      +'<div class="ref-grid"><img src="'+IMG+'dj.webp" alt="DJ-Set in der blau beleuchteten Bergwaldhalle" loading="lazy"><img src="'+IMG+'wald.webp" alt="Grün angestrahlte Bäume über den Gästen" loading="lazy"><img src="'+IMG+'gluehwein.webp" alt="Glühwein-Station an der Ape mit Lichterketten" loading="lazy" style="object-position:50% 40%"><img src="'+IMG+'bar.webp" alt="Bar mit Spritz, Gin und frischen Früchten am Nachmittag" loading="lazy" style="object-position:40% 50%"></div></div></div>';
       anchor.parentNode.insertBefore(s,anchor);
-      var st2=document.createElement('style');st2.textContent='.ref-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.ref-grid img{width:100%;aspect-ratio:3/4;object-fit:cover;display:block;background:#e6e8e3}.ref-grid img.wide{grid-column:1/-1;aspect-ratio:16/10;object-position:50% 35%}#referenz .facts{margin-top:26px}';document.head.appendChild(st2);
+      var st2=document.createElement('style');st2.textContent='.ref-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.ref-grid img{width:100%;aspect-ratio:4/5;object-fit:cover;display:block;background:#e6e8e3}#referenz .facts{margin-top:26px}';document.head.appendChild(st2);
     }
     if(/^\/gluehwein/.test(p)&&!document.getElementById('gw-foto')){
       var a2=document.getElementById('angebot');if(!a2)return;
       var f=document.createElement('section');f.id='gw-foto';
-      f.innerHTML='<div class="wrap"><figure style="margin:0"><img src="'+IMG+'gluehwein.jpg" alt="Glühwein-Station an der Ape mit Lichterketten bei Tanz am Berg" loading="lazy" style="width:100%;aspect-ratio:16/10;object-fit:cover;object-position:50% 35%;display:block;background:#e6e8e3"><figcaption class="note" style="margin-top:12px">Unsere Glühwein-Ape im Einsatz · Tanz am Berg, Oktober 2026</figcaption></figure></div>';
+      f.innerHTML='<div class="wrap"><figure style="margin:0"><img src="'+IMG+'gluehwein.webp" alt="Glühwein-Station an der Ape mit Lichterketten bei Tanz am Berg" loading="lazy" style="width:100%;aspect-ratio:16/10;object-fit:cover;object-position:50% 35%;display:block;background:#e6e8e3"><figcaption class="note" style="margin-top:12px">Unsere Glühwein-Ape im Einsatz · Tanz am Berg, Oktober 2026</figcaption></figure></div>';
       a2.parentNode.insertBefore(f,a2);
     }
     if(p==='/'||p===''){
