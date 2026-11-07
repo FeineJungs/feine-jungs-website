@@ -84,7 +84,7 @@ body,.fj-page{color:var(--ink);background:#fff}
 <script src="/consent.js" defer></script><script src="/wagyu-checkout.js?v=wagyu-v3-4" defer></script>
 <script>
 (async()=>{
-const get=(p,n)=>Promise.all(Array.from({length:n},(_,i)=>fetch(`/${p}/${String(i).padStart(2,'0')}.txt${p==='j'?'?v=local-1':''}`).then(r=>{if(!r.ok)throw new Error(p+i);return r.arrayBuffer()})));
+const get=(p,n)=>Promise.all(Array.from({length:n},(_,i)=>fetch(`/${p}/${String(i).padStart(2,'0')}.txt${p==='j'?'?v=local-2':''}`).then(r=>{if(!r.ok)throw new Error(p+i);return r.arrayBuffer()})));
 const [cssBufs,jsBufs]=await Promise.all([get('c',5),get('j',4)]);
 const st=document.createElement('style');st.textContent=new TextDecoder().decode(await new Blob(cssBufs).arrayBuffer());
 const light=document.getElementById('fj-light-theme');
@@ -141,7 +141,7 @@ await Promise.all([wait(2400),ready]);end();
 <p>Eventservice buchen: Paket konfigurieren, Richtpreis sehen, unverbindlich anfragen – das Angebot kommt innerhalb von 24 Stunden. Tickets und Gutscheine werden direkt im Warenkorb gekauft und sicher per Karte, Klarna oder Überweisung über Mollie bezahlt.</p>
 <h2>Kontakt</h2>
 <p>FEINE JUNGS GmbH · Weil der Städter Straße 12 · 71272 Renningen<br>Geschäftsführer: Ralph Walz · Amtsgericht Stuttgart HRB 802843 · USt-IdNr. DE460079942<br>Telefon <a href="tel:+491777753688" style="color:#606b55">+49 177 7753688</a> · <a href="mailto:hello@feinejungs.de" style="color:#606b55">hello@feinejungs.de</a></p>
-<p><a href="/impressum" style="color:#606b55">Impressum</a> · <a href="/agb" style="color:#606b55">AGB &amp; Widerrufsbelehrung</a> · <a href="/datenschutz" style="color:#606b55">Datenschutz</a></p>
+<p><a href="/impressum" style="color:#606b55">Impressum</a> · <a href="/agb" style="color:#606b55">AGB &amp; Widerrufsbelehrung</a> · <a href="/datenschutz" style="color:#606b55">Datenschutz</a> · <a href="/widerruf" style="color:#606b55">Vertrag widerrufen</a></p>
 </div></div>
 </body>
 </html>
