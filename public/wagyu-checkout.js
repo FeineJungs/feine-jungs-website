@@ -132,7 +132,9 @@
   function head(nr, title) { return (nr ? '<p class="k">BESTELLUNG ' + esc(nr) + '</p>' : '') + '<h2 id="fj-wg-h">' + title + '<i>.</i></h2>'; }
   var eur = function (c) { return new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR' }).format((c || 0) / 100); };
 
-  function viewWait(nr, text) { show(head(nr, 'Einen Moment') + '<div class="sp" aria-hidden="true"></div><p>' + text + '</p>', { close: false }); }
+  // Nur auf Vorschau/Test-Adressen: deutlicher Hinweis, dass hier keine Bezahlseite kommt (Testprojekt ohne Zahlungsanbieter).
+  var PREVIEW_NOTE = isLive ? '' : '<p class="m" style="border-left:3px solid currentColor;padding-left:10px"><b>Vorschau / Testsystem:</b> Hier wird keine Bezahlseite geöffnet und nichts berechnet – das Fenster bleibt deshalb stehen. Auf feinejungs.de geht es an dieser Stelle nach wenigen Sekunden zu Mollie.</p>';
+  function viewWait(nr, text) { show(head(nr, 'Einen Moment') + '<div class="sp" aria-hidden="true"></div><p>' + text + '</p>' + PREVIEW_NOTE, { close: false }); }
   function viewPaid(d) {
     show(head(d.order_number, 'Vielen Dank') + '<p>Eure Plätze sind verbindlich gebucht. Die Bestätigung kommt per E-Mail – bringt sie einfach am Abend mit.</p>'
       + '<p class="m">Nichts angekommen? Schaut kurz im Spam-Ordner nach oder schreibt uns an ' + MAIL + '.</p><div class="btns"><button class="btn s" type="button" data-close data-a="ok">WEITER ZUR SEITE</button></div>');
@@ -142,7 +144,7 @@
       + '<p class="m">Fragen? ' + TEL + ' oder ' + MAIL + '</p><div class="btns"><button class="btn s" type="button" data-close data-a="ok">OK</button></div>');
   }
   function viewSlow(rec, d) {
-    show(head(d.order_number, 'Das dauert gerade länger') + '<p>Eure Plätze sind reserviert. Wir prüfen den Zahlungsstart und melden uns bei euch.</p>'
+    show(head(d.order_number, 'Das dauert gerade länger') + '<p>Eure Plätze sind reserviert. Wir prüfen den Zahlungsstart und melden uns bei euch.</p>' + PREVIEW_NOTE
       + '<div class="btns"><button class="btn" type="button" data-a="again">ERNEUT PRÜFEN</button><button class="btn g" type="button" data-close data-a="ok">SCHLIESSEN</button></div>',
       { again: function () { viewWait(d.order_number, 'Wir fragen den Stand ab …'); status(rec).then(function (r) { handle(rec, r, { fromStatus: true, polls: POLL_MAX }); }); } });
   }

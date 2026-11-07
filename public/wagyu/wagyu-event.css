@@ -80,3 +80,96 @@
   .wx-bottom>span:first-child{display:none}
 }
 @media (prefers-reduced-motion:reduce){.wx-btn{transition:none}.wx-btn:hover{transform:none}}
+
+/* =====================================================================================================
+   Kaufprozess im Wagyu-Stil: Ticket-Dialog, Warenkorb/Kasse (nur mit Wagyu-Plätzen), Warte-/Danke-Fenster (#fj-wg).
+   Klassen setzt /wagyu/wagyu-theme.js. Nur Aussehen – Inhalte und Abläufe unverändert.
+   ===================================================================================================== */
+.wx-theme,html #fj-wg{--wx-aubergine:#46162c;--wx-aubergine-2:#3a1124;--wx-cream:#fef5e3;--wx-coral:#f04142;--wx-ink:#290b18;
+  --wx-line:rgba(254,245,227,.3);--wx-serif:"Wagyu",Georgia,serif;--wx-sans:"Manrope",Arial,sans-serif}
+.wx-overlay{background:rgba(41,11,24,.78)!important;backdrop-filter:blur(2px)}
+
+.wx-theme{background:var(--wx-aubergine)!important;color:var(--wx-cream)!important;border:0!important;border-radius:0!important;
+  border-top:4px solid var(--wx-coral)!important;font-family:var(--wx-sans)!important;box-shadow:0 30px 80px rgba(20,4,12,.5)!important}
+.wx-theme *{font-family:inherit}
+.wx-theme,html #fj-wg{color-scheme:dark}
+.wx-theme [data-slot=dialog-header]{text-align:left!important}
+.wx-theme [data-slot=dialog-title]{font-family:var(--wx-serif)!important;font-weight:500!important;color:var(--wx-cream)!important;
+  font-size:clamp(34px,7vw,46px)!important;line-height:1!important;letter-spacing:-.045em!important;text-align:left!important;-webkit-text-fill-color:var(--wx-cream)}
+.wx-theme>p,.wx-theme .co-form>small,.wx-theme small{color:var(--wx-cream)!important;opacity:.8}
+.wx-theme>p{font-size:15px!important;line-height:1.65!important}
+.wx-theme [data-slot=dialog-close]{color:var(--wx-cream)!important;opacity:.85}
+.wx-theme [data-slot=dialog-close]:hover{opacity:1}
+.wx-theme .sw-fields>div>span,.wx-theme .config-fields label,.wx-theme .sw-total>span{color:var(--wx-cream)!important;font-family:var(--wx-sans)!important;
+  font-size:10px!important;font-weight:700!important;letter-spacing:.12em!important}
+.wx-theme .config-fields label{opacity:1}
+
+/* Termin-Auswahl */
+.wx-theme .co-dates button{background:transparent!important;color:var(--wx-cream)!important;border:1px solid var(--wx-line)!important;border-radius:0!important;
+  font-family:var(--wx-sans)!important;font-weight:700!important;letter-spacing:.08em!important}
+.wx-theme .co-dates button:hover{border-color:var(--wx-cream)!important}
+.wx-theme .co-dates button.selected,.wx-theme .co-dates button[aria-pressed=true]{background:var(--wx-coral)!important;border-color:var(--wx-coral)!important;color:var(--wx-ink)!important}
+.wx-theme .fj-wcount{color:var(--wx-cream);opacity:.85}
+.wx-theme .fj-wcount b{color:var(--wx-cream)}
+.wx-theme .fj-wcount .low{color:var(--wx-coral)}
+
+/* Anzahl, Häkchen */
+.wx-theme .co-qty{border:1px solid var(--wx-line)!important;border-radius:0!important;background:transparent!important}
+.wx-theme .co-qty button,.wx-theme .co-qty strong{color:var(--wx-cream)!important;background:transparent!important}
+.wx-theme .co-qty button:hover{color:var(--wx-coral)!important}
+.wx-theme .sw-drinks{color:var(--wx-cream)!important;font-family:var(--wx-sans)!important}
+.wx-theme input[type=checkbox]{accent-color:var(--wx-coral)}
+.wx-theme .sw-drinks input[type=checkbox]{border-color:var(--wx-cream)!important}
+
+/* Summen */
+.wx-theme .sw-summary,.wx-theme .sw-summary>div,.wx-theme .sw-total{border-color:var(--wx-line)!important}
+.wx-theme .sw-summary span,.wx-theme .sw-summary strong{color:var(--wx-cream)!important}
+.wx-theme .sw-summary>.sw-total:first-child,.wx-theme .cart-list+.sw-summary{border-top:0!important}
+.wx-theme .sw-total strong{font-family:var(--wx-serif)!important;font-weight:500!important;color:var(--wx-coral)!important;letter-spacing:-.03em!important}
+
+/* Haupt-Button und Neben-Buttons */
+.wx-theme .fj-button{background:var(--wx-coral)!important;color:var(--wx-ink)!important;border:1px solid var(--wx-coral)!important;border-radius:0!important;
+  font-family:var(--wx-sans)!important;font-weight:700!important;letter-spacing:.06em!important;transition:background .2s ease,color .2s ease,border-color .2s ease}
+.wx-theme .fj-button:hover:not(:disabled){background:var(--wx-cream)!important;border-color:var(--wx-cream)!important;color:var(--wx-aubergine)!important}
+.wx-theme .fj-button:disabled{opacity:.45}
+.wx-theme .cart-more button,.wx-theme .cart-back{background:transparent!important;color:var(--wx-cream)!important;border:1px solid var(--wx-line)!important;border-radius:0!important;
+  font-family:var(--wx-sans)!important;font-weight:700!important}
+.wx-theme .cart-back{border:0!important;text-decoration:underline;text-underline-offset:4px}
+.wx-theme .cart-more button{text-decoration:none!important;padding:10px 14px!important;font-size:12px!important;letter-spacing:.04em!important}
+.wx-theme .cart-more button:hover{border-color:var(--wx-cream)!important}
+
+/* Warenkorb-Liste */
+.wx-theme .cart-list,.wx-theme .cart-item{border-color:var(--wx-line)!important;background:transparent!important}
+.wx-theme .cart-item strong,.wx-theme .cart-item small,.wx-theme .cart-price{color:var(--wx-cream)!important}
+.wx-theme .cart-item-text strong{font-family:var(--wx-serif)!important;font-weight:500!important;font-size:20px!important;letter-spacing:-.02em!important}
+.wx-theme .cart-remove{color:var(--wx-cream)!important;background:transparent!important;border:1px solid var(--wx-line)!important;border-radius:0!important;opacity:.85}
+.wx-theme .cart-remove:hover{color:var(--wx-coral)!important;opacity:1}
+
+/* Kassenformular */
+.wx-theme input[type=text],.wx-theme input[type=email],.wx-theme input[type=tel]{background:rgba(254,245,227,.06)!important;color:var(--wx-cream)!important;
+  border:1px solid var(--wx-line)!important;border-radius:0!important;font-family:var(--wx-sans)!important;-webkit-text-fill-color:var(--wx-cream)}
+.wx-theme input::placeholder{color:rgba(254,245,227,.45)!important;-webkit-text-fill-color:rgba(254,245,227,.45)}
+.wx-theme input[type=text]:focus,.wx-theme input[type=email]:focus,.wx-theme input[type=tel]:focus{outline:none!important;border-color:var(--wx-coral)!important;box-shadow:0 0 0 1px var(--wx-coral)!important}
+.wx-theme input:-webkit-autofill{-webkit-box-shadow:0 0 0 40px var(--wx-aubergine-2) inset!important;-webkit-text-fill-color:var(--wx-cream)!important}
+.wx-theme .fj-voucher button{background:var(--wx-cream)!important;color:var(--wx-aubergine)!important;font-family:var(--wx-sans)!important;font-weight:700!important}
+.wx-theme .cart-agb,.wx-theme .cart-agb span{color:var(--wx-cream)!important}
+.wx-theme a,.wx-theme .link-button{color:var(--wx-cream)!important;text-decoration:underline!important;text-decoration-color:var(--wx-coral)!important;text-underline-offset:3px}
+.wx-theme :focus-visible{outline:2px solid var(--wx-cream)!important;outline-offset:3px}
+
+/* Warte-, Hinweis- und Danke-Fenster der Wagyu-Kasse */
+html #fj-wg{background:rgba(41,11,24,.78);font-family:var(--wx-sans)}
+html #fj-wg .b{background:var(--wx-aubergine);color:var(--wx-cream);border-top:4px solid var(--wx-coral);box-shadow:0 30px 80px rgba(20,4,12,.5)}
+html #fj-wg .k{color:var(--wx-cream);opacity:.75;font-weight:700;letter-spacing:.12em}
+html #fj-wg h2{font-family:var(--wx-serif);font-weight:500;font-size:40px;line-height:1;letter-spacing:-.045em;color:var(--wx-cream)}
+html #fj-wg h2 i{color:var(--wx-coral)}
+html #fj-wg p{color:var(--wx-cream)}
+html #fj-wg .m{color:var(--wx-cream);opacity:.75}
+html #fj-wg a{color:var(--wx-cream);text-decoration-color:var(--wx-coral);text-underline-offset:3px}
+html #fj-wg .x{color:var(--wx-cream)}
+html #fj-wg .btn{background:var(--wx-coral);color:var(--wx-ink);font:700 13px var(--wx-sans);letter-spacing:.06em;transition:background .2s ease,color .2s ease}
+html #fj-wg .btn:hover{background:var(--wx-cream);color:var(--wx-aubergine)}
+html #fj-wg .btn.s{background:var(--wx-cream);color:var(--wx-aubergine)}
+html #fj-wg .btn.s:hover{background:var(--wx-coral);color:var(--wx-ink)}
+html #fj-wg .btn.g{background:transparent;color:var(--wx-cream);border:1px solid var(--wx-line)}
+html #fj-wg .btn.g:hover{border-color:var(--wx-cream)}
+html #fj-wg .sp{border-color:var(--wx-line);border-top-color:var(--wx-coral)}
