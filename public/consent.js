@@ -4,7 +4,7 @@
   add('/consent-base.js');
   if(!/^\/(agb|impressum|datenschutz|einloesen)/.test(location.pathname)){add('/checkout.js?v=1');add('/anfrage.js?v=1')}
   /* Footer der statischen Seiten: Links umbrechen statt zerreißen, AGB-Link ergänzen */
-  var st=document.createElement('style');st.textContent='footer .links{flex-wrap:wrap!important;row-gap:10px}footer .links a{white-space:nowrap}';document.head.appendChild(st);
+  var st=document.createElement('style');st.textContent='footer .links{flex-wrap:wrap!important;row-gap:10px}footer .links a{white-space:nowrap}html,body,button,a,input,select,textarea,label,[role=button],[role=dialog]{touch-action:manipulation}';document.head.appendChild(st);
   var ft=function(){var l=document.querySelector('footer .links');if(!l||l.querySelector('a[href="/agb"]'))return;var a=document.createElement('a');a.href='/agb';a.textContent='AGB';var d=l.querySelector('a[href="/datenschutz"]');l.insertBefore(a,d||null)};
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',ft);else ft();
   var ck=function(){var l=document.querySelector('footer .links');if(!l||l.querySelector('a[href="#cookie-einstellungen"]'))return;var a=document.createElement('a');a.href='#cookie-einstellungen';a.textContent='Cookie-Einstellungen';l.appendChild(a)};
