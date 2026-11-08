@@ -10,7 +10,7 @@
   padding:0 clamp(20px,4.2vw,56px);overflow:hidden}
 .wx-event *{box-sizing:border-box}
 .wx-top,.wx-bottom{display:flex;align-items:center;justify-content:space-between;gap:20px}
-.wx-top{min-height:86px;border-bottom:1px solid var(--wx-line)}
+.wx-top{min-height:86px}
 .wx-wordmark{font-family:var(--wx-serif);font-weight:500;font-size:clamp(20px,1.9vw,27px);line-height:1;letter-spacing:-.04em;white-space:nowrap}
 .wx-cross{color:var(--wx-coral);display:inline-block;font-size:1.25em;line-height:.8;margin:0 .12em}
 .wx-label,.wx-bottom,.wx-eyebrow,.wx-facts span,.wx-prices span,.wx-caption{font-size:10px;font-weight:700;letter-spacing:.12em;line-height:1.45}
