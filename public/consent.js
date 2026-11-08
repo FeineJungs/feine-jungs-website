@@ -7,6 +7,8 @@
   var st=document.createElement('style');st.textContent='footer .links{flex-wrap:wrap!important;row-gap:10px}footer .links a{white-space:nowrap}';document.head.appendChild(st);
   var ft=function(){var l=document.querySelector('footer .links');if(!l||l.querySelector('a[href="/agb"]'))return;var a=document.createElement('a');a.href='/agb';a.textContent='AGB';var d=l.querySelector('a[href="/datenschutz"]');l.insertBefore(a,d||null)};
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',ft);else ft();
+  var ck=function(){var l=document.querySelector('footer .links');if(!l||l.querySelector('a[href="#cookie-einstellungen"]'))return;var a=document.createElement('a');a.href='#cookie-einstellungen';a.textContent='Cookie-Einstellungen';l.appendChild(a)};
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',ck);else ck();
   /* KI-Hinweis im Fußbereich der statischen Unterseiten (Startseite hat ihn im Bundle) */
   var ki=function(){if(document.getElementById('root'))return;var f=document.querySelector('footer');if(!f||f.querySelector('.fj-ai-note'))return;var p=document.createElement('p');p.className='wrap fj-ai-note';p.style.cssText='margin-top:18px;margin-bottom:0;font-size:11px;line-height:1.5;color:var(--muted,#5f6259)!important;opacity:1';p.textContent='Hinweis: Einzelne Bilder und Grafiken auf dieser Website wurden mit KI erstellt.';f.appendChild(p)};
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',ki);else ki();

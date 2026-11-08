@@ -10,8 +10,18 @@
     gtag('js',new Date()); gtag('config',GA_ID,{anonymize_ip:true});
   }
   window.fjLoadAnalytics=loadGA;
+  /* Widerruf: Messung sofort abschalten und Analyse-Cookies (_ga, _ga_*) löschen */
+  function stopGA(){
+    window['ga-disable-'+GA_ID]=true;
+    var host=location.hostname, doms=['', host, '.'+host, '.'+host.split('.').slice(-2).join('.')];
+    document.cookie.split(';').forEach(function(x){
+      var n=x.split('=')[0].trim(); if(!/^_ga(_|$)/.test(n))return;
+      doms.forEach(function(dm){ document.cookie=n+'=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/'+(dm?'; domain='+dm:''); });
+    });
+  }
+  window.fjStopAnalytics=stopGA;
   var stored=null; try{stored=localStorage.getItem(KEY);}catch(e){}
-  if(stored==='granted')loadGA();
+  if(stored==='granted')loadGA(); else if(stored==='denied')window['ga-disable-'+GA_ID]=true;
 
   var css='.fj-cc{position:fixed;left:16px;right:16px;bottom:16px;z-index:1200;max-width:760px;margin:0 auto;background:#fff;color:#20231f;border:1px solid #d9dfda;border-top:3px solid #f45d00;box-shadow:0 18px 50px rgba(20,30,20,.28);padding:22px 24px;font-family:"DM Sans",Arial,sans-serif;display:none;opacity:0;transform:translateY(14px);transition:opacity .4s cubic-bezier(.23,1,.32,1),transform .4s cubic-bezier(.23,1,.32,1)}'
    +'.fj-cc.show{display:block}.fj-cc.in{opacity:1;transform:none}'
@@ -29,13 +39,17 @@
     d.innerHTML='<p><b>Kurz gefragt<i>.</i></b>Wir würden gerne anonym messen, wie unsere Seite genutzt wird (Google Analytics). Das ist freiwillig – ohne eure Zustimmung wird nichts geladen und kein Analyse-Cookie gesetzt. Notwendige Speicherungen (z. B. euer Warenkorb) bleiben davon unberührt. Details in der <a href="/datenschutz">Datenschutzerklärung</a>.</p>'
       +'<div class="fj-cc-btns"><button type="button" id="fjCcNo">Nur notwendige</button><button type="button" class="pri" id="fjCcYes">Alle akzeptieren</button></div>';
     document.body.appendChild(d);
-    function decide(v){ try{localStorage.setItem(KEY,v);}catch(e){} d.classList.remove('in'); setTimeout(function(){d.classList.remove('show');},400); if(v==='granted')loadGA(); }
+    function decide(v){ try{localStorage.setItem(KEY,v);}catch(e){} d.classList.remove('in'); setTimeout(function(){d.classList.remove('show');},400); if(v==='granted'){window['ga-disable-'+GA_ID]=false;loadGA();} else stopGA(); }
     d.querySelector('#fjCcYes').addEventListener('click',function(){decide('granted');});
     d.querySelector('#fjCcNo').addEventListener('click',function(){decide('denied');});
     return d;
   }
   function show(){ var d=build(); d.classList.add('show'); requestAnimationFrame(function(){requestAnimationFrame(function(){d.classList.add('in');});}); }
   window.fjConsentOpen=show;
+  document.addEventListener('click',function(e){
+    var a=e.target.closest&&e.target.closest('a[href="#cookie-einstellungen"]'); if(!a)return;
+    e.preventDefault(); show();
+  },true);
   function init(){
     if(stored!=='granted'&&stored!=='denied')show();
     /* Impressum/Datenschutz der App auf die vollständigen Rechtstexte umleiten */
