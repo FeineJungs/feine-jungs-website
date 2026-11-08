@@ -81,6 +81,8 @@ body,.fj-page{color:var(--ink);background:#fff}
 <style>.offer-tasting .offer-photo img{object-position:50% 78%}
 /* Wagyu-Karte: Logo statt Foto (Grund in Logofarbe, Logo vollständig sichtbar) */
 .offer-cards .offer-wagyu .offer-photo{background:#341031!important}
+/* Eventagentur-Block: Partnerlogo People Places Studio */
+.fj-ag-pp{display:flex;align-items:center;gap:18px;margin-top:34px}.fj-ag-pp span{font-family:"IBM Plex Mono",monospace;font-size:11px;font-weight:600;letter-spacing:.12em;color:#ffffffb3}.fj-ag-pp img{height:76px;width:auto;display:block;background:#f4f2ec;flex:0 0 auto}
 .offer-cards .offer-wagyu .offer-photo img{content:url("/media/wagyu-x-champagne.webp")!important;object-fit:contain!important;object-position:center!important;background:#341031!important;filter:none!important}</style>
 <link rel="stylesheet" href="/wagyu/wagyu-event.css?v=wx-5" />
 <link rel="preload" as="font" type="font/ttf" href="/wagyu/fonts/Wagyu-Fuenf-Klar-Medium.ttf" crossorigin />
@@ -88,7 +90,7 @@ body,.fj-page{color:var(--ink);background:#fff}
 <script src="/consent.js" defer></script><script src="/wagyu-checkout.js?v=wagyu-v3-4" defer></script>
 <script>
 (async()=>{
-const get=(p,n)=>Promise.all(Array.from({length:n},(_,i)=>fetch(`/${p}/${String(i).padStart(2,'0')}.txt${p==='j'?'?v=local-5':''}`).then(r=>{if(!r.ok)throw new Error(p+i);return r.arrayBuffer()})));
+const get=(p,n)=>Promise.all(Array.from({length:n},(_,i)=>fetch(`/${p}/${String(i).padStart(2,'0')}.txt${p==='j'?'?v=local-6':''}`).then(r=>{if(!r.ok)throw new Error(p+i);return r.arrayBuffer()})));
 const [cssBufs,jsBufs]=await Promise.all([get('c',5),get('j',4)]);
 const st=document.createElement('style');st.textContent=new TextDecoder().decode(await new Blob(cssBufs).arrayBuffer());
 const light=document.getElementById('fj-light-theme');
