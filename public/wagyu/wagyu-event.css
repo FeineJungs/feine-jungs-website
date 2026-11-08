@@ -173,3 +173,6 @@ html #fj-wg .btn.s:hover{background:var(--wx-coral);color:var(--wx-ink)}
 html #fj-wg .btn.g{background:transparent;color:var(--wx-cream);border:1px solid var(--wx-line)}
 html #fj-wg .btn.g:hover{border-color:var(--wx-cream)}
 html #fj-wg .sp{border-color:var(--wx-line);border-top-color:var(--wx-coral)}
+
+/* KI-Hinweis zum Logo */
+.wx-event .wx-note.wx-ai{margin-top:6px;opacity:.6}
