@@ -20,7 +20,17 @@
     });
   }
   window.fjStopAnalytics=stopGA;
+  /* Entscheidung gilt 12 Monate, danach wird einmal neu gefragt (Zustimmung und Ablehnung gleich).
+     Ältere Entscheidungen ohne Datum bekommen beim ersten Besuch das heutige Datum. */
+  var KEY_AT=KEY+'-at', MAX_AGE=365*24*60*60*1000;
   var stored=null; try{stored=localStorage.getItem(KEY);}catch(e){}
+  if(stored==='granted'||stored==='denied'){
+    try{
+      var at=parseInt(localStorage.getItem(KEY_AT),10);
+      if(!at){localStorage.setItem(KEY_AT,String(Date.now()));}
+      else if(Date.now()-at>MAX_AGE){localStorage.removeItem(KEY);localStorage.removeItem(KEY_AT);stored=null;stopGA();}
+    }catch(e){}
+  }
   if(stored==='granted')loadGA(); else if(stored==='denied')window['ga-disable-'+GA_ID]=true;
 
   var css='.fj-cc{position:fixed;left:16px;right:16px;bottom:16px;z-index:1200;max-width:760px;margin:0 auto;background:#fff;color:#20231f;border:1px solid #d9dfda;border-top:3px solid #f45d00;box-shadow:0 18px 50px rgba(20,30,20,.28);padding:22px 24px;font-family:"DM Sans",Arial,sans-serif;display:none;opacity:0;transform:translateY(14px);transition:opacity .4s cubic-bezier(.23,1,.32,1),transform .4s cubic-bezier(.23,1,.32,1)}'
@@ -39,7 +49,7 @@
     d.innerHTML='<p><b>Kurz gefragt<i>.</i></b>Wir würden gerne anonym messen, wie unsere Seite genutzt wird (Google Analytics). Das ist freiwillig – ohne eure Zustimmung wird nichts geladen und kein Analyse-Cookie gesetzt. Notwendige Speicherungen (z. B. euer Warenkorb) bleiben davon unberührt. Details in der <a href="/datenschutz">Datenschutzerklärung</a>.</p>'
       +'<div class="fj-cc-btns"><button type="button" id="fjCcNo">Nur notwendige</button><button type="button" class="pri" id="fjCcYes">Alle akzeptieren</button></div>';
     document.body.appendChild(d);
-    function decide(v){ try{localStorage.setItem(KEY,v);}catch(e){} d.classList.remove('in'); setTimeout(function(){d.classList.remove('show');},400); if(v==='granted'){window['ga-disable-'+GA_ID]=false;loadGA();} else stopGA(); }
+    function decide(v){ try{localStorage.setItem(KEY,v);localStorage.setItem(KEY_AT,String(Date.now()));}catch(e){} d.classList.remove('in'); setTimeout(function(){d.classList.remove('show');},400); if(v==='granted'){window['ga-disable-'+GA_ID]=false;loadGA();} else stopGA(); }
     d.querySelector('#fjCcYes').addEventListener('click',function(){decide('granted');});
     d.querySelector('#fjCcNo').addEventListener('click',function(){decide('denied');});
     return d;
