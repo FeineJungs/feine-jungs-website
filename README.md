@@ -19,7 +19,7 @@ Quelle der Website **feinejungs.de** (FEINE JUNGS GmbH). Dieses Repository ist d
 | `public/index.html` | Startseite: lädt das kompilierte Preact-Bundle (`j/`) und das CSS (`c/`), enthält kleine CSS-Ergänzungen im `<style>`-Block |
 | `public/j/00–03.txt` | Startseiten-Bundle (minifiziertes JavaScript), in 4 Teile zerlegt; der Lader in `index.html` setzt sie zusammen |
 | `public/c/00–04.txt` | Tailwind-CSS der Startseite, ebenfalls zerlegt |
-| `public/wagyu.html` | Eventseite **feinejungs.de/wagyu** (auch `/wagyu-x-champagne`): wird von `tools/wagyu-page.js` aus `index.html` erzeugt, gleiches Bundle (Route `/wagyu`), zeigt nur den Wagyu-Abschnitt; Buchung direkt auf der Seite, Direktlink zum Dialog: `/wagyu?event=2026-12-17` bzw. `…-18` |
+| `public/wagyu.html` | Eventseite **feinejungs.de/wagyu** (`/wagyu-x-champagne` leitet dorthin weiter): wird von `tools/wagyu-page.js` aus `index.html` erzeugt, gleiches Bundle (Route `/wagyu`), zeigt nur den Wagyu-Abschnitt; Buchung direkt auf der Seite, Direktlink zum Dialog: `/wagyu?event=2026-12-17` bzw. `…-18` |
 | `public/*.html` | Unterseiten: `weihnachtsfeier`, `gluehwein` (auch `/afterwork`), `eventagentur`, `einloesen`, `widerruf`, `agb`, `impressum`, `datenschutz` |
 | `public/consent.js`, `consent-base.js` | Cookie-Einwilligung, Fußbereich und Feinschliff der Unterseiten (u. a. Tanz-am-Berg-Bilder, KI-Hinweis) |
 | `public/checkout.js`, `anfrage.js` | Gutschein-/Warenkorb-Kasse und Anfrageformular |
