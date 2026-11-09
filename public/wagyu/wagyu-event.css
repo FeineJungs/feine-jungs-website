@@ -176,3 +176,8 @@ html #fj-wg .sp{border-color:var(--wx-line);border-top-color:var(--wx-coral)}
 
 /* KI-Hinweis zum Logo */
 .wx-event .wx-note.wx-ai{margin-top:6px;opacity:.6}
+
+/* Eigene Eventseite feinejungs.de/wagyu (public/wagyu.html, Klasse am <html>):
+   nur Kopfzeile, Abschnitt „Erlebnisse“ (Wagyu + Gutscheine) und Fußbereich. */
+html.fj-wagyu-page main#inhalt>section:not(#erlebnisse){display:none!important}
+html.fj-wagyu-page #erlebnisse{margin-top:clamp(24px,4vw,56px)!important;padding-top:0!important}
