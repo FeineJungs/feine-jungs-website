@@ -24,4 +24,15 @@
   // Direkt im Observer (läuft vor dem nächsten Zeichnen) → kein kurzes Aufblitzen im alten Stil.
   function start() { mark(); new MutationObserver(mark).observe(document.body, { childList: true, subtree: true, characterData: true }); }
   if (document.body) start(); else document.addEventListener('DOMContentLoaded', start);
+
+  /* Eventseite /wagyu: Sprungmarken der Startseite (#konzept, #anfrage …) führen zur Startseite. */
+  if (document.documentElement.classList.contains('fj-wagyu-page')) {
+    document.addEventListener('click', function (e) {
+      var a = e.target.closest && e.target.closest('a[href^="#"]'); if (!a) return;
+      var h = a.getAttribute('href');
+      if (h === '#inhalt' || h === '#cookie-einstellungen' || h === '#erlebnisse') return;
+      e.preventDefault(); e.stopPropagation();
+      location.href = '/' + (h === '#top' || h === '#' ? '' : h);
+    }, true);
+  }
 })();

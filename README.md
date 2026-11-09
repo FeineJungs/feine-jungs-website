@@ -19,6 +19,7 @@ Quelle der Website **feinejungs.de** (FEINE JUNGS GmbH). Dieses Repository ist d
 | `public/index.html` | Startseite: lädt das kompilierte Preact-Bundle (`j/`) und das CSS (`c/`), enthält kleine CSS-Ergänzungen im `<style>`-Block |
 | `public/j/00–03.txt` | Startseiten-Bundle (minifiziertes JavaScript), in 4 Teile zerlegt; der Lader in `index.html` setzt sie zusammen |
 | `public/c/00–04.txt` | Tailwind-CSS der Startseite, ebenfalls zerlegt |
+| `public/wagyu.html` | Eventseite **feinejungs.de/wagyu** (auch `/wagyu-x-champagne`): wird von `tools/wagyu-page.js` aus `index.html` erzeugt, gleiches Bundle (Route `/wagyu`), zeigt nur den Wagyu-Abschnitt; Buchung direkt auf der Seite, Direktlink zum Dialog: `/wagyu?event=2026-12-17` bzw. `…-18` |
 | `public/*.html` | Unterseiten: `weihnachtsfeier`, `gluehwein` (auch `/afterwork`), `eventagentur`, `einloesen`, `widerruf`, `agb`, `impressum`, `datenschutz` |
 | `public/consent.js`, `consent-base.js` | Cookie-Einwilligung, Fußbereich und Feinschliff der Unterseiten (u. a. Tanz-am-Berg-Bilder, KI-Hinweis) |
 | `public/checkout.js`, `anfrage.js` | Gutschein-/Warenkorb-Kasse und Anfrageformular |
@@ -35,7 +36,8 @@ Es gibt **keinen TSX-Quellcode** der Startseite in diesem Repository; Änderunge
 2. Gezielt ersetzen (Text oder Element-Aufruf `t("…",{…})`); jede Fundstelle muss **genau einmal** vorkommen.
 3. Wieder in 4 etwa gleich große Teile zerlegen und mit `node --check` die zusammengefügte Datei prüfen.
 4. In `public/index.html` die Version im Lader hochzählen (`?v=local-N`), sonst liefern Browser-Caches den alten Stand.
-5. Bei geänderten CSS/JS-Dateien unter `public/wagyu/` bzw. `wagyu-checkout.js` ebenso den `?v=`-Parameter in `index.html` erhöhen.
+5. **Danach immer `node tools/wagyu-page.js` ausführen**, damit die Eventseite `public/wagyu.html` denselben Stand hat.
+6. Bei geänderten CSS/JS-Dateien unter `public/wagyu/` bzw. `wagyu-checkout.js` ebenso den `?v=`-Parameter in `index.html` erhöhen.
 
 ## Kasse und Backend
 
