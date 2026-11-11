@@ -7,7 +7,7 @@ var eur=function(n){return new Intl.NumberFormat('de-DE',{style:'currency',curre
 var esc=function(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})};
 var deDate=function(d){var p=String(d).split('-');return p[2]+'.'+p[1]+'.'+p[0]};
 var wday=function(d){return['So','Mo','Di','Mi','Do','Fr','Sa'][new Date(d+'T12:00:00').getDay()]};
-var LABEL={corporate:'Firmenevent',private:'Privates Fest',weihnacht:'Weihnachtsfeier',gluehwein:'Glühwein After Work',jga:'JGA',tasting:'Tasting',saturdays:'Saturdays'};
+var LABEL={barabend:'Bar-Abend',sektempfang:'Sektempfang',corporate:'Firmenevent',private:'Privates Fest',weihnacht:'Weihnachtsfeier',gluehwein:'Glühwein After Work',jga:'JGA',tasting:'Tasting',saturdays:'Saturdays'};
 var PKG={tasting:'tasting',jga:'jga',corporate:'corporate',private:'private'};
 var TEL='<a href="tel:+491777753688">0177 775 36 88</a>';
 
