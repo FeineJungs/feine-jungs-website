@@ -9,7 +9,7 @@ var eur=function(n){return new Intl.NumberFormat('de-DE',{style:'currency',curre
 var esc=function(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})};
 var deDate=function(d){var p=String(d).split('-');return p[2]+'.'+p[1]+'.'+p[0]};
 var wday=function(d){return['So','Mo','Di','Mi','Do','Fr','Sa'][new Date(d+'T12:00:00').getDay()]};
-var LABEL={corporate:'Firmenevent',private:'Privates Fest',weihnacht:'Weihnachtsfeier',gluehwein:'Glühwein After Work',jga:'JGA',tasting:'Tasting',saturdays:'Saturdays'};
+var LABEL={corporate:'Firmenevent',private:'Privates Fest',weihnacht:'Weihnachtsfeier',gluehwein:'Glühwein After Work',jga:'JGA',tasting:'Tasting',saturdays:'Saturdays',barabend:'Bar-Abend',sektempfang:'Sektempfang'};function fjV2(){var k=(cfg&&cfg.config)||{};return k.pkg==='barabend'||k.pkg==='sektempfang'?'-v2':''}var fjUnused={};
 var ERR={termin_belegt:'Dieser Termin ist leider gerade vergeben – bitte wählt einen anderen Tag.',dezember_ausgebucht:'Im Dezember sind leider alle Weihnachtsfeier-Termine vergeben.',vorlauf_zu_kurz:'Für diesen Termin ist der Vorlauf zu kurz – bitte einen späteren Tag wählen.',wochentag_nicht_moeglich:'An diesem Wochentag ist das Format nicht buchbar.',uhrzeit_nicht_moeglich:'Diese Uhrzeit ist für das Format nicht buchbar.',gaestezahl_ungueltig:'Bitte prüft die Gästezahl.',gutschein_ungueltig:'Der Gutschein-Code ist ungültig oder bereits eingelöst.',adresse_unbekannt:'Wir finden die Adresse des Veranstaltungsorts nicht – bitte Straße, PLZ und Ort prüfen.',anschrift_unvollstaendig:'Bitte die Anschrift vollständig ausfüllen.',veranstaltungsort_unvollstaendig:'Bitte die Adresse des Veranstaltungsorts vollständig ausfüllen.',kontakt_unvollstaendig:'Bitte Name, E-Mail und Telefon ausfüllen.',firma_fehlt:'Bitte den Firmennamen angeben.',too_many_requests:'Zu viele Versuche – bitte später nochmal oder ruft uns an.',zahlung_nicht_verfuegbar:'Die Bezahlseite ist gerade nicht erreichbar – bitte gleich nochmal versuchen.'};
 
 var css='.fjk{position:fixed;inset:0;z-index:2147482000;display:flex;align-items:flex-start;justify-content:center;padding:24px 16px;background:rgba(20,30,24,.6);overflow-y:auto;font-family:"DM Sans",Arial,sans-serif;-webkit-overflow-scrolling:touch}'
@@ -88,7 +88,7 @@ function schedule(){clearTimeout(qTimer);qTimer=setTimeout(fetchQuote,650)}
 function fetchQuote(){
  var a=venueAddr(),body={config:cfg.config};if(complete(a))body.address=a;
  var seq=++qSeq;quote&&(quote.loading=!!body.address);render();
- fetch(API+'/service-quote',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)}).then(function(r){return r.json()}).then(function(j){if(seq!==qSeq||!root)return;quote=j.ok?j:{error:j.error||'server_error'};quote.hasAddr=!!body.address;render()}).catch(function(){if(seq===qSeq&&root){quote={error:'netz'};render()}});
+ fetch(API+'/service-quote'+fjV2(),{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)}).then(function(r){return r.json()}).then(function(j){if(seq!==qSeq||!root)return;quote=j.ok?j:{error:j.error||'server_error'};quote.hasAddr=!!body.address;render()}).catch(function(){if(seq===qSeq&&root){quote={error:'netz'};render()}});
 }
 function checkCode(){
  var c=$('kCode').value.toUpperCase().replace(/[^A-Z0-9]/g,'');if(c.length===8)c='FJ'+c;if(c.length===10)c=c.slice(0,2)+'-'+c.slice(2,6)+'-'+c.slice(6);$('kCode').value=c;
@@ -111,7 +111,7 @@ function render(){
  if(!quote){b.innerHTML='<div class="ln muted"><span>Preis wird berechnet …</span><b></b></div>';$('kGoAmt').textContent='';return}
  if(quote.error){b.innerHTML='<div class="ln muted"><span>'+(ERR[quote.error]||'Preis gerade nicht abrufbar – bitte später nochmal oder ruft uns an: 0177 775 36 88.')+'</span><b></b></div>';$('kGoAmt').textContent='';return}
  quote.lines.forEach(function(l){h+='<div class="ln"><span>'+esc(l.label)+'</span><b>'+eur(l.amount)+'</b></div>'});
- h+='<div class="ln dc"><span>'+esc(quote.discount.label)+'</span><b>−'+eur(quote.discount.amount)+'</b></div>';
+ if(quote.discount&&quote.discount.amount)h+='<div class="ln dc"><span>'+esc(quote.discount.label)+'</span><b>−'+eur(quote.discount.amount)+'</b></div>';
  var tr=a.travel,addrErr=quote.address_error;
  h+='<div class="ln'+(tr?'':' muted')+'"><span>Anfahrt'+(tr?' ('+String(tr.km).replace('.',',')+' km einfach · 50 km inkl.)':'')+'</span><b>'+(quote.loading?'berechne …':tr?(tr.fee?eur(tr.fee):'inklusive'):addrErr==='adresse_unbekannt'?'Adresse prüfen':'nach Eingabe der Adresse')+'</b></div>';
  if(addrErr==='adresse_unbekannt')h+='<p class="er" style="margin:0 0 6px">Wir finden die Adresse nicht – bitte Straße, PLZ und Ort prüfen.</p>';
@@ -131,7 +131,7 @@ function submit(e){
  var go=$('kGo');go.disabled=true;go.firstChild.textContent='WIRD VORBEREITET …';
  var body={config:cfg.config,contact:{first_name:val('kFirst'),last_name:val('kLast'),email:val('kEmail'),phone:val('kPhone'),company:val('kCompany'),vat_id:val('kVat')},billing:bill,
   venue:{differs:$('kDiff').checked,name:val('kVName'),street:val('kVStreet'),zip:val('kVZip'),city:val('kVCity')},message:val('kMsg'),voucher_code:voucher?voucher.code:'',agb:$('kAgb').checked,honeypot:''};
- fetch(API+'/public-booking',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)}).then(function(r){return r.json().then(function(j){return{ok:r.ok,j:j}})}).then(function(x){
+ fetch(API+'/public-booking'+fjV2(),{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)}).then(function(r){return r.json().then(function(j){return{ok:r.ok,j:j}})}).then(function(x){
   var j=x.j||{};if(!x.ok||!j.ok)throw new Error(j.error||'fail');
   if(j.payment_url){go.firstChild.textContent='WEITER ZUR ZAHLUNG …';window.location.assign(j.payment_url);return}
   window.location.assign('/?buchung='+encodeURIComponent(j.order_number)+'&ref='+j.ref);
