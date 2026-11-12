@@ -177,7 +177,7 @@
 
   var DATE_DE = { '2026-12-17': 'Do 17.12.', '2026-12-18': 'Fr 18.12.' };
   /* Ergebnis einer Kasse-/Statusantwort umsetzen. Rückgabe für das Bundle:
-     clearCart (Bestellung existiert), voucherError, fieldError. */
+     clearCart (Bestellung existiert), voucherError (+ voucherMessage bei Rabattcodes), fieldError. */
   function handle(rec, r, o) {
     o = o || {};
     var d = r.data || {}, e = d.error;
@@ -222,6 +222,11 @@
       return { modal: true };
     }
     if (e === 'gutschein_ungueltig' || e === 'gutschein_nicht_anrechenbar') { clear(); return { voucherError: true }; }
+    if (typeof e === 'string' && e.indexOf('rabattcode_') === 0) {     // Rabattcode (WXC-…) abgelehnt; nichts angelegt
+      clear();
+      return { voucherError: true, voucherMessage: e === 'rabattcode_eingeloest' ? 'Dieser Rabattcode wurde bereits eingelöst.'
+        : e === 'rabattcode_abgelaufen' ? 'Dieser Rabattcode ist abgelaufen.' : 'Der Rabattcode konnte nicht angerechnet werden – bitte prüft den Code.' };
+    }
     if (r.http === 400) { clear(); return { fieldError: true }; }      // nichts angelegt; korrigieren = neue Kennung
     if (e === 'contract_upgrade_required') {
       viewError('Bitte Seite neu laden', 'Die Kasse wurde aktualisiert. Bitte ladet die Seite neu und bestellt dann noch einmal.', { reload: function () { location.reload(); } },
@@ -349,7 +354,7 @@
     }).observe(document.body, { childList: true, subtree: true });
   }
 
-  window.fjWagyu = { enabled: enabled, live: isLive, api: cfg.api, checkout: checkout };
+  window.fjWagyu = { enabled: enabled, live: isLive, api: cfg.api, key: cfg.key, checkout: checkout };   // key: öffentlicher Schlüssel (nur Testprojekt), für die Rabattcode-Prüfung
   if (!enabled) return;
   ensureCss();
   window.addEventListener('storage', function (e) { if (e.key === STORE) mem = null; });   // anderer Tab hat den Vorgang geändert
