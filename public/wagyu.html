@@ -98,10 +98,10 @@ body,.fj-page{color:var(--ink);background:#fff}
 <link rel="stylesheet" href="/wagyu/wagyu-event.css?v=wx-8" />
 <link rel="preload" as="font" type="font/ttf" href="/wagyu/fonts/Wagyu-Fuenf-Klar-Medium.ttf" crossorigin />
 <script src="/wagyu/wagyu-theme.js?v=wx-8" defer></script>
-<script src="/consent.js" defer></script><script src="/wagyu-checkout.js?v=wagyu-v3-4" defer></script>
+<script src="/consent.js" defer></script><script src="/wagyu-checkout.js?v=wagyu-v3-5" defer></script>
 <script>
 (async()=>{
-const get=(p,n)=>Promise.all(Array.from({length:n},(_,i)=>fetch(`/${p}/${String(i).padStart(2,'0')}.txt${p==='j'?'?v=local-13':''}`).then(r=>{if(!r.ok)throw new Error(p+i);return r.arrayBuffer()})));
+const get=(p,n)=>Promise.all(Array.from({length:n},(_,i)=>fetch(`/${p}/${String(i).padStart(2,'0')}.txt${p==='j'?'?v=local-14':''}`).then(r=>{if(!r.ok)throw new Error(p+i);return r.arrayBuffer()})));
 const [cssBufs,jsBufs]=await Promise.all([get('c',5),get('j',4)]);
 const st=document.createElement('style');st.textContent=new TextDecoder().decode(await new Blob(cssBufs).arrayBuffer());
 const light=document.getElementById('fj-light-theme');
