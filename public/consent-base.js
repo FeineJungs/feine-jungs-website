@@ -112,7 +112,7 @@
         +'<small>Nur bis 31. Oktober</small>'
         +'<h2 id="fjPrT">Weihnachtsfeier?<br>Machen wir<i>.</i></h2>'
         +'<div class="pct"><span>−20 %</span></div>'
-        +'<p>auf den Grundpreis für eure Weihnachtsfeier. Bar-Ape, Glühwein, auf Wunsch die SchwApe – wir kommen zu euch.</p>'
+        +'<p>auf den Grundpreis für eure Weihnachtsfeier. Bar-Ape und Glühwein – wir kommen zu euch.</p>'
         +'<a class="go" href="/weihnachtsfeier#anfrage">Jetzt Termin sichern <span>↗</span></a>'
         +'<a class="alt" href="/gluehwein">Lieber kurz &amp; kompakt? Glühwein After Work: 1–3 Std. ab 290 € →</a>'
         +'<p class="fine">Gilt für Weihnachtsfeier-Anfragen bis 31.10.2026. Rabatt auf den Grundpreis, nicht auf die Getränkepauschale.</p>'
