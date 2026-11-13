@@ -90,6 +90,8 @@ body,.fj-page{color:var(--ink);background:#fff}
 }
 </style>
 <style>.offer-tasting .offer-photo img{object-position:50% 78%}
+/* Apes-Abschnitt mit nur noch einem Block (SchwApe entfernt) */
+.fleet-blocks{grid-template-rows:1fr!important}@media(min-width:821px){.fleet-layout,.fleet-image{max-height:600px}}@media(max-width:820px){.fleet-layout{min-height:0!important}}
 /* Wagyu-Karte: Logo statt Foto (Grund in Logofarbe, Logo vollständig sichtbar) */
 .offer-cards .offer-wagyu .offer-photo{background:#341031!important}
 /* Eventagentur-Block: Logo People Places Studio als Kopfbereich in Logofarbe */
@@ -101,7 +103,7 @@ body,.fj-page{color:var(--ink);background:#fff}
 <script src="/consent.js" defer></script><script src="/wagyu-checkout.js?v=wagyu-v3-5" defer></script>
 <script>
 (async()=>{
-const get=(p,n)=>Promise.all(Array.from({length:n},(_,i)=>fetch(`/${p}/${String(i).padStart(2,'0')}.txt${p==='j'?'?v=local-18':''}`).then(r=>{if(!r.ok)throw new Error(p+i);return r.arrayBuffer()})));
+const get=(p,n)=>Promise.all(Array.from({length:n},(_,i)=>fetch(`/${p}/${String(i).padStart(2,'0')}.txt${p==='j'?'?v=local-19':''}`).then(r=>{if(!r.ok)throw new Error(p+i);return r.arrayBuffer()})));
 const [cssBufs,jsBufs]=await Promise.all([get('c',5),get('j',4)]);
 const st=document.createElement('style');st.textContent=new TextDecoder().decode(await new Blob(cssBufs).arrayBuffer());
 const light=document.getElementById('fj-light-theme');
