@@ -2,7 +2,7 @@
 (function(){
   var add=function(src){var s=document.createElement('script');s.src=src;s.async=false;document.head.appendChild(s)};
   add('/consent-base.js');
-  if(!/^\/(agb|impressum|datenschutz|einloesen)/.test(location.pathname)){add('/checkout.js?v=3');add('/anfrage.js?v=3')}
+  if(!/^\/(agb|impressum|datenschutz|einloesen)/.test(location.pathname)){add('/checkout.js?v=4');add('/anfrage.js?v=4')}
   /* Footer der statischen Seiten: Links umbrechen statt zerreißen, AGB-Link ergänzen */
   var st=document.createElement('style');st.textContent='footer .links{flex-wrap:wrap!important;row-gap:10px}footer .links a{white-space:nowrap}html,body,button,a,input,select,textarea,label,[role=button],[role=dialog]{touch-action:manipulation}';document.head.appendChild(st);
   var ft=function(){var l=document.querySelector('footer .links');if(!l||l.querySelector('a[href="/agb"]'))return;var a=document.createElement('a');a.href='/agb';a.textContent='AGB';var d=l.querySelector('a[href="/datenschutz"]');l.insertBefore(a,d||null)};
@@ -44,10 +44,10 @@
   }
 
   /* ===== Pflege-Automatik (alle Seiten) ===== */
-  /* 1) Texte vereinheitlichen: Ort nur Stuttgart, Anfahrt einheitlich 50 km / 1 EUR je km */
+  /* 1) Texte vereinheitlichen: Ort nur Stuttgart, Anfahrt einheitlich 30 km / 1 EUR je km */
   var FIX=[
     [/GMBH · RENNINGEN/g,'GMBH · STUTTGART'],
-    [/Anfahrt bis 25 km ab Renningen inklusive, danach 1,20 € je km\./g,'Anfahrt bis 50 km inklusive, danach 1 € je km.'],
+    [/Anfahrt bis 25 km ab Renningen inklusive, danach 1,20 € je km\./g,'Anfahrt bis 30 km inklusive, danach 1 € je km.'],
     [/ ab Renningen inklusive/g,' inklusive']
   ];
   var fixText=function(root){

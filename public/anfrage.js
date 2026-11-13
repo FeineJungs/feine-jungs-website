@@ -68,8 +68,8 @@ function inquire(c){
   if(!root)return;var b=$('qBill');
   if(!j.ok){b.innerHTML='<div class="ln muted"><span>Richtpreis gerade nicht abrufbar – wir nennen ihn euch im Angebot.</span><b></b></div>';return}
   quote=j;var h='';j.lines.forEach(function(l){h+='<div class="ln"><span>'+esc(l.label)+'</span><b>'+eur(l.amount)+'</b></div>'});
-  h+='<div class="ln tot"><span>Richtpreis inkl. MwSt. <span style="font-size:12px;color:#647069">(zzgl. Anfahrt über 50 km)</span></span><b>'+eur(j.subtotal)+'</b></div>';
-  var lo=k.pkg==='corporate'&&j.subtotal<2000;if(lo)h+='<div class="ln muted" style="margin-top:6px"><span>Online buchbar ab 2.000 € Auftragswert. Für kleinere Runden bekommt ihr von uns ein individuelles Angebot.</span><b></b></div>';if(!lo&&j.discount&&j.discount.amount>0)h+='<div class="ln dc" style="margin-top:6px"><span>Direkt gebucht nur '+eur(j.service_total)+' ('+esc(j.discount.label)+')</span><b><button type="button" class="buy" data-buy>DIREKT BUCHEN</button></b></div>';
+  h+='<div class="ln tot"><span>Richtpreis inkl. MwSt. <span style="font-size:12px;color:#647069">(zzgl. Anfahrt über 30 km)</span></span><b>'+eur(j.subtotal)+'</b></div>';
+  var lo=(k.pkg==='corporate'||k.pkg==='weihnacht')&&j.subtotal<2000;if(lo)h+='<div class="ln muted" style="margin-top:6px"><span>Online buchbar ab 2.000 € Auftragswert. Für kleinere Runden bekommt ihr von uns ein individuelles Angebot.</span><b></b></div>';if(!lo&&j.discount&&j.discount.amount>0)h+='<div class="ln dc" style="margin-top:6px"><span>Direkt gebucht nur '+eur(j.service_total)+' ('+esc(j.discount.label)+')</span><b><button type="button" class="buy" data-buy>DIREKT BUCHEN</button></b></div>';
   b.innerHTML=h}).catch(function(){if(root)$('qBill').innerHTML='<div class="ln muted"><span>Richtpreis gerade nicht abrufbar.</span><b></b></div>'});
  setTimeout(function(){try{root.querySelector('input[required]').focus({preventScroll:true})}catch(e){}},50);
 }

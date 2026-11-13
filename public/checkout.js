@@ -113,9 +113,9 @@ function render(){
  quote.lines.forEach(function(l){h+='<div class="ln"><span>'+esc(l.label)+'</span><b>'+eur(l.amount)+'</b></div>'});
  if(quote.discount&&quote.discount.amount)h+='<div class="ln dc"><span>'+esc(quote.discount.label)+'</span><b>−'+eur(quote.discount.amount)+'</b></div>';
  var tr=a.travel,addrErr=quote.address_error;
- h+='<div class="ln'+(tr?'':' muted')+'"><span>Anfahrt'+(tr?' ('+String(tr.km).replace('.',',')+' km einfach · 50 km inkl.)':'')+'</span><b>'+(quote.loading?'berechne …':tr?(tr.fee?eur(tr.fee):'inklusive'):addrErr==='adresse_unbekannt'?'Adresse prüfen':'nach Eingabe der Adresse')+'</b></div>';
+ h+='<div class="ln'+(tr?'':' muted')+'"><span>Anfahrt'+(tr?' ('+String(tr.km).replace('.',',')+' km einfach · 30 km inkl.)':'')+'</span><b>'+(quote.loading?'berechne …':tr?(tr.fee?eur(tr.fee):'inklusive'):addrErr==='adresse_unbekannt'?'Adresse prüfen':'nach Eingabe der Adresse')+'</b></div>';
  if(addrErr==='adresse_unbekannt')h+='<p class="er" style="margin:0 0 6px">Wir finden die Adresse nicht – bitte Straße, PLZ und Ort prüfen.</p>';
- h+='<div class="ln tot"><span>Gesamt inkl. MwSt.'+(tr?'':' <span style="font-size:12px;color:#647069">(zzgl. Anfahrt über 50 km)</span>')+'</span><b>'+eur(a.total)+'</b></div>';
+ h+='<div class="ln tot"><span>Gesamt inkl. MwSt.'+(tr?'':' <span style="font-size:12px;color:#647069">(zzgl. Anfahrt über 30 km)</span>')+'</span><b>'+eur(a.total)+'</b></div>';
  if(a.v)h+='<div class="ln dc"><span>Gutschein '+esc(voucher.code)+'</span><b>−'+eur(a.v)+'</b></div><div class="ln tot"><span>Zu zahlen</span><b>'+eur(a.pay)+'</b></div>';
  b.innerHTML=h;$('kGoAmt').textContent=tr?(a.pay<=0?'MIT GUTSCHEIN':eur(a.pay)):'';
 }
@@ -127,7 +127,7 @@ function submit(e){
  var bill=addrOf('kB');if(!complete(bill)){showErr('Bitte die Anschrift vollständig ausfüllen (PLZ fünfstellig).');return}
  if($('kDiff').checked&&!complete(addrOf('kV'))){showErr('Bitte die Adresse des Veranstaltungsorts vollständig ausfüllen.');return}
  var a=amounts();
- if(cfg.config&&cfg.config.pkg==='corporate'&&quote&&quote.subtotal<2000){showErr('Das Firmenevent ist online ab 2.000 € Auftragswert buchbar. Für kleinere Runden schickt uns bitte eine Anfrage – wir machen euch ein Angebot.');return}
+ if(cfg.config&&(cfg.config.pkg==='corporate'||cfg.config.pkg==='weihnacht')&&quote&&quote.subtotal<2000){showErr('Dieses Format ist online ab 2.000 € Auftragswert buchbar. Für kleinere Runden schickt uns bitte eine Anfrage – wir machen euch ein Angebot.');return}
  if(!a||!a.travel){if(quote&&quote.address_error==='adresse_unbekannt'){showErr(ERR.adresse_unbekannt);return}fetchQuote();showErr('Einen Moment – die Anfahrt wird noch berechnet. Bitte gleich nochmal klicken.');return}
  var go=$('kGo');go.disabled=true;go.firstChild.textContent='WIRD VORBEREITET …';
  var body={config:cfg.config,contact:{first_name:val('kFirst'),last_name:val('kLast'),email:val('kEmail'),phone:val('kPhone'),company:val('kCompany'),vat_id:val('kVat')},billing:bill,
@@ -147,7 +147,7 @@ function hookStatic(){
  var g=function(id){return document.getElementById(id)};
  var sel=function(grp){var b=f.querySelector('[data-group="'+grp+'"] .selected');return b?b.getAttribute('data-value'):null};
  var send=g('send');if(send&&send.firstChild&&send.firstChild.nodeType===3)send.firstChild.textContent='Weiter zur Kasse ';
- var note=f.querySelector('.note');if(note)note.textContent=gw?'Direkt buchbar mit 10 % Sofortkauf-Rabatt. Anfahrt bis 50 km inklusive, danach 1 € je km – wird in der Kasse berechnet.':'Direkt buchbar: −10 % Sofortkauf-Rabatt oder bis 31.10. −20 % Frühbucher auf den Grundpreis – es gilt der höhere Rabatt. Anfahrt bis 50 km inklusive, danach 1 € je km.';
+ var note=f.querySelector('.note');if(note)note.textContent=gw?'Direkt buchbar mit 10 % Sofortkauf-Rabatt. Anfahrt bis 30 km inklusive, danach 1 € je km – wird in der Kasse berechnet.':'Direkt buchbar mit 10 % Sofortkauf-Rabatt. Anfahrt bis 30 km inklusive, danach 1 € je km – wird in der Kasse berechnet.';
  var lg=f.querySelector('legend');if(lg&&/Anfrage als/.test(lg.textContent))lg.textContent='Buchung als';
  var tl=f.querySelector('.card .total span');if(tl)tl.textContent='Preis inkl. MwSt.';
  var card=f.querySelector('.card');if(card&&!card.querySelector('.fj-sk')){var p=document.createElement('p');p.className='fj-sk';p.style.cssText='margin:12px 0 0;padding:10px 12px;background:rgba(244,93,0,.12);color:inherit;font-size:13px;line-height:1.5';p.innerHTML='<strong style="color:#f45d00">−10 % bei Sofortbuchung.</strong> In der Kasse gebt ihr Anschrift und Veranstaltungsort an und bezahlt direkt online.';card.appendChild(p)}
@@ -162,8 +162,12 @@ function hookStatic(){
   var sof=Math.round(sub*.1),usePromo=promo>sof,disc=usePromo?promo:sof;
   var pr=card&&card.querySelector('.price'),row=g('fjDiscRow');
   if(pr&&!row){row=document.createElement('div');row.id='fjDiscRow';row.innerHTML='<span></span><strong></strong>';pr.appendChild(row)}
-  if(row){row.style.display=usePromo?'none':'';row.firstChild.textContent='Sofortkauf-Rabatt −10 %';row.lastChild.textContent='−'+fmt0(sof)}
-  var st=g('sTotal');if(st)st.textContent=fmt0(sub-disc)}
+  var lo=!gw&&sub<2000;f.__fjLo=lo;
+  if(row){row.style.display=usePromo||lo?'none':'';row.firstChild.textContent='Sofortkauf-Rabatt −10 %';row.lastChild.textContent='−'+fmt0(sof)}
+  var st=g('sTotal');if(st)st.textContent=fmt0(lo?sub:sub-disc);
+  if(!gw){if(tl)tl.textContent=lo?'Richtpreis inkl. MwSt.':'Preis inkl. MwSt.';if(send)send.style.display=lo?'none':'';
+   var hn=g('fjLoNote');if(card&&!hn){hn=document.createElement('p');hn.id='fjLoNote';hn.style.cssText='color:#e0e8dc;font-size:13px;line-height:1.5;margin:14px 0 0';hn.textContent='Online buchbar ab 2.000 € Auftragswert. Für kleinere Runden machen wir euch ein individuelles Angebot und melden uns innerhalb von 24 Stunden.';(card.querySelector('.total')||card).insertAdjacentElement('afterend',hn)}
+   if(hn)hn.style.display=lo?'':'none';if(note)note.style.display=lo?'none':''}}
  recalc();f.addEventListener('input',function(){setTimeout(recalc,0)});f.addEventListener('click',function(){setTimeout(recalc,0)});f.addEventListener('change',function(){setTimeout(recalc,0)});
  f.querySelectorAll('.cal-hint').forEach(function(h){h.textContent=h.textContent.replace('Ein Wunschtermin ist noch keine bestätigte Buchung.','Verbindlich wird der Termin mit der Zahlung.').replace('Anfragen mit mindestens','Buchbar mit mindestens').replace(' Längere Zeiten auf Anfrage.','')});
  document.addEventListener('submit',function(e){
@@ -175,7 +179,9 @@ function hookStatic(){
   var people=Number(v('people'))||0;
   var config=gw?{pkg:'gluehwein',customer_type:type,people:Math.min(500,Math.max(20,people||20)),date:v('date'),time:v('time'),punsch:!!(g('punsch')&&g('punsch').checked),occasion:'Glühwein After Work'}
    :{pkg:'weihnacht',customer_type:type,duration:sel('duration')||'1-3',extra_hours:(sel('duration')==='8+')?Math.max(1,Number(v('extra'))||1):0,people:Math.min(500,Math.max(8,people||8)),date:v('date'),time:v('time'),drinks:!!(g('drinks')&&g('drinks').checked),occasion:'Weihnachtsfeier'};
-  open({config:config,contact:{first_name:v('firstName'),last_name:v('lastName'),email:v('email'),phone:v('phone'),company:type==='firma'?v('company'):''},location:v('location'),message:v('message')});
+  var pl={config:config,contact:{first_name:v('firstName'),last_name:v('lastName'),email:v('email'),phone:v('phone'),company:type==='firma'?v('company'):''},location:v('location'),message:v('message')};
+  if(!gw&&f.__fjLo&&window.fjCheckout&&window.fjCheckout.inquire){window.fjCheckout.inquire(pl);return}
+  open(pl);
  },true);
 }
 

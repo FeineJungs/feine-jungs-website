@@ -180,8 +180,8 @@ footer .links{display:flex;gap:22px;font-family:"IBM Plex Mono",monospace;font-s
       <div class="deal" id="deal" hidden><div class="deal-pct">−20 %</div><div class="deal-txt"><span id="dealDays">Frühbucher · nur bis 31.10.</span><strong><s>490 €</s>ab 392 €</strong><small>auf den Grundpreis eurer Weihnachtsfeier</small></div></div>
       <div class="quota" id="quota" hidden><span id="quotaTxt">Max. 12 Weihnachtsfeiern im Dezember</span><span class="quota-bar" id="quotaBarWrap"><i id="quotaBar" style="width:0"></i></span></div>
       <div class="facts">
-        <span id="factBase"><strong>Ab 490 €</strong> für 1–3 Stunden</span>
-        <span><strong>50 km</strong> Anfahrt inklusive</span>
+        <span id="factBase"><strong>Ab 490 €</strong> plus Getränke p. P.</span>
+        <span><strong>30 km</strong> Anfahrt inklusive</span>
         <span><strong>24 h</strong> bis zum Angebot</span>
         <span><strong>Großraum</strong> Stuttgart</span>
       </div>
@@ -225,7 +225,7 @@ footer .links{display:flex;gap:22px;font-family:"IBM Plex Mono",monospace;font-s
     <div class="wrap">
       <span class="label">Konfigurieren &amp; anfragen</span>
       <h2>Eure Weihnachtsfeier. Unser Job<span>.</span></h2>
-      <p class="lead">Gästezahl, Dauer, Getränkepauschale – der Richtpreis erscheint sofort. Die Anfrage geht direkt an feine jungs, das Angebot kommt innerhalb von 24 Stunden.</p>
+      <p class="lead">Gästezahl und Dauer – der Preis erscheint sofort. Die Anfrage geht direkt an feine jungs, das Angebot kommt innerhalb von 24 Stunden.</p>
       <p class="promo" id="promoNote"><strong>Aktion: −20 % auf den Grundpreis</strong> für alle Weihnachtsfeier-Anfragen bis 31.10.2026. Ist im Richtpreis schon eingerechnet.</p>
       <form class="cfg" id="wf" novalidate>
         <div>
@@ -239,8 +239,8 @@ footer .links{display:flex;gap:22px;font-family:"IBM Plex Mono",monospace;font-s
           <fieldset>
             <legend>Dauer</legend>
             <div class="opts" data-group="duration">
-              <button type="button" data-value="1-3" class="selected">1–3 Stunden</button>
-              <button type="button" data-value="4-5">4–5 Stunden</button>
+              <button type="button" data-value="1-3">1–3 Stunden</button>
+              <button type="button" data-value="4-5" class="selected">4–5 Stunden</button>
               <button type="button" data-value="6-8">6–8 Stunden</button>
               <button type="button" data-value="8+">Über 8 Std.</button>
             </div>
@@ -248,10 +248,10 @@ footer .links{display:flex;gap:22px;font-family:"IBM Plex Mono",monospace;font-s
           <fieldset>
             <legend>Die Details</legend>
             <div class="fields">
-              <label>Gäste <input type="number" id="people" min="8" max="500" value="30" required /></label>
+              <label>Gäste <input type="number" id="people" min="8" max="500" value="35" required /></label>
               <label id="extraWrap" style="display:none">Zusatzstunden über 8 <input type="number" id="extra" min="1" max="6" value="1" /></label>
             </div>
-            <label class="check"><input type="checkbox" id="drinks" /><span><strong>Getränkepauschale dazu?</strong><small>Optional. Je nach Dauer 27 / 40 / 60 € pro Person.</small></span></label>
+            <p style="margin:14px 0 0;font-size:14px;line-height:1.5">Getränke sind fest dabei: je nach Dauer 27 / 40 / 60 € pro Person. Online buchbar ab 2.000 € Auftragswert, kleinere Runden gern als Anfrage.</p><input type="checkbox" id="drinks" checked hidden />
           </fieldset>
           <fieldset>
             <legend>Euer Wunschtermin</legend>
@@ -290,15 +290,15 @@ footer .links{display:flex;gap:22px;font-family:"IBM Plex Mono",monospace;font-s
           <h3>Weihnachtsfeier</h3>
           <div class="card-deal" id="cardDeal" hidden>−20 % Frühbucher bis 31.10.</div>
           <div class="price">
-            <div><span>Gäste</span><strong id="sPeople">30</strong></div>
-            <div><span>Dauer</span><strong id="sDuration">1–3 Stunden</strong></div>
-            <div><span id="sBaseLabel">Grundpreis</span><strong id="sBase">490 €</strong></div>
+            <div><span>Gäste</span><strong id="sPeople">35</strong></div>
+            <div><span>Dauer</span><strong id="sDuration">4–5 Stunden</strong></div>
+            <div><span id="sBaseLabel">Grundpreis</span><strong id="sBase">690 €</strong></div>
             <div id="sPromoRow"><span>Frühbucher −20 % bis 31.10.</span><strong id="sPromo" class="promo-val"></strong></div>
-            <div><span>Getränkepauschale</span><strong id="sDrinks">Nein</strong></div>
+            <div><span id="sDrinksLabel">Getränke · 35 × 40 €</span><strong id="sDrinks">1.400 €</strong></div>
             <div id="sDateRow" style="display:none"><span>Wunschtermin</span><strong id="sDate"></strong></div>
           </div>
-          <div class="total"><span>Richtpreis inkl. MwSt.</span><strong id="sTotal">490 €</strong></div>
-          <p>Firmenevent: 490 / 690 / 890 € für 1–3 / 4–5 / 6–8 Stunden, jede weitere Stunde 120 €. Privat: 390 / 490 / 590 €. Anfahrt bis 50 km inklusive.</p>
+          <div class="total"><span>Richtpreis inkl. MwSt.</span><strong id="sTotal">2.090 €</strong></div>
+          <p>Grundpreis Firma: 490 / 690 / 890 € für 1–3 / 4–5 / 6–8 Stunden, jede weitere Stunde 120 €. Privat: 390 / 490 / 590 €. Getränke fest dabei: 27 / 40 / 60 € pro Person. Online buchbar ab 2.000 €. Anfahrt bis 30 km inklusive.</p>
         </aside>
       </form>
     </div>
@@ -320,7 +320,7 @@ footer .links{display:flex;gap:22px;font-family:"IBM Plex Mono",monospace;font-s
           <div><span>Jede weitere Stunde</span><strong>120 €</strong></div>
           <div><span>Mindestabnahme</span><strong>30 Gäste</strong></div>
         </div>
-        <p class="note">Inkl. MwSt. Anfahrt bis 25 km ab Renningen inklusive, danach 1,20 € je km. Vor Ort: CEE-16-A-Anschluss und etwa 3 × 5 m ebene Fläche.</p>
+        <p class="note">Inkl. MwSt. Anfahrt bis 30 km inklusive, danach 1 € je km. Vor Ort: CEE-16-A-Anschluss und etwa 3 × 5 m ebene Fläche.</p>
       </div>
     </div>
   </section>
@@ -358,7 +358,7 @@ const API="https://yarzxemodteevfodhstl.supabase.co/functions/v1",COMPANY="93ebe
 const BASE={firma:{"1-3":490,"4-5":690,"6-8":890,"8+":890},privat:{"1-3":390,"4-5":490,"6-8":590,"8+":590}};
 const DRINKS={"1-3":27,"4-5":40,"6-8":60,"8+":60};
 const LABEL={"1-3":"1–3 Stunden","4-5":"4–5 Stunden","6-8":"6–8 Stunden","8+":"Über 8 Stunden"};
-const st={type:"firma",duration:"1-3"};
+const st={type:"firma",duration:"4-5"};
 const $=id=>document.getElementById(id);
 const eur=n=>new Intl.NumberFormat("de-DE",{style:"currency",currency:"EUR",maximumFractionDigits:0}).format(n);
 document.querySelectorAll(".opts").forEach(g=>g.addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;st[g.dataset.group]=b.dataset.value;g.querySelectorAll("button").forEach(x=>x.classList.toggle("selected",x===b));if(g.dataset.group==="type"){$("date").value="";renderCal()}update()}));
@@ -390,7 +390,7 @@ function people(){return Math.min(500,Math.max(8,Number($("people").value)||8))}
 const PROMO=new Date()<=new Date("2026-10-31T23:59:59+01:00");
 function total(){const extra=st.duration==="8+"?Math.max(1,Number($("extra").value)||1):0;const base=BASE[st.type][st.duration]+extra*120;const rabatt=PROMO?Math.round(BASE[st.type][st.duration]*0.2):0;return {base,extra,rabatt,total:base-rabatt+($("drinks").checked?people()*DRINKS[st.duration]:0)}}
 function update(){const t=total();$("extraWrap").style.display=st.duration==="8+"?"":"none";$("companyWrap").style.display=st.type==="firma"?"":"none";$("company").required=st.type==="firma";
-$("sPeople").textContent=people();$("sDuration").textContent=LABEL[st.duration]+(t.extra?" + "+t.extra+" h":"");$("sBase").innerHTML=t.rabatt?'<s style="opacity:.6;font-weight:400;margin-right:8px">'+eur(t.base)+'</s><span class="promo-val">'+eur(t.base-t.rabatt)+'</span>':eur(t.base);$("sPromoRow").style.display="none";$("sBaseLabel").textContent=t.rabatt?"Grundpreis · Frühbucher −20 %":"Grundpreis";$("sPromo").textContent="−"+eur(t.rabatt);$("promoNote").style.display=PROMO?"":"none";$("sDrinks").textContent=$("drinks").checked?"Ja · "+eur(DRINKS[st.duration])+" p. P.":"Nein";
+$("sPeople").textContent=people();$("sDuration").textContent=LABEL[st.duration]+(t.extra?" + "+t.extra+" h":"");$("sBase").innerHTML=t.rabatt?'<s style="opacity:.6;font-weight:400;margin-right:8px">'+eur(t.base)+'</s><span class="promo-val">'+eur(t.base-t.rabatt)+'</span>':eur(t.base);$("sPromoRow").style.display="none";$("sBaseLabel").textContent=t.rabatt?"Grundpreis · Frühbucher −20 %":"Grundpreis";$("sPromo").textContent="−"+eur(t.rabatt);$("promoNote").style.display=PROMO?"":"none";$("sDrinksLabel").textContent="Getränke · "+people()+" × "+DRINKS[st.duration]+" €";$("sDrinks").textContent=eur(people()*DRINKS[st.duration]);
 const d=$("date").value;$("sDateRow").style.display=d?"":"none";if(d)$("sDate").textContent=new Intl.DateTimeFormat("de-DE").format(new Date(d+"T12:00:00"));$("sTotal").textContent=eur(t.total)}
 if(PROMO){const dl=Math.ceil((new Date("2026-10-31T23:59:59+01:00")-new Date())/864e5);$("dealDays").textContent="Frühbucher · nur noch "+dl+(dl===1?" Tag":" Tage")+" (bis 31.10.)";$("deal").hidden=false;$("cardDeal").hidden=false;$("factBase").style.display="none"}
 update();
