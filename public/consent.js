@@ -2,7 +2,7 @@
 (function(){
   var add=function(src){var s=document.createElement('script');s.src=src;s.async=false;document.head.appendChild(s)};
   add('/consent-base.js');
-  if(!/^\/(agb|impressum|datenschutz|einloesen)/.test(location.pathname)){add('/checkout.js?v=4');add('/anfrage.js?v=4')}
+  if(!/^\/(agb|impressum|datenschutz|einloesen)/.test(location.pathname)){add('/checkout.js?v=5');add('/anfrage.js?v=5')}
   /* Footer der statischen Seiten: Links umbrechen statt zerreißen, AGB-Link ergänzen */
   var st=document.createElement('style');st.textContent='footer .links{flex-wrap:wrap!important;row-gap:10px}footer .links a{white-space:nowrap}html,body,button,a,input,select,textarea,label,[role=button],[role=dialog]{touch-action:manipulation}';document.head.appendChild(st);
   var ft=function(){var l=document.querySelector('footer .links');if(!l||l.querySelector('a[href="/agb"]'))return;var a=document.createElement('a');a.href='/agb';a.textContent='AGB';var d=l.querySelector('a[href="/datenschutz"]');l.insertBefore(a,d||null)};

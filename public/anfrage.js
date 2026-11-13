@@ -7,7 +7,7 @@ var eur=function(n){return new Intl.NumberFormat('de-DE',{style:'currency',curre
 var esc=function(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})};
 var deDate=function(d){var p=String(d).split('-');return p[2]+'.'+p[1]+'.'+p[0]};
 var wday=function(d){return['So','Mo','Di','Mi','Do','Fr','Sa'][new Date(d+'T12:00:00').getDay()]};
-var LABEL={barabend:'Bar-Abend',sektempfang:'Sektempfang',corporate:'Firmenevent',private:'Privates Fest',weihnacht:'Weihnachtsfeier',gluehwein:'Glühwein After Work',jga:'JGA',tasting:'Tasting',saturdays:'Saturdays'};
+var LABEL={wagyufirma:'Wagyu × Champagner (Firma)',barabend:'Bar-Abend',sektempfang:'Sektempfang',corporate:'Firmenevent',private:'Privates Fest',weihnacht:'Weihnachtsfeier',gluehwein:'Glühwein After Work',jga:'JGA',tasting:'Tasting',saturdays:'Saturdays'};
 var PKG={tasting:'tasting',jga:'jga',corporate:'corporate',private:'private'};
 var TEL='<a href="tel:+491777753688">0177 775 36 88</a>';
 
@@ -64,7 +64,7 @@ function inquire(c){
  });
  root.addEventListener('keydown',function(e){if(e.key==='Escape')close()});
  $('qForm').addEventListener('submit',send);
- fetch(API+'/service-quote'+(k.pkg==='barabend'||k.pkg==='sektempfang'?'-v2':''),{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({config:k})}).then(function(r){return r.json()}).then(function(j){
+ if(k.pkg==='wagyufirma'){$('qBill').innerHTML='<div class="ln"><span>Preis</span><b>individuelles Angebot</b></div><div class="ln muted"><span>Wir kalkulieren passend zu Gästezahl und Termin und melden uns innerhalb von 24 Stunden.</span><b></b></div>'}else fetch(API+'/service-quote'+(k.pkg==='barabend'||k.pkg==='sektempfang'?'-v2':''),{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({config:k})}).then(function(r){return r.json()}).then(function(j){
   if(!root)return;var b=$('qBill');
   if(!j.ok){b.innerHTML='<div class="ln muted"><span>Richtpreis gerade nicht abrufbar – wir nennen ihn euch im Angebot.</span><b></b></div>';return}
   quote=j;var h='';j.lines.forEach(function(l){h+='<div class="ln"><span>'+esc(l.label)+'</span><b>'+eur(l.amount)+'</b></div>'});
@@ -79,7 +79,7 @@ function send(e){
  if(!f.checkValidity()){f.reportValidity();return}
  var k=cfg.config||{},firma=k.customer_type==='firma',lab=LABEL[k.pkg]||'Event',occ=k.occasion&&k.occasion!==lab?lab+' · '+k.occasion:lab;
  var ex=[];if(k.drinks)ex.push('Getränkepauschale');if(k.tasting_champagne)ex.push('Champagner-Tasting');if(k.jga_champagne)ex.push('Champagner');if(k.oysters)ex.push(k.oysters+' Austern');if(k.punsch)ex.push('Kinderpunsch');
- var msg=['Format: '+occ+' · '+deDate(k.date)+' · '+k.time+' Uhr · '+k.people+' Gäste'+(k.duration&&k.pkg!=='gluehwein'?' · '+k.duration+' Std'+(k.extra_hours?' (+'+k.extra_hours+')':''):''),ex.length?'Extras: '+ex.join(', '):'',val('qPlace')?'Veranstaltungsort: '+val('qPlace'):'',val('qMsg')?'\n'+val('qMsg'):''].filter(Boolean).join('\n');
+ var msg=['Format: '+occ+' · '+deDate(k.date)+' · '+k.time+' Uhr · '+k.people+' Gäste'+(k.duration&&k.pkg!=='gluehwein'&&k.pkg!=='wagyufirma'?' · '+k.duration+' Std'+(k.extra_hours?' (+'+k.extra_hours+')':''):''),ex.length?'Extras: '+ex.join(', '):'',val('qPlace')?'Veranstaltungsort: '+val('qPlace'):'',val('qMsg')?'\n'+val('qMsg'):''].filter(Boolean).join('\n');
  var go=$('qGo');go.disabled=true;go.textContent='WIRD GESENDET …';
  var body={contact:{name:val('qFirst')+' '+val('qLast'),email:val('qEmail'),phone:val('qPhone'),company:val('qCompany'),message:msg},
   config:{package:PKG[k.pkg]||(firma?'corporate':'private'),duration:k.duration||'1-3',people:k.people,extra_hours:k.extra_hours||0,preferred_date:k.date,preferred_time:k.time,estimated_price:quote?quote.subtotal:null,occasion:occ},honeypot:''};
