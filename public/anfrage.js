@@ -64,7 +64,7 @@ function inquire(c){
  });
  root.addEventListener('keydown',function(e){if(e.key==='Escape')close()});
  $('qForm').addEventListener('submit',send);
- if(k.pkg==='wagyufirma'){$('qBill').innerHTML='<div class="ln"><span>Preis</span><b>individuelles Angebot</b></div><div class="ln muted"><span>Wir kalkulieren passend zu Gästezahl und Termin und melden uns innerhalb von 24 Stunden.</span><b></b></div>'}else fetch(API+'/service-quote'+(k.pkg==='barabend'||k.pkg==='sektempfang'?'-v2':''),{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({config:k})}).then(function(r){return r.json()}).then(function(j){
+ if(k.pkg==='wagyufirma'){$('qBill').innerHTML='<div class="ln"><span>Preis</span><b>individuelles Angebot</b></div><div class="ln muted"><span>Wir kalkulieren passend zu Gästezahl und Termin und melden uns innerhalb von 24 Stunden.</span><b></b></div>'}else fetch(API+'/public-booking-v3',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({quote:true,config:k})}).then(function(r){return r.json()}).then(function(j){
   if(!root)return;var b=$('qBill');
   if(!j.ok){b.innerHTML='<div class="ln muted"><span>Richtpreis gerade nicht abrufbar – wir nennen ihn euch im Angebot.</span><b></b></div>';return}
   quote=j;var h='';j.lines.forEach(function(l){h+='<div class="ln"><span>'+esc(l.label)+'</span><b>'+eur(l.amount)+'</b></div>'});
