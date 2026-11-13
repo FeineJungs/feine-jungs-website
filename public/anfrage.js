@@ -7,7 +7,7 @@ var eur=function(n){return new Intl.NumberFormat('de-DE',{style:'currency',curre
 var esc=function(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})};
 var deDate=function(d){var p=String(d).split('-');return p[2]+'.'+p[1]+'.'+p[0]};
 var wday=function(d){return['So','Mo','Di','Mi','Do','Fr','Sa'][new Date(d+'T12:00:00').getDay()]};
-var LABEL={corporate:'Firmenevent',private:'Privates Fest',weihnacht:'Weihnachtsfeier',gluehwein:'Glühwein After Work',jga:'JGA',tasting:'Tasting',saturdays:'Saturdays'};
+var LABEL={barabend:'Bar-Abend',sektempfang:'Sektempfang',corporate:'Firmenevent',private:'Privates Fest',weihnacht:'Weihnachtsfeier',gluehwein:'Glühwein After Work',jga:'JGA',tasting:'Tasting',saturdays:'Saturdays'};
 var PKG={tasting:'tasting',jga:'jga',corporate:'corporate',private:'private'};
 var TEL='<a href="tel:+491777753688">0177 775 36 88</a>';
 
@@ -64,12 +64,12 @@ function inquire(c){
  });
  root.addEventListener('keydown',function(e){if(e.key==='Escape')close()});
  $('qForm').addEventListener('submit',send);
- fetch(API+'/service-quote',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({config:k})}).then(function(r){return r.json()}).then(function(j){
+ fetch(API+'/service-quote'+(k.pkg==='barabend'||k.pkg==='sektempfang'?'-v2':''),{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({config:k})}).then(function(r){return r.json()}).then(function(j){
   if(!root)return;var b=$('qBill');
   if(!j.ok){b.innerHTML='<div class="ln muted"><span>Richtpreis gerade nicht abrufbar – wir nennen ihn euch im Angebot.</span><b></b></div>';return}
   quote=j;var h='';j.lines.forEach(function(l){h+='<div class="ln"><span>'+esc(l.label)+'</span><b>'+eur(l.amount)+'</b></div>'});
   h+='<div class="ln tot"><span>Richtpreis inkl. MwSt. <span style="font-size:12px;color:#647069">(zzgl. Anfahrt über 50 km)</span></span><b>'+eur(j.subtotal)+'</b></div>';
-  if(j.discount&&j.discount.amount>0)h+='<div class="ln dc" style="margin-top:6px"><span>Direkt gebucht nur '+eur(j.service_total)+' ('+esc(j.discount.label)+')</span><b><button type="button" class="buy" data-buy>DIREKT BUCHEN</button></b></div>';
+  var lo=k.pkg==='corporate'&&j.subtotal<2000;if(lo)h+='<div class="ln muted" style="margin-top:6px"><span>Online buchbar ab 2.000 € Auftragswert. Für kleinere Runden bekommt ihr von uns ein individuelles Angebot.</span><b></b></div>';if(!lo&&j.discount&&j.discount.amount>0)h+='<div class="ln dc" style="margin-top:6px"><span>Direkt gebucht nur '+eur(j.service_total)+' ('+esc(j.discount.label)+')</span><b><button type="button" class="buy" data-buy>DIREKT BUCHEN</button></b></div>';
   b.innerHTML=h}).catch(function(){if(root)$('qBill').innerHTML='<div class="ln muted"><span>Richtpreis gerade nicht abrufbar.</span><b></b></div>'});
  setTimeout(function(){try{root.querySelector('input[required]').focus({preventScroll:true})}catch(e){}},50);
 }
