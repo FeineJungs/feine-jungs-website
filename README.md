@@ -46,6 +46,10 @@ Es gibt **keinen TSX-Quellcode** der Startseite in diesem Repository; Änderunge
   Auf Vorschau-Adressen und `localhost` spricht sie mit dem Supabase-**Testprojekt** ohne Zahlungsanbieter
   (Hinweis „Vorschau / Testsystem“ im Dialog) – dort entsteht keine Bezahlseite und kein echter Kauf.
 - `/widerruf`: elektronische Widerrufsfunktion nach § 356a BGB (Edge Function `public-withdrawal`, Eingangsbestätigung per Mail).
+- Rabattcodes (WXC-…) im Wagyu-Warenkorb: bis zu **zwei** je Bestellung, ihre Nachlässe addieren sich je Ticket. Jeder Code wird einzeln über
+  `wagyu-promo-check` geprüft. Beim Kauf gehen zwei Codes in Kurzform im Feld `voucher_code` an die Kasse: `WXC-` + die 8 Zeichen des ersten
+  + die 8 Zeichen des zweiten Codes, ohne Bindestriche (genau 20 Zeichen – mehr reicht `wagyu-cart` in diesem Feld nicht durch).
+  Verbindlich gerechnet und eingelöst wird in der Datenbank (`wagyu_plaetze.reserve_cart`). Gutschein (FJ-…) und Rabattcode lassen sich nicht kombinieren.
 
 ## Prüfen nach dem Merge
 
