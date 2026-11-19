@@ -272,8 +272,8 @@
         return i.type === 'wagyu' ? { type: 'wagyu', date: i.date, quantity: i.quantity, gift: !!i.gift }
           : { type: 'voucher', amount: i.amount, recipient_name: i.recipient_name || null, message: i.message || null };
       }),
-      contact: { name: p.contact.name, email: p.contact.email, phone: p.contact.phone || null, company: null, vat_id: null },
-      billing: null,
+      contact: { name: p.contact.name, email: p.contact.email, phone: p.contact.phone || null, company: p.contact.company || null, vat_id: null },
+      billing: p.billing && p.billing.street ? { street: p.billing.street, zip: p.billing.zip, city: p.billing.city } : null,
       voucher_code: p.voucher_code || null,
       honeypot: p.honeypot || ''
     });
