@@ -10,14 +10,14 @@
 <link rel="preload" as="image" href="/media/iIHGNmWLvpGKKFQg.webp" />
 <style>
 /* ===== Intro: Weiss -> Logo in Oliv -> Foto blendet auf -> schiebt sich weg ===== */
-#fj-intro{position:fixed;inset:0;z-index:999;overflow:hidden;background:#e6e8e3;transition:transform .95s cubic-bezier(.16,1,.3,1)}
+#fj-intro{position:fixed;inset:0;z-index:999;overflow:hidden;background:#e6e8e3;transition:transform .4s cubic-bezier(.16,1,.3,1)}
 #fj-intro.out{transform:translateY(-101%)}
-#fj-intro.fade{transition:opacity .7s ease}#fj-intro.fade.out{transform:none;opacity:0}
+#fj-intro.fade{transition:opacity .4s ease}#fj-intro.fade.out{transform:none;opacity:0}
 body.fj-intro-on{overflow:hidden}
-#fj-intro .bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 62%;transform:scale(1.06);transition:transform 6s cubic-bezier(.16,1,.3,1)}
-#fj-intro .veil{position:absolute;inset:0;background:#fff;transition:opacity 2.2s ease}
+#fj-intro .bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 62%;transform:scale(1.06);transition:transform 1.5s cubic-bezier(.16,1,.3,1)}
+#fj-intro .veil{position:absolute;inset:0;background:#fff;transition:opacity .5s ease}
 #fj-intro .shade{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(255,255,255,.62) 0%,rgba(255,255,255,.18) 38%,rgba(255,255,255,0) 60%)}
-#fj-intro .logo{position:absolute;left:50%;top:22%;transform:translate(-50%,-50%) scale(.94);width:clamp(240px,46vw,620px);height:auto;display:block;opacity:0;filter:brightness(0) saturate(100%) invert(41%) sepia(7%) saturate(957%) hue-rotate(46deg) brightness(96%) contrast(94%);transition:opacity 1.4s ease,transform 1.8s cubic-bezier(.16,1,.3,1)}
+#fj-intro .logo{position:absolute;left:50%;top:22%;transform:translate(-50%,-50%) scale(.94);width:clamp(240px,46vw,620px);height:auto;display:block;opacity:0;filter:brightness(0) saturate(100%) invert(41%) sepia(7%) saturate(957%) hue-rotate(46deg) brightness(96%) contrast(94%);transition:opacity .4s ease,transform .5s cubic-bezier(.16,1,.3,1)}
 #fj-intro.s1 .logo{opacity:1;transform:translate(-50%,-50%) scale(1)}
 #fj-intro.s2 .veil{opacity:0}
 #fj-intro.s2 .bg{transform:scale(1)}
@@ -123,12 +123,12 @@ const bg=intro.querySelector('.bg');
 const photo=new Promise(r=>{if(bg.complete)r();else{bg.onload=r;bg.onerror=r}setTimeout(r,6000)});
 const ready=new Promise(r=>{window.__fjReady=r;setTimeout(r,12000)});
 let done=false;
-const end=()=>{if(done)return;done=true;if(reduced)intro.classList.add('fade');intro.classList.add('out');document.body.classList.remove('fj-intro-on');setTimeout(()=>intro.remove(),1050)};
+const end=()=>{if(done)return;done=true;if(reduced)intro.classList.add('fade');intro.classList.add('out');document.body.classList.remove('fj-intro-on');setTimeout(()=>intro.remove(),450)};
 setTimeout(end,15000);
 (async()=>{
-await wait(500);intro.classList.add('s1');
-await Promise.all([wait(1500),photo]);intro.classList.add('s2');
-await Promise.all([wait(2400),ready]);end();
+await wait(120);intro.classList.add('s1');
+await Promise.all([wait(450),Promise.race([photo,wait(450)])]);intro.classList.add('s2');
+await Promise.all([wait(550),ready]);end();
 })();
 })();
 </script>
