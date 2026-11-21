@@ -21,6 +21,7 @@ Quelle der Website **feinejungs.de** (FEINE JUNGS GmbH). Dieses Repository ist d
 | `public/c/00–04.txt` | Tailwind-CSS der Startseite, ebenfalls zerlegt |
 | `public/wagyu.html` | Eventseite **feinejungs.de/wagyu** (`/wagyu-x-champagne` leitet dorthin weiter): wird von `tools/wagyu-page.js` aus `index.html` erzeugt, gleiches Bundle (Route `/wagyu`), zeigt nur den Wagyu-Abschnitt; Buchung direkt auf der Seite, Direktlink zum Dialog: `/wagyu?event=2026-12-17` bzw. `…-18` |
 | `public/*.html` | Unterseiten: `weihnachtsfeier`, `gluehwein` (auch `/afterwork`), `eventagentur`, `einloesen`, `widerruf`, `agb`, `impressum`, `datenschutz` |
+| `public/broschuere.html`, `public/broschuere/` | Broschüre **feinejungs.de/broschuere** (Link im Fußbereich der Startseite): Seiten als Bilder (`seite-1…5.webp`) und `feine-jungs-broschuere.pdf` zum Herunterladen. Quelle ist das Design-Artifact „feine jungs – Broschüre“; bei Änderungen Bilder und PDF neu erzeugen und ersetzen |
 | `public/consent.js`, `consent-base.js` | Cookie-Einwilligung, Fußbereich und Feinschliff der Unterseiten (u. a. Tanz-am-Berg-Bilder, KI-Hinweis) |
 | `public/checkout.js`, `anfrage.js` | Gutschein-/Warenkorb-Kasse und Anfrageformular |
 | `public/wagyu-checkout.js` | Wagyu-Kasse v3 (Plätze für „wagyu × champagne“, Zahlung über Mollie) |
